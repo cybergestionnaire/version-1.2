@@ -13,9 +13,9 @@ function update_fluxRSS() {
 $xml = '<?xml version="1.0" encoding="iso-8859-1"?>';
 $xml .= '<rss version="2.0">';
 $xml .= '<channel>';
-$xml .= ' <title>Voici mon premier flux RSS !</title>';
-$xml .= ' <link>http://localhost/test</link>';
-$xml .= ' <description>Voici le flux RSS de mon site ! Suivez le pour avoir les dernières news !</description>';
+$xml .= ' <title>Les ateliers de l\'EPN</title>';
+//$xml .= ' <link>http://localhost/test</link>';
+$xml .= ' <description>Tout savoir sur les derniers ateliers du réseau, les descriptifs détaillés et les places restantes !</description>';
 $xml .= ' <language>fr</language>';
 
  
@@ -30,7 +30,7 @@ $limitation = 25;
  
 //On se connecte à notre base de données (pensez à mettre les bons logins)
 try {
-  $bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'php1506');
+  $bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 }
 catch(Exception $e) {die('Erreur : '.$e->getMessage());}
  

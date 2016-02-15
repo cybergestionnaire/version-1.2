@@ -173,7 +173,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 						<!-- Notifications, preinsciptions en attente -->
 						
 		<!-- flux rss -->
-		<!--
+		
 		<li>
 		<?php
  			  //On va chercher le fichier php qui contient le code pour mettre à jour le flux RSS
@@ -184,7 +184,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 			 
 			?> 
 		<a href="atelier_rss.xml" data-toggle="tooltip" title="Voir le flux RSS" ><i class="fa fa-rss-square"></i></a>
-		 </li>-->
+		 </li>
 				 <?php
               //retrouve le nombre de preinscriptions en attente
               $newinscritsar=getAllUserInsc();
