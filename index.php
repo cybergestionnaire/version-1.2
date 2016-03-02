@@ -56,17 +56,8 @@ if (FALSE !=isset($logout))
    
 }
 
+//Authentification
 
-
-
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-
-<?php //Autentification
 if (FALSE == isset($_SESSION["login"]))
 {
   include ("login.php") ;
@@ -97,7 +88,14 @@ $couleurArray=array(
 	);
 $couleur=$couleurArray[$epnspec["couleur_espace"]];
 
+
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
 	<title><?php echo $titre; ?> -- <?php echo $epnspec["nom_espace"] ; ?></title>
 	<!--<title>Cyber-Gestionnaire V0.8</title>-->
 	
@@ -405,9 +403,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
         <strong><a href="index.php?a=60">Cr&eacute;dits </strong>
       </footer>
 
-	<?php
-	}
-	?>
+
 		
 	
 </div>
@@ -440,3 +436,6 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 </body>
 
 </html>
+<?php
+}
+?>
