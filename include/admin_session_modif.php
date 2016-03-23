@@ -19,11 +19,13 @@ $s =  $_GET["s"];
 
 ?>
 
+<div class="row">
+
 <section class="col-lg-5 connectedSortable"> 
 <!-- bouton nouvel espace-->
 <div class="box box-success">
 	<div class="box-header">
-		<h3 class="box-title">Sélectionnez une session</h3></div>
+		<h3 class="box-title">S&eacute;lectionnez une session</h3></div>
 	<form method="post" action="index.php?a=35&s=0&sujetsession=<?php echo $pSujet ?>">
 	<div class="box-body">
 		<div class="form-group"><label>Sujet </label>
@@ -47,7 +49,7 @@ $s =  $_GET["s"];
     </div>
     </form></div>
 </div>
-
+</section>
 <?php
 $plevel = getAllLevel(1) ;
 $category = getAllCategorie(1) ;
@@ -61,8 +63,6 @@ if ($pSujet>0)
 
 ?>
 
-	
-</section>
 
 <section class="col-lg-7 connectedSortable"> 		
 <form method="post" action="index.php?a=35&s=3&sujetsession=<?php echo $pSujet; ?>">
@@ -109,20 +109,17 @@ if ($pSujet>0)
 				?>
 			</select>
 			   </div>
-		  
-			
-			   
-		   </div><!--dox body -->
+		 	   
+		   
 		<div class="box-footer">
-		<table width="100%">
-			<tr><td width="10%"><a href="index.php?a=35&s=3&sujetsession=<?php echo $pSujet; ?>"><input type="submit" name="submit_session" value="Modifier" class="btn btn-primary"></a></form></td>
-			<td><form method="post" action="index.php?a=35&s=del&sujetsession=<?php echo $pSujet; ?>">
-					<input type="submit" name="submit_session" value="supprimer" class="btn btn-warning"></a></form></td></tr>
-		</table>
+			<a href="index.php?a=35&s=3&sujetsession=<?php echo $pSujet; ?>"><input type="submit" name="submit_session" value="Modifier" class="btn btn-primary"></a></form>
+			<form method="post" action="index.php?a=35&s=del&sujetsession=<?php echo $pSujet; ?>"><input type="submit" name="submit_session" value="supprimer" class="btn btn-warning pull right"></form>
 		</div>
-	</div>
+	</div></div><!--dox body -->
 			
 	</section>
+
 <?php 
 }
 ?>
+	</div>

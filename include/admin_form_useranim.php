@@ -139,7 +139,7 @@ echo $mess ;
 <form method="post" action="<?php echo $post_url; ?>" role="form">
 <div class="row"><!-- left column --><div class="col-md-6">
 <!-- div 1 : vie-->
-<div class="box box-primary"><div class="box-header"><h3 class="box-title">Fiche adhérent</h3></div>
+<div class="box box-primary"><div class="box-header"><h3 class="box-title">Fiche adh&eacute;rent</h3></div>
 	 <div class="box-body">
 		<table class="table">
 		<tr><td>
@@ -239,7 +239,7 @@ echo $mess ;
 
 <!-- right column --><div class="col-md-6">
 <!-- div 2 : adresse-->
-<div class="box box-primary"><div class="box-header"><h3 class="box-title">Coordonnées</h3></div>
+<div class="box box-primary"><div class="box-header"><h3 class="box-title">Coordonn&eacute;es</h3></div>
 	<div class="box-body">
 	<div class="form-group"><label>Adresse *:</label>
 		<textarea name="adresse" class="form-control"><?php echo $adresse;?></textarea></div>
@@ -276,7 +276,7 @@ echo $mess ;
 <!-- div 3 : données base-->	
 <div class="row"><div class="col-md-6">
 
-<div class="box box-success"><div class="box-header"><h3 class="box-title">Données pour la base</h3></div>
+<div class="box box-success"><div class="box-header"><h3 class="box-title">Donn&eacute;es pour la base</h3></div>
 <div class="box-body">
 	
 	<div class="form-group"><label for="exampleInputEmail1">Login *:</label>

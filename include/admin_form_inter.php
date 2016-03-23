@@ -40,7 +40,7 @@ switch($_GET["error"])
 <section class="col-lg-7 connectedSortable">
 
 <form method="post" action="index.php?a=3" role="form">
-<div class="box box-success"><div class="box-header"><h3 class="box-title">Détail de l'intervention</h3></div>
+<div class="box box-success"><div class="box-header"><h3 class="box-title">D&eacute;tail de l'intervention</h3></div>
 	<div class="box-body">
 	
 	<div class="form-group"><label>Titre</label>

@@ -22,7 +22,7 @@
  include/admin_bdd.php V0.1
 */
 
-// Gestion de la base de données
+// Gestion de la base de donn&eacute;es
 
 $total_usagers=$_POST["total_usagers"];
 $total_echec=$_POST["total_echec"];
@@ -41,7 +41,7 @@ if ($mess==1)
 <div class="col-lg-12">
  <div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&eacute;trages</h3>
 				<div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> </div>
 		</div>
 		<div class="box-body">
@@ -79,7 +79,7 @@ if ($mess==1)
           
        </form>
 <?php
-// Restauration, cette fonction est desactivé pour des raison de sécurité
+// Restauration, cette fonction est desactiv&eacute; pour des raison de s&eacute;curit&eacute;
 /*
        <tr>
            <td>&nbsp;</td></tr>
@@ -92,35 +92,35 @@ if ($mess==1)
 
 */
 ?>     <div class="box-footer"><p>
-           Pour restaurer les donn&eacute;es merci de passer par phpmyadmin pour réimporter un fichier de sauvegarde.<br></p></div>
+           Pour restaurer les donn&eacute;es merci de passer par phpmyadmin pour r&eacute;importer un fichier de sauvegarde.<br></p></div>
 </div>
 </div>
 
 <!-- aide restauration-->
- <div class="box box-info"><div class="box-header"><h3 class="box-title">Aide à l'import de la base des adhérents depuis un CSV Cybanim</h3></div>
+ <div class="box box-info"><div class="box-header"><h3 class="box-title">Aide &agrave; l'import de la base des adh&eacute;rents depuis un CSV Cybanim</h3></div>
  <div class="box-body">
       <p class="text-info">Restauration de la base de donn&eacute;es usagers provenant de Cybanim seulement</p>
 	<p class="text-red">Avant de commencer l'importation assurez-vous que :</p>
-	<p>* Le fichier ait été exporté en Windows-Latin1 ou UTF-8<br>* Le séparateur de colonne choisi est bien le <b>";"</b>.
-	<br>Pour être sur, ouvrez le fichier avec votre tableur (excel ou calc), quand il vous demande la conversion, essayez ';' ou tabulation, et pour l'encodage des caratères choisissez Windows-Latin1 ou UTF-8, 
-	si les caractères ne s'affichent pas correctement, essayez Latin-1 ou celui qui convient. 
-	Puis suivez la procédure suivante :</p>
+	<p>* Le fichier ait &eacute;t&eacute; export&eacute; en Windows-Latin1 ou UTF-8<br>* Le s&eacute;parateur de colonne choisi est bien le <b>";"</b>.
+	<br>Pour &ecirc;tre sur, ouvrez le fichier avec votre tableur (excel ou calc), quand il vous demande la conversion, essayez ';' ou tabulation, et pour l'encodage des carat&egrave;res choisissez Windows-Latin1 ou UTF-8, 
+	si les caract&egrave;res ne s'affichent pas correctement, essayez Latin-1 ou celui qui convient. 
+	Puis suivez la proc&eacute;dure suivante :</p>
 	<ol><li>Enregistrez le fichier au format excel ou calc</li>
-	<li>Vérifiez que tous les champs correspondent aux en-têtes de colonnes (que la date d'inscription ne soit pas remplie avec du texte par exemple)</li>
-	<li><span class="text-red">Remplacez les entêtes de colonne suivantes : <b>"date d'inscription" par "inscription"</b> (sans les "), et <b>"Espace d'origine" par "Espace"</b>  (sans les "); Assurez-vous ne pas avoir de double quote ('') à la place des simple (') pour les apostrophes.</span> Car il semblerait que le traitement de l'apostrophe n'est pas le même suivant les différents exports que j'ai pu traiter depuis cybanim (!!).</li>
+	<li>V&eacute;rifiez que tous les champs correspondent aux en-t&ecirc;tes de colonnes (que la date d'inscription ne soit pas remplie avec du texte par exemple)</li>
+	<li><span class="text-red">Remplacez les ent&ecirc;tes de colonne suivantes : <b>"date d'inscription" par "inscription"</b> (sans les "), et <b>"Espace d'origine" par "Espace"</b>  (sans les "); Assurez-vous ne pas avoir de double quote ('') &agrave; la place des simple (') pour les apostrophes.</span> Car il semblerait que le traitement de l'apostrophe n'est pas le m&ecirc;me suivant les diff&eacute;rents exports que j'ai pu traiter depuis cybanim (!!).</li>
 	<li>Enregistrez sous le fichier au format CSV, dans la boite de dialogue suivante : </li>
-	<li>Choisissez bien Windows-Latin1 ou UTF-8 pour l'encodage des caractères puis le ";" pour la séparation des colonnes, <span class="text-red">important ! veuillez décocher toutes les autres options proposées, ne pas choisir la tabulation, car elle fausse les données !</span></li>
+	<li>Choisissez bien Windows-Latin1 ou UTF-8 pour l'encodage des caract&egrave;res puis le ";" pour la s&eacute;paration des colonnes, <span class="text-red">important ! veuillez d&eacute;cocher toutes les autres options propos&eacute;es, ne pas choisir la tabulation, car elle fausse les donn&eacute;es !</span></li>
 	<li>Enregistrez ce nouveau fichier.</li>
 	<li>Vous pourrez maintenant lancer l'importation dans CyberGestionnaire, ci-dessous.</li></ol>
 	
-	<p class="text-red">N'oubliez pas de choisir une option pour générer un nouveau mot de passe, puis la ville par défaut au cas où aucune n'aurait été renseignée, ainsi que le tarif par défaut que vous souhaitez appliquer à vos adhérents.</p>
-	<p>La date de renouvellement du compte usager est par défaut importée au même mois et même jour que la date d'inscription ajustée à l'année en cours, sauf si l'adhérent est inactif.</p>
+	<p class="text-red">N'oubliez pas de choisir une option pour g&eacute;n&eacute;rer un nouveau mot de passe, puis la ville par d&eacute;faut au cas o&ugrave; aucune n'aurait &eacute;t&eacute; renseign&eacute;e, ainsi que le tarif par d&eacute;faut que vous souhaitez appliquer &agrave; vos adh&eacute;rents.</p>
+	<p>La date de renouvellement du compte usager est par d&eacute;faut import&eacute;e au m&ecirc;me mois et m&ecirc;me jour que la date d'inscription ajust&eacute;e &agrave; l'ann&eacute;e en cours, sauf si l'adh&eacute;rent est inactif.</p>
 
 </div></div>
 
 </div>
 
-<!-- Restauration, cette fonction permet de restauré la bdd usagers cybanim -->
+<!-- Restauration, cette fonction permet de restaur&eacute; la bdd usagers cybanim -->
 <div class="col-lg-6">
   
 <!-- liste des espaces existants-->
@@ -135,7 +135,7 @@ if ($mess==1)
        	
 		<div class="form-group"><label> Fichier de sauvegarde au format CSV</label><input type="file" name="restore_file" ></div>
          <br>
-		<div class="form-group"><label>Tarif consultation accordé aux usagers automatiquement</label>
+		<div class="form-group"><label>Tarif consultation accord&eacute; aux usagers automatiquement</label>
 		<select name="temps_user" class="form-control" >
 		<?php
 			foreach ($tariftemps AS $key=>$value)
@@ -154,7 +154,7 @@ if ($mess==1)
 		
 		<!--<input type="text" name="temps_user" class="form-control"/></div>-->
 		<div class="form-group">
-			<label>Choisir la ville par défaut (quand aucune n'a été renseignée)  <small class="badge bg-blue" data-toggle="tooltip" title="Pensez a créer une ville 'Non renseignée' "><i class="fa fa-info"></i></small>
+			<label>Choisir la ville par d&eacute;faut (quand aucune n'a &eacute;t&eacute; renseign&eacute;e)  <small class="badge bg-blue" data-toggle="tooltip" title="Pensez a cr&eacute;er une ville 'Non renseign&eacute;e' "><i class="fa fa-info"></i></small>
 			</label><select name="ville" class="form-control" >
 			<?php
 			// recupere les villes
@@ -172,7 +172,7 @@ if ($mess==1)
 				}
 			}
 			?></select></div>
-		<div class="form-group"><label>Tarif par défaut qui sera appliqué à l'ensemble des usagers</label>
+		<div class="form-group"><label>Tarif par d&eacute;faut qui sera appliqu&eacute; &agrave; l'ensemble des usagers</label>
 		
 		<?php
 		//recuperer les tarifs
@@ -192,10 +192,10 @@ if ($mess==1)
 				}
 			?>
 		</select></div>
-	<div class="form-group"><label>Génération du nouveau mot de passe*</label>
+	<div class="form-group"><label>G&eacute;n&eacute;ration du nouveau mot de passe*</label>
 		 <div class="radio"> <label><input type="radio" name="mdp" value="1"   checked>&nbsp; nom.prenom<label></div>
-		 <div class="radio"> <label><input type="radio" name="mdp" value="2"  >&nbsp; AAAAnom (à partir de la date de naissance)<label></div>
-		  <div class="radio"> <label><input type="radio" name="mdp" value="3" >&nbsp; AAAAMMDD  (à partir de la date de naissance)<label></div>
+		 <div class="radio"> <label><input type="radio" name="mdp" value="2"  >&nbsp; AAAAnom (&agrave; partir de la date de naissance)<label></div>
+		  <div class="radio"> <label><input type="radio" name="mdp" value="3" >&nbsp; AAAAMMDD  (&agrave; partir de la date de naissance)<label></div>
 	</div>
         		<?php
 			}
@@ -210,11 +210,11 @@ if ($mess==1)
 	if (FALSE != isset($total_usagers))
 	{
 		?>
-		<h4 class="box-title">Resultat de l'importation</h4>
-		<p><?php echo $total_echec; ?>  adhérents non-inscrit(s) suite à un échec à l'importation dans la bdd, sur <?php echo $total_usagers; ?> usagers.<br>
+		<h4 class="box-title">R&eacute;sultat de l'importation</h4>
+		<p><?php echo $total_echec; ?>  adh&eacute;rents non-inscrit(s) suite &agrave; un &eacute;chec &agrave; l'importation dans la bdd, sur <?php echo $total_usagers; ?> usagers.<br>
 		<?php echo $total_actif; ?> usagers actif sur <?php echo $total_usagers; ?> usagers.<br>
 		<?php echo $total_inactif; ?> usagers inactif sur <?php echo $total_usagers; ?> usagers.</p>
-		<p>Vous pouvez consulter le log d'importation pour voir les erreurs dans le fichier situé dans le dossier /log, et récupérer les usagers qui n'ont pu être importés.</p>
+		<p>Vous pouvez consulter le log d'importation pour voir les erreurs dans le fichier situ&eacute; dans le dossier /log, et r&eacute;cup&eacute;rer les usagers qui n'ont pu &ecirc;tre import&eacute;s.</p>
         <?php
 	}
 ?>

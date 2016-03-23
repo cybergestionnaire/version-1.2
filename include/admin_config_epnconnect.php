@@ -58,7 +58,7 @@ if($act==0){
 	//debug(testconfigepn($epn));
 	if(FALSE==testconfigepn($epn)){	
 		$posturl="index.php?a=25&act=1&idepn=".$epn;
-		$bouton="créer la configuration";
+		$bouton="cr&eacute;er la configuration";
 	}else{
 		$posturl="index.php?a=25&act=0&idepn=".$epn;
 		$bouton="valider les modifications";
@@ -78,7 +78,7 @@ $espaces=getAllEPN();
 <!-- DIV accès direct aux autres paramètres-->
 
  <div class="box"><div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&egrave;trages</h3>
 		</div>
 		<div class="box-body">
 			
@@ -96,8 +96,8 @@ $espaces=getAllEPN();
 	<div class="col-md-4">
  <div class="box"><div class="box-header"><h3 class="box-title">Installer sur les postes clients</h3></div>
  <div class="box-body">
-Télécharger le logiciel EPN-Connect en cliquant sur le lien ci-dessous :<br />
-<a href="./epnconnect/EPN-Connectv1.0.zip">Télécharger EPN-Connect</a>
+T&eacute;l&eacute;charger le logiciel EPN-Connect en cliquant sur le lien ci-dessous :<br />
+<a href="./epnconnect/EPN-Connectv1.0.zip">T&eacute;l&eacute;charger EPN-Connect</a>
 </div></div>
 
 	<!-- NOM ESPACE -->	
@@ -133,7 +133,7 @@ Télécharger le logiciel EPN-Connect en cliquant sur le lien ci-dessous :<br />
 		<div class="box-header"><h3 class="box-title">Activation du mode console</h3></div>
 	<div class="box-body">
 	<p class="text-light-blue">L'activation du mode console permet l'autoaffection des postes avec l'epnconnect. Si vous ne pouvez pas utiliser cet outil (si votre serveur n'est pas local par exemple), vous n'aurez pas besoin de la console, elle disparait du menu.
-	Cet outil est activable à tout moment dans cette page, cela n'affectera pas les statistiques !</p>
+	Cet outil est activable &agrave; tout moment dans cette page, cela n'affectera pas les statistiques !</p>
 	<form method="post" action="index.php?a=25">
 <?php
 $consolemode=$rowforfait["activer_console"];
@@ -173,7 +173,7 @@ switch ($consolemode)
 <div class="box-body">
 <form action="<?php echo $posturl; ?>" method="post" role="form">
 	
-<div class="form-group"><label> Validez les options ci-dessous pour activer les fonctionnalités d'EPN-Connect</label></div>
+<div class="form-group"><label> Validez les options ci-dessous pour activer les fonctionnalit&eacute;s d'EPN-Connect</label></div>
 	<input type="hidden" name="idconfig" value="<?php echo $row['id_config_logiciel']; ?>">
 	<input type="hidden" name="epn" value="<?php echo $epn ;?>">
 	<div class="form-group"><?php
@@ -256,7 +256,7 @@ switch ($consolemode)
             <?php
 		}
         ?>
-		Déconnexion automatique
+		D&eacute;connexion automatique
        </div>
 	   <div class="form-group">
        <?php
@@ -314,11 +314,11 @@ switch ($consolemode)
             break;
 					}
 		?>
-		<div class="form-group"><label>Activer l'inscription automatique par les adhérents ? </label>
+		<div class="form-group"><label>Activer l'inscription automatique par les adh&eacute;rents ? </label>
 			 <div class="radio"> <label><input type="radio" name="inscrip_auto" value="1"   <?php echo $seli2; ?>>oui<label>
 														<label><input type="radio" name="inscrip_auto" value="0"  <?php echo $seli1; ?>>non<label></div></div>
 			
-		<div class="form-group"><label>Si non, écrivez le message :</label><textarea class="form-control" rows="3" name="message_inscrip"><?php echo $rowforfait["message_inscription"]; ?></textarea>
+		<div class="form-group"><label>Si non, &eacute;crivez le message :</label><textarea class="form-control" rows="3" name="message_inscrip"><?php echo $rowforfait["message_inscription"]; ?></textarea>
 			</div>
 			 
 		</div>

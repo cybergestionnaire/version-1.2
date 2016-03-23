@@ -3,7 +3,7 @@
  2006 Namont Nicolas
  2013 Florence DAUVERGNE
  
- A rajouter : les tranches horaires les plus fréquentées
+ A rajouter : les tranches horaires les plus fr&eacute;quent&eacute;es
 */
 
 include("libchart/classes/libchart.php");
@@ -19,7 +19,7 @@ if (TRUE == isset($_GET['month']) AND TRUE==is_numeric($_GET['month']) AND $_GET
 	   $year=date('Y');
 	}
 	
-// chargement des valeurs pour l'epn par défaut
+// chargement des valeurs pour l'epn par d&eacute;faut
 $epn=$_SESSION['idepn'];
 //si changment d'epn
  if (TRUE == isset($_POST['modifepn']))
@@ -45,7 +45,7 @@ if(!is_dir($dossierimg)){
  <div class="row"><div class="col-md-6">
                      
  <div class="box box-primary">
-        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Paramètres</h3></div>
+        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Param&egrave;tres</h3></div>
 	<div class="box-body">
 	<form method="post" role="form">
 	<div class="input-group"><label>Changer d'espace</label><select name="pepn"  class="form-control pull-right" style="width: 210px;">
@@ -67,28 +67,28 @@ if(!is_dir($dossierimg)){
 	</div></form>
 	<br>
 	<div class="input-group">
-	<label>Changer d'année&nbsp;&nbsp;&nbsp;</label>
+	<label>Changer d'ann&eacute;e&nbsp;&nbsp;&nbsp;</label>
 		<?php 
 		$rowanneesstat=getYearStatResa();
 		while($ans=mysqli_fetch_array($rowanneesstat)){
 			echo '<a href="index.php?a=5&b=2&year='.$ans['Y'].'&month=12&day=365&jour=31" > <button class="btn bg-maroon">'.$ans['Y'].' </button></a>'; 
 		 }
 		//annee en cours
-		echo '<a href="index.php?a=5&b=2&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Année en cours</button></a>';
+		echo '<a href="index.php?a=5&b=2&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Ann&eacute;e en cours</button></a>';
 		?>
         </div>
 	</div><!-- /.box-body-->
 </div><!-- /.box -->
  </div><!-- /.col -->
  <div class="col-md-6">
- <!-- DIV accès direct aux autres paramètres-->
+ <!-- DIV acc&egrave;s direct aux autres param&egrave;tres-->
  <div class="box">
 		<div class="box-header">
 			<h3 class="box-title">Statistiques</h3>
 		</div>
 		<div class="box-body">
-			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adhérents</a>
-			<a class="btn btn-app disabled" href="index.php?a=5&b=2"><i class="fa fa-clock-o"></i>Réservations</a>
+			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adh&eacute;rents</a>
+			<a class="btn btn-app disabled" href="index.php?a=5&b=2"><i class="fa fa-clock-o"></i>R&eacute;servations</a>
 			<a class="btn btn-app" href="index.php?a=5&b=3"><i class="fa fa-print"></i>Impressions</a>
 			<a class="btn btn-app" href="index.php?a=5&b=4"><i class="fa fa-ticket"></i>Sessions</a>
 			<a class="btn btn-app" href="index.php?a=5&b=5"><i class="fa fa-keyboard-o"></i>Ateliers</a>
@@ -102,9 +102,9 @@ if(!is_dir($dossierimg)){
 
  <div class="row"><div class="col-md-6">
  
- <!-- Graphiques resas sur l'année -->
+ <!-- Graphiques resas sur l'ann&eacute;e -->
 
-<div class="box box-primary"><div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Statistiques de r&eacute;servations, année <?php echo $year; ?></h3></div>
+<div class="box box-primary"><div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Statistiques de r&eacute;servations, ann&eacute;e <?php echo $year; ?></h3></div>
 <?php
 
 	$chart = new VerticalBarChart(900, 300);
@@ -125,20 +125,20 @@ if(!is_dir($dossierimg)){
 	<?php
 		$chart->setTitle("Nombre d'heure de reservation par mois");
 		$chart->getPlot()->getPalette()->setBarColor(array(new Color(74,192,242)));
-		$chart->render("img/chart/".$year."/heures_resa_an_".$namepn.".png");
+		$chart->render("img/chart/".$year."/heures_resa_an_".$epn.".png");
 		
-		$chart2->setTitle("Fréquence des reservations par mois");
+		$chart2->setTitle("Fr&eacute;quence des reservations par mois");
 		$chart2->getPlot()->getPalette()->setLineColor(array(new Color(2,119,158),new Color(190,128,255),new Color(255,84,143)));
-		$chart2->render("img/chart/".$year."/nombre_resa_an_".$namepn.".png");
+		$chart2->render("img/chart/".$year."/nombre_resa_an_".$epn.".png");
 	?>
-	<img src="img/chart/<?php echo $year?>/heures_resa_an_<?php echo $namepn; ?>.png" width="500px"><br>
-	<img src="img/chart/<?php echo $year?>/nombre_resa_an_<?php echo $namepn; ?>.png"  width="500px">
+	<img src="img/chart/<?php echo $year?>/heures_resa_an_<?php echo $epn; ?>.png" width="500px"><br>
+	<img src="img/chart/<?php echo $year?>/nombre_resa_an_<?php echo $epn; ?>.png"  width="500px">
 	</div>
 </div>
 
  <!-- TABLEAU RESERVATIONS PAR MOIS/ANNEE -->
 <div class="box box-primary">
-          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Nombre de r&eacute;servations par mois, année <?php echo $year; ?></h3></div>
+          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Nombre de r&eacute;servations par mois, ann&eacute;e <?php echo $year; ?></h3></div>
 <?php
 	
 for ($i=1 ; $i<12;++$i)
@@ -177,9 +177,9 @@ for ($i=1 ; $i<12;++$i)
 <!-- colonne de droite -->
 <div class="col-md-6">
 
-<!-- Classement des réservations : Fréquence des visites -->
+<!-- Classement des r&eacute;servations : Fr&eacute;quence des visites -->
 <div class="box box-primary">
-          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Fréquences des visites d'abonnés, année <?php echo $year; ?></h3></div>
+          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Fr&eacute;quences des visites d'abonn&eacute;s, ann&eacute;e <?php echo $year; ?></h3></div>
 <div class="box-body">
 <?php
 //Initialisation graphique
@@ -189,23 +189,23 @@ $row = getStatFrequence($year,$epn);
 
 //debug($row);
 
-$dataSetF->addPoint(new Point("1 à 2 fois par semaine", $row['f1']));
-$dataSetF->addPoint(new Point("2 à 3 fois par semaine", $row['f2']));
+$dataSetF->addPoint(new Point("1 &agrave; 2 fois par semaine", $row['f1']));
+$dataSetF->addPoint(new Point("2 &agrave; 3 fois par semaine", $row['f2']));
 $dataSetF->addPoint(new Point("+3 fois par semaine", $row['f3']));
 $chartF->setDataSet($dataSetF);
 $chartF->getPlot()->getPalette()->setPieColor(array(new Color(255,133,4),new Color(234,42,83),new Color(44,173,135)));
 
 $chartF->setTitle("Frequence des visites (".$year.") ");
-$chartF->render("img/chart/".$year."/resa_frequenceSemaine_".$namepn.".png");
+$chartF->render("img/chart/".$year."/resa_frequenceSemaine_".$epn.".png");
 
 ?>
-<img src="img/chart/<?php echo $year; ?>/resa_frequenceSemaine_<?php echo $namepn; ?>.png" >
+<img src="img/chart/<?php echo $year; ?>/resa_frequenceSemaine_<?php echo $epn; ?>.png" >
         </div><!-- /.box-body-->
     </div><!-- /.box -->
 
-<!-- Classement des réservations : les adhérents par classe d'âge-->
+<!-- Classement des r&eacute;servations : les adh&eacute;rents par classe d'&acirc;ge-->
 <div class="box box-primary">
-          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les réservations par classe d'âge, année <?php echo $year; ?></h3></div>
+          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les r&eacute;servations par classe d'&acirc;ge, ann&eacute;e <?php echo $year; ?></h3></div>
           
 <div class="box-body">
 			<table class="table"> 
@@ -304,11 +304,11 @@ $serie3 = new XYDataSet();
         $chart3->setTitle("Detail des heures pour ".getMonth($month)." ".$year." ");
 		$chart3->getPlot()->getPalette()->setBarColor(array(new Color(128,195,28)));
 		$chart3->getPlot()->setLabelGenerator(new TimeLabelGenerator());
-		// arrondir la valeur maximale supérieure
+		// arrondir la valeur maximale sup&eacute;rieure
 				
 		$chart3->getBound()->setUpperBound($maxValue * 60);
 		//  $chart3->getTics()->quantizeTics(12);
-		$chart3->render("img/chart/".$year."/".$namepn."_resa-Mensuelle-".$month.".png");
+		$chart3->render("img/chart/".$year."/".$epn."_resa-Mensuelle-".$month.".png");
             ?>
    <!-- rendu du graphique sous forme d'image-->      
 	<img src="img/chart/<?php echo $year; ?>/<?php echo $namepn; ?>_resa-Mensuelle-<?php echo $month; ?>.png">
@@ -317,12 +317,12 @@ $serie3 = new XYDataSet();
 
 
 <!-- Frequentation par tranche horaires  et par semaine-->
- <h2 class="page-header">Répartition par tranche horaire journalières, année <?php echo $year; ?></h2>
+ <h2 class="page-header">R&eacute;partition par tranche horaire journali&egrave;res, ann&eacute;e <?php echo $year; ?></h2>
 <div class="col-md-6">
 		<div class="nav-tabs-custom">
 	
 <?php
-///comptabiliser les connexions pour la journée choisie	
+///comptabiliser les connexions pour la journ&eacute;e choisie	
 for ($d=2; $d<7;++$d){
 
 $nomjour=getJourEng($d);
@@ -333,7 +333,7 @@ $dataSetMardi = new XYSeriesDataSet();
 for ($i=0 ; $i<2;++$i)
 {
 	$y=$year-$i;
-	$serieMardi="serieMardi$y";// series par années
+	$serieMardi="serieMardi$y";// series par ann&eacute;es
 	$serieMardi = new XYDataSet(); 
 	//debug($serieMardi);
 	if ($y<$year)
@@ -346,14 +346,14 @@ for ($i=0 ; $i<2;++$i)
 	}
 
 	if (isset($nomjour)){
-		$n0TH1 = statTrancheHour(600,660,$nomjour,$y,$epn); //de 10h à 11h : h 600-659
-		$n0TH2 = statTrancheHour(661,720,$nomjour,$y,$epn); //de 11h à 12h : h 660-720
-		$n0TH3 = statTrancheHour(721,839,$nomjour,$y,$epn); // rajout tranche du midi 12h à 14h
-		$n0TH4 = statTrancheHour(840,900,$nomjour,$y,$epn); //de 14h à 15h : h 840-899
-		$n0TH5 = statTrancheHour(901,960,$nomjour,$y,$epn); //de 15h à 16h : h 900-959
-		$n0TH6 = statTrancheHour(961,1020,$nomjour,$y,$epn); //de 16h à 17h : h 960-1019
-		$n0TH7 = statTrancheHour(1021,1080,$nomjour,$y,$epn); //de 17h à 18h : h 1020-1079
-		$n0TH8 = statTrancheHour(1081,1170,$nomjour,$y,$epn); //de 18h à 19h30 : h 1080-1170
+		$n0TH1 = statTrancheHour(600,660,$nomjour,$y,$epn); //de 10h &agrave; 11h : h 600-659
+		$n0TH2 = statTrancheHour(661,720,$nomjour,$y,$epn); //de 11h &agrave; 12h : h 660-720
+		$n0TH3 = statTrancheHour(721,839,$nomjour,$y,$epn); // rajout tranche du midi 12h &agrave; 14h
+		$n0TH4 = statTrancheHour(840,900,$nomjour,$y,$epn); //de 14h &agrave; 15h : h 840-899
+		$n0TH5 = statTrancheHour(901,960,$nomjour,$y,$epn); //de 15h &agrave; 16h : h 900-959
+		$n0TH6 = statTrancheHour(961,1020,$nomjour,$y,$epn); //de 16h &agrave; 17h : h 960-1019
+		$n0TH7 = statTrancheHour(1021,1080,$nomjour,$y,$epn); //de 17h &agrave; 18h : h 1020-1079
+		$n0TH8 = statTrancheHour(1081,1170,$nomjour,$y,$epn); //de 18h &agrave; 19h30 : h 1080-1170
 		
 	// pourcentage en fonction du nombre de semaines depuis la date choisie;
 		$nTH1=round((($n0TH1/$nombreSemaines)/$nbPoste)*100);
@@ -386,7 +386,7 @@ for ($i=0 ; $i<2;++$i)
 	}	
 	
 	$chartMardi->getPlot()->getPalette()->setBarColor(array(new Color(144,213,236),new Color(229,87,91),new Color(167,119,229)));
-	$chartMardi->setTitle("Répartition de la fréquentation sur le ".getDay($d)." en %");
+	$chartMardi->setTitle("R&eacute;partition de la fr&eacute;quentation sur le ".getDay($d)." en %");
 	$chartMardi->render("img/chart/".$year."/resa-horaire-".getDay($d).".png");
 }
 
@@ -421,34 +421,34 @@ for ($i=0 ; $i<2;++$i)
 
 
  <div class="row"><div class="col-md-6"><!-- row 2 -->
-<!-- Classement des réservations : les adhérents par CSP -->
+<!-- Classement des r&eacute;servations : les adh&eacute;rents par CSP -->
 
-<!-- Classement des réservations : par poste -->
+<!-- Classement des r&eacute;servations : par poste -->
 <div class="box box-primary">
-          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les réservations par machine, année <?php echo $year; ?></h3></div>
+          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les r&eacute;servations par machine (toutes salles), ann&eacute;e <?php echo $year; ?></h3></div>
 <div class="box-body">
 
 <?php
 
 //stat par machine
-        $result = getStatResaComputer($month,$year);
+        $result = getStatResaComputer($month,$year,$epn);
 			
-        $j=1;
+        $j=0;
         if (mysqli_num_rows($result)!=0)
         {
-            echo '<div style="clear:both;margin-bottom:5px;">
-                        <table width="100%" border="0">
-                        <tr class="list_title"><td width="10%">&nbsp;</td>
-                        <td  width="30%">Nom</td>
-                        <td  width="30%">Nb. d\'heures</td>
-                        <td  width="30%">Nb. de r&eacute;servations</td></tr>';
+            echo '<div>
+                        <table class="table">
+                        <tr><td width="10%">&nbsp;</td>
+                        <td>Nom</td>
+                        <td >Nb. d\'heures</td>
+                        <td>Nb. de r&eacute;servations</td></tr>';
             while ($row = mysqli_fetch_array($result))
             {
-                echo '<tr class="list"><td align="center" >'.$j.'</td>
-                                       <td align="left">'.$row['nom_computer'].'&nbsp;&nbsp;</td>
-                                       <td align="left">'.getTime($row['duree']).'</td>
-                                       <td align="left">'.$row['nb'].'</td></tr>';
-                                       ++$j ;
+                echo '<tr><td>'.$j.'</td>
+										 <td>'.$row['nom_computer'].'&nbsp;&nbsp;</td>
+										 <td >'.getTime($row['duree']).'</td>
+										 <td >'.$row['nb'].'</td></tr>';
+										 ++$j ;
             }
             echo '</table></div>';
         }

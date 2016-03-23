@@ -29,13 +29,13 @@ $act = $_GET["act"];
 $idutilisation = $_GET["idutilisation"];
 //$typemenu = $_GET["typemenu"];
 
-// type de menu défini
+// type de menu d&eacute;fini
 $menuarray = array (
          0 => "Menu Principal",   
          1 => "Sous Menu"
 );
 
-// type de visibilité défini
+// type de visibilit&eacute; d&eacute;fini
 $visiblearray = array (
          0 => "oui",   
          1 => "non"
@@ -71,8 +71,8 @@ switch ($act)
 // affichage  -----------
 $result = getAllUtilisation();
 //$fonction = getAllUtilisation();
-/*$typemenu="Non défini";
-$visible="Non défini";*/
+/*$typemenu="Non d&eacute;fini";
+$visible="Non d&eacute;fini";*/
 if (FALSE != $result)
 {
 	$nb = mysqli_num_rows($result);
@@ -89,10 +89,10 @@ if (FALSE != $result)
 }
 ?>
 
-<!-- DIV accès direct aux autres paramètres-->
+<!-- DIV acc&egrave;s direct aux autres param&egrave;tres-->
  <div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&eacute;trages</h3>
 		</div>
 		<div class="box-body">
 			
@@ -108,7 +108,7 @@ if (FALSE != $result)
 
 <div class="box box-solid box-warning"><div class="box-header"><h3 class="box-title">Liste des utilisations</h3></div>
         <div class="box-body no-padding">
-	<br><p>&nbsp; &nbsp;NB : Cette liste apparait sur le formulaire de pré-inscription des usagers et sera utilisée pour les statistiques.</p>
+	<br><p>&nbsp; &nbsp;NB : Cette liste apparait sur le formulaire de pr&eacute;-inscription des usagers et sera utilis&eacute;e pour les statistiques.</p>
 	<table class="table table-condensed">
 		<thead><tr><th>Utilisation</th><th>Type</th><th>Visible</th><th>&nbsp;</th></tr></thead>
 <?php
@@ -122,7 +122,7 @@ foreach ($fonction AS $key2 =>$value2)
            <?php
 			if(strcmp ($menuarray2[$key2],"")==0)
 			{	
-				echo "<option selected>Non défini</option>";
+				echo "<option selected>Non d&eacute;fini</option>";
 			}
            for($b=0; $b<2; $b++)
 			{
@@ -140,7 +140,7 @@ foreach ($fonction AS $key2 =>$value2)
            <?php
 			if(strcmp ($visiblearray2[$key2],"")==0)
 			{	
-				echo "<option selected>Non défini</option>";
+				echo "<option selected>Non d&eacute;fini</option>";
 			}
            for($b=0; $b<2; $b++)
 			{

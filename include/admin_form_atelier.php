@@ -56,8 +56,8 @@ else
 $stateAtelier = array(
 	0=> "En cours",
 	1=> "En programmation",
-	2=> "Cloturé",
-	3=> "Annulé"
+	2=> "Clotur&eacute;",
+	3=> "Annul&eacute;"
 	);
 }
 
@@ -69,11 +69,11 @@ if(FALSE==$atelier){
 ?>
 <div class="row"><div class="col-md-6">
 	<div class="alert alert-warning alert-dismissable"><i class="fa fa-warning"></i>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;Avant d'établir une programmation, vous devez créer au moins un sujet d'atelier.</div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;Avant d'&eacute;tablir une programmation, vous devez cr&eacute;er au moins un sujet d'atelier.</div>
 	</div>
 	<div class="col-md-6">
 	<div class="alert alert-info alert-dismissable"><i class="fa fa-warning"></i>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;<a href="index.php?a=15">Créer un nouveau sujet</a></div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;<a href="index.php?a=15">Cr&eacute;er un nouveau sujet</a></div>
 	</div>
 
 </div>
@@ -194,7 +194,7 @@ if(FALSE==$atelier){
 	<div class="form-group"><label>Tarif</label>
 	 <!-- tools box -->
 	    <div class="pull-right box-tools">
-		<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Si un atelier fait partie d'une tarification spéciale, choisissez-là ici, sinon laissez le 'sans tarif' par défaut, le décompte des ateliers se fera en fonction de ce qui a été payé par l'adhérent."><i class="fa fa-info-circle"></i></button>
+		<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Si un atelier fait partie d'une tarification sp&eacute;ciale, choisissez-l&agrave; ici, sinon laissez le 'sans tarif' par d&eacute;faut, le d&eacute;compte des ateliers se fera en fonction de ce qui a &eacute;t&eacute; pay&eacute; par l'adh&eacute;rent."><i class="fa fa-info-circle"></i></button>
 	    </div><!-- /. tools -->
 	
   		<select name="tarif" class="form-control" >

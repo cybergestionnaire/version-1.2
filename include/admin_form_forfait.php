@@ -125,7 +125,7 @@ echo $mess ;
 <table align="center">
 <form name="formforfait" method="post" action="<?php echo $post_url; ?>">
 <tr>
-    <td colspan="2"><br><b>Informations Générales : </b></td></tr>
+    <td colspan="2"><br><b>Informations G&eacute;n&eacute;rales : </b></td></tr>
 <tr>
     <td class="label">Date de cr&eacute;ation :</td>
     <td class="field"><p><p><?php echo $date_creat_forfait ; ?></p></p></td></tr>
@@ -349,7 +349,7 @@ echo $mess ;
 	}
 	?></td></tr>
 <tr>
-    <td class="label">Illimité :</td>
+    <td class="label">Illimit&eacute; :</td>
     <td class="field">
     <?php 
 	if(($type_forfait==0)||($type_forfait>4))

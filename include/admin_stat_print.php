@@ -4,8 +4,8 @@
     Statistiques des impresions
 	nombre d'impressions par mois
 	repartition par type couleur / N&B
-	nombre de recharges par mois + total crédit
-	nombre d'abonnés qui impriment en %
+	nombre de recharges par mois + total cr&eacute;dit
+	nombre d'abonn&eacute;s qui impriment en %
 */
 $year = date('Y') ;
 $month = date('m') ;
@@ -13,7 +13,7 @@ $month = date('m') ;
 
 // recuperation des tarifs disponibles
 $tarifs=getTarifs(1); //1= impressions
-// chargement des valeurs pour l'epn par défaut
+// chargement des valeurs pour l'epn par d&eacute;faut
 $epn=$_SESSION['idepn'];
 //si changment d'epn
  if (TRUE == isset($_POST['modifepn']))
@@ -42,7 +42,7 @@ if(!is_dir($dossierimg)){
  <div class="row"><div class="col-md-6">
                      
 <div class="box box-primary">
-        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Paramètres</h3></div>
+        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Param&egrave;tres</h3></div>
 	<div class="box-body">
 	<form method="post" role="form">
 	<div class="input-group"><label>Changer d'espace</label><select name="Pepn"  class="form-control pull-right" style="width: 210px;">
@@ -64,14 +64,14 @@ if(!is_dir($dossierimg)){
 	</div></form>
 	<br>
 	<div class="input-group">
-	<label>Changer d'année&nbsp;&nbsp;&nbsp;</label>
+	<label>Changer d'ann&eacute;e&nbsp;&nbsp;&nbsp;</label>
 		<?php 
 		$rowanneesstat=getYearStatPrint();
 		while($ans=mysqli_fetch_array($rowanneesstat)){
 			echo '<a href="index.php?a=5&b=3&year='.$ans['Y'].'&month=12&day=365&jour=31" > <button class="btn bg-maroon">'.$ans['Y'].' </button></a>'; 
 		 }
 		//annee en cours
-		echo '<a href="index.php?a=5&b=3&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Année en cours</button></a>';
+		echo '<a href="index.php?a=5&b=3&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Ann&eacute;e en cours</button></a>';
 		?>
         </div>
 	</div><!-- /.box-body-->
@@ -79,11 +79,11 @@ if(!is_dir($dossierimg)){
  </div><!-- /.col -->
  
  <div class="col-md-6">
- <!-- DIV accès direct aux autres paramètres-->
+ 
  <div class="box"><div class="box-header"><h3 class="box-title">Statistiques</h3></div>
 		<div class="box-body">
-			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adhérents<a>
-			<a class="btn btn-app" href="index.php?a=5&b=2" /><i class="fa fa-clock-o"></i>Réservations</a>
+			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adh&eacute;rents<a>
+			<a class="btn btn-app" href="index.php?a=5&b=2" /><i class="fa fa-clock-o"></i>R&eacute;servations</a>
 			<a class="btn btn-app disabled" href="index.php?a=5&b=3"><i class="fa fa-print"></i>Impressions</a>
 			<a class="btn btn-app" href="index.php?a=5&b=5" /><i class="fa fa-ticket"></i>Sessions</a>
 			<a class="btn btn-app" href="index.php?a=5&b=4" /><i class="fa fa-keyboard-o"></i>Ateliers</a>
@@ -101,13 +101,13 @@ if(!is_dir($dossierimg)){
               <div class="info-box bg-aqua">
                 <span class="info-box-icon"  style="padding-top:18px"><i class="fa fa-users"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Abonnés</span>
+                  <span class="info-box-text">Abonn&eacute;s</span>
                   <span class="info-box-number"><?php echo getPourcent($nbuserimprim,$nbTotal); ?></span>
                   <div class="progress">
                     <div class="progress-bar" style="width:<?php echo getPourcent($nbuserimprim,$nbTotal); ?>"></div>
                   </div>
                   <span class="progress-description">
-                   <?php echo getPourcent($nbuserimprim,$nbTotal); ?> des abonnés impriment 
+                   <?php echo getPourcent($nbuserimprim,$nbTotal); ?> des abonn&eacute;s impriment 
                   </span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -177,7 +177,7 @@ $nbTotal=$nbN+$nbC;
 <!-- Repartition des impressions par semaine -->
 <?php
 // Affichage du tableau de resultat tranche horaire par semaine et journee
-// $mardi= somme dépensée ce jour-là ! listes par journée
+// $mardi= somme d&eacute;pens&eacute;e ce jour-l&agrave; ! listes par journ&eacute;e
 //$year="2013";
 $mardi= statImprimJS('tuesday',$year);
 $mercredi= statImprimJS('wednesday',$year);

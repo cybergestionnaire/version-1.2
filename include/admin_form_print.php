@@ -45,7 +45,7 @@ $date_p=$_POST["date"];
 	$totalrestant=$credituser-$totalprint;
 	
 	//tableau des moyens de paiement
-	$paiementmoyen=array(1=>"Espèces", 2=>"Chèque", 3=>"Carte Bleue");
+	$paiementmoyen=array(1=>"Esp&egrave;ces", 2=>"Ch&egrave;que", 3=>"Carte Bleue");
 
 ?>
 

@@ -22,7 +22,7 @@
   include/admin_materiel.php V0.1
 */
 
-// Configuration des catégories modifiables pour les statistiques
+// Configuration des cat&eacute;gories modifiables pour les statistiques
 
 $mesno= $_GET["mesno"];
 if ($mesno !="")
@@ -145,7 +145,7 @@ switch ($act)
 <div class="row">
 <div class="col-lg-4">
 <!-- liste des categories existantantes pour modification-->
- <div class="box box-success"><div class="box-header"><h3 class="box-title">Catégories d'atelier ou session</h3></div>
+ <div class="box box-success"><div class="box-header"><h3 class="box-title">Cat&eacute;gories d'atelier ou session</h3></div>
 	 <div class="box-body no-padding"> <table class="table">
 	<?php
 	$categories = getAllCategorie(1) ;
@@ -173,7 +173,7 @@ foreach($categories as $key => $value)
 	</table>
 
 </div><div class="box-footer">
-		<h4 >Enregistrer une nouvelle catégorie</h4>
+		<h4 >Enregistrer une nouvelle cat&eacute;gorie</h4>
 	<form method="post" action="index.php?a=7&act=1" class="form">
 	<div class="input-group input-group-sm">
 			<input type="text" class="form-control" name="newcat" placeholder="Nom de la categorie"><input type="hidden" name="submitcat" >
@@ -186,7 +186,7 @@ foreach($categories as $key => $value)
 </div></div>
 
 
-<!-- Niveau de compétence Atelier -->
+<!-- Niveau de comp&eacute;tence Atelier -->
 <div class="col-lg-4">
  <div class="box box-success"><div class="box-header"><h3 class="box-title">Niveau d'atelier ou session</h3></div>
 	 <div class="box-body no-padding"> <table class="table">
@@ -229,7 +229,7 @@ if ($nbniv>0){
 <div class="col-lg-4">
   
 <!-- liste des categories existantantes pour modification-->
- <div class="box box-success"><div class="box-header"><h3 class="box-title">Catégories Socio-Professionnelles</h3></div>
+ <div class="box box-success"><div class="box-header"><h3 class="box-title">Cat&eacute;gories Socio-Professionnelles</h3></div>
 	 <div class="box-body no-padding"> <table class="table">
 	<?php
 	$profession = getAllCsp();
@@ -256,7 +256,7 @@ foreach($profession as $key => $value)
 	</table>
 
 </div><div class="box-footer">
-		<h4 >Enregistrer une nouvelle catégorie</h4>
+		<h4 >Enregistrer une nouvelle cat&eacute;gorie</h4>
 	<form method="post" action="index.php?a=7&act=1" class="form">
 	<div class="input-group input-group-sm">
 			<input type="text" class="form-control" name="newcsp" placeholder="Nom de la CSP"><input type="hidden" name="submitcsp" >

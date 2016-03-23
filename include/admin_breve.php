@@ -51,7 +51,7 @@ else
       echo '
 		<div class="col-md-4">
 		<div class="small-box bg-light-blue">
-                <div class="inner"><h3>&nbsp;</h3><p>Nouvelle Brève</p></div>
+                <div class="inner"><h3>&nbsp;</h3><p>Nouvelle Br&egrave;ve</p></div>
 		<div class="icon"><i class="ion ion-clipboard"></i></div>
 	<a href="index.php?a=4&b=1" class="small-box-footer">Ajouter <i class="fa fa-arrow-circle-right"></i></a>
 </div></div>
@@ -66,7 +66,7 @@ else
      
     <div class="row"> 
      <div class="col-md-6">
-	<div class="box box-info"><div class="box-header"><h3 class="box-title">Liste des brèves</h3></div>
+	<div class="box box-info"><div class="box-header"><h3 class="box-title">Liste des br&egrave;ves</h3></div>
 		 <div class="box-body no-padding"><table class="table">
             <thead><tr>
                <th>Titre</th>

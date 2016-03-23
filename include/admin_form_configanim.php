@@ -31,7 +31,7 @@ $b=$_GET["b"];
     {   // Parametre du formulaire pour la CREATION
 	
        $post_url = "index.php?a=50&b=1&idanim=".$idanim;
-       $label_bouton = "Enregistrer les paramètres" ;
+       $label_bouton = "Enregistrer les param&egrave;tres" ;
 	   $nom=getUserName($idanim);
 	   $avatar="avatar.png";
 	
@@ -41,7 +41,7 @@ $b=$_GET["b"];
     {
         // Parametre du formulaire pour la MODIFICATION
         $post_url = "index.php?a=50&b=2&idanim=".$idanim;
-        $label_bouton = "Modifier les paramètres" ;
+        $label_bouton = "Modifier les param&egrave;tres" ;
 		$row = getAnimateur($idanim);
 		$nom=getUserName($idanim);
 		// Information Utilisateur
@@ -112,7 +112,7 @@ if ($_GET["mess"] == "ok")
 
 <!-- right column --><div class="col-md-8">
 <!-- div 2 : adresse-->
-<div class="box box-primary"><div class="box-header"><h3 class="box-title">Paramètres</h3></div>
+<div class="box box-primary"><div class="box-header"><h3 class="box-title">Param&egrave;tres</h3></div>
 	<div class="box-body">
 		<form method="post" action="<?php echo $post_url; ?>" role="form">	
 	<div class="form-group"><label>EPN de rattachement *</label>
@@ -133,7 +133,7 @@ if ($_GET["mess"] == "ok")
 		</select></div>
 		
 	<div class="form-group"><label>Salles *</label>
-	<p >Indiquez la (ou les) salle(s) de la consultation internet qui sera surveillée par l'animateur</p>
+	<p >Indiquez la (ou les) salle(s) de la consultation internet qui sera surveill&eacute;e par l'animateur</p>
   	 <?php 
      
 	for ($x=1;$x<=$nbsalle;$x++){

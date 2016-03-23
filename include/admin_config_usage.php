@@ -55,7 +55,7 @@ switch ($act)
 // affichage  -----------
 $fonction = getAllUsage();
 ?>
-<!-- DIV accès direct aux autres paramètres-->
+<!-- DIV acc&egrave;s direct aux autres param&egrave;tres-->
 <div class="row"><div class="col-md-12">
  <div class="box">
 		<div class="box-header">

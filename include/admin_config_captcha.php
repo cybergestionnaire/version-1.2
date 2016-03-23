@@ -79,7 +79,7 @@ if($rowprinscription==FALSE){
 <div class="col-lg-12">
  <div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&eacute;trages</h3>
 		</div>
 		<div class="box-body">
 			
@@ -135,7 +135,7 @@ if($rowprinscription==FALSE){
  <div class="box box-warning"><div class="box-header"><h3 class="box-title">Gestion du captcha</h3></div>
  
 	 <div class="box-body">
-		<div class="form-group"><label>Insérez le code *:</label>
+		<div class="form-group"><label>Ins&eacute;rez le code *:</label>
 			<input name="code" value="<?php echo $capt_code ;?>" class="form-control">
 			<p class="help-block">Entrez le code contenu dans la balise <code>div</code> le sitekey, sans les "" <code> data-sitekey="lecodesuperlongetsansespaces" </code> <br>donc :<code>lecodesuperlongetsansespaces</code></p>
 			
@@ -148,7 +148,7 @@ if($rowprinscription==FALSE){
 	</div>
 	
 
-</div></div></div>
+</div></div>
 
 
 

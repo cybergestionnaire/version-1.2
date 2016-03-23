@@ -173,7 +173,7 @@ AND `id_espace` ='".$epn."' ";
  * getStatResaComputer()
  * renvoi l'id de la machine la plus reservé
  **/
-function getStatResaComputer($monthNum,$year)
+function getStatResaComputer($monthNum,$year,$epn)
 {
     $sql = "SELECT count(R.id_computer_resa) AS nb ,
                    R.id_computer_resa,

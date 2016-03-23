@@ -22,7 +22,7 @@
  include/admin_breve.php V0.1
 */
 
-// fichier de gestion des courriers destinés aux utilisateurs
+// fichier de gestion des courriers destin&eacute;s aux utilisateurs
 
 $mesno=$_GET["mesno"];
 if ($mesno !="")
@@ -113,9 +113,9 @@ else
 <div class="col-md-4">  <div class="box box-info"><div class="box-header"><h3 class="box-title">Aide</h3></div>
 		 <div class="box-body"> 
 		 <p>Sur cette page vous pouvez modifier les textes qui apparaitront dans vos courriers et mails en direction des usagers. </p>
-		 <p>Mettez un nom commun pour les différentes parties d'un mail type par exemple "le mail de relance ou rappel". </p>
-		 <p>Pour l'instant il ne sera possible de différencier qu'un seul type de courrier : 1 mail, 1 courrier issu des ateliers (en préparation !) et 1 pour les sessions (en préparation!)</p>
-		 <p>NB: Pour le mail de rappel (cet exemple), les données de l'atelier (date-heure-lieu-animateur-sujet-détail) s'insèrent entre le texte que vous mettez en "corps de texte", et la signature.
+		 <p>Mettez un nom commun pour les diff&eacute;rentes parties d'un mail type par exemple "le mail de relance ou rappel". </p>
+		 <p>Pour l'instant il ne sera possible de diff&eacute;rencier qu'un seul type de courrier : 1 mail, 1 courrier issu des ateliers (en pr&eacute;paration !) et 1 pour les sessions (en pr&eacute;paration!)</p>
+		 <p>NB: Pour le mail de rappel (cet exemple), les donn&eacute;es de l'atelier (date-heure-lieu-animateur-sujet-d&eacute;tail) s'ins&egrave;rent entre le texte que vous mettez en "corps de texte", et la signature.
      </div>
      </div>
      </div>

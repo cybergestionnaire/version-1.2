@@ -19,7 +19,7 @@ if (TRUE == isset($_GET['month']) AND TRUE==is_numeric($_GET['month']) AND $_GET
 	   $month = date('m');
 	   $year=date('Y');
 	}
-// chargement des valeurs pour l'epn par défaut
+// chargement des valeurs pour l'epn par d&eacute;faut
 $epn=$_SESSION['idepn'];
 //si changment d'epn
  if (TRUE == isset($_POST['modifepn']))
@@ -40,7 +40,7 @@ if(!is_dir($dossierimg)){
 <div class="row"><div class="col-md-6">
 
 <div class="box box-primary">
-        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Paramètres</h3></div>
+        <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Param&egrave;tres</h3></div>
 	<div class="box-body">
 	<form method="post" role="form">
 	<div class="input-group"><label>Changer d'espace</label><select name="Pepn"  class="form-control pull-right" style="width: 210px;">
@@ -62,7 +62,7 @@ if(!is_dir($dossierimg)){
 	</div></form>
 	<br>
 	<div class="input-group">
-	<label>Changer d'année&nbsp;&nbsp;&nbsp;</label>
+	<label>Changer d'ann&eacute;e&nbsp;&nbsp;&nbsp;</label>
 		<?php 
 		
 		$rowanneesstat=getYearStatAtelierSessions();
@@ -70,21 +70,21 @@ if(!is_dir($dossierimg)){
 			echo '<a href="index.php?a=5&b=4&year='.$ans['Y'].'&month=12&day=365&jour=31" > <button class="btn bg-maroon">'.$ans['Y'].' </button></a>'; 
 		 }
 		//annee en cours
-		echo '<a href="index.php?a=5&b=4&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Année en cours</button></a>';
+		echo '<a href="index.php?a=5&b=4&year='.date('Y').'&month='.date('m').'"> <button class="btn bg-maroon"> Ann&eacute;e en cours</button></a>';
 		?>
         </div>
 	</div><!-- /.box-body-->
 </div><!-- /.box -->
  </div><!-- /.col -->
  <div class="col-md-6">
-<!-- DIV accès direct aux autres paramètres-->
+<!-- DIV acc&egrave;s direct aux autres param&egrave;tres-->
  <div class="box">
 		<div class="box-header">
 			<h3 class="box-title">Statistiques</h3>
 		</div>
 		<div class="box-body">
-			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adhérents<a>
-			<a class="btn btn-app" href="index.php?a=5&b=2"><i class="fa fa-clock-o"></i>Réservations</a>
+			<a class="btn btn-app" href="index.php?a=5&b=1"><i class="fa fa-users"></i>Adh&eacute;rents<a>
+			<a class="btn btn-app" href="index.php?a=5&b=2"><i class="fa fa-clock-o"></i>R&eacute;servations</a>
 			<a class="btn btn-app" href="index.php?a=5&b=3"><i class="fa fa-print"></i>Impressions</a>
 			<a class="btn btn-app" href="index.php?a=5&b=5"><i class="fa fa-ticket"></i>Sessions</a>
 			<a class="btn btn-app disabled" href="index.php?a=5&b=4"><i class="fa fa-keyboard-o"></i>Ateliers</a>
@@ -102,14 +102,14 @@ if(!is_dir($dossierimg)){
       <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Total des inscrits aux ateliers (<?php echo $year; ?>)</h3></div>
 	<div class="box-body">
 	<?php 
-		$TotInscrits=mysqli_fetch_array(getStatInscrits("a",$year,$epn,1)); //statut==1 ateliers programmés
+		$TotInscrits=mysqli_fetch_array(getStatInscrits("a",$year,$epn,1)); //statut==1 ateliers programm&eacute;s
 		//$JeunesInscrits=mysqli_fetch_array(getStatJInscrits($year,$epn));
 		$AdultesInscrits=$TotInscrits["presents"];
 		
 	?>
-	Nombre total des présents pour l'année <?php echo $year; ?> aux ateliers adultes : <b><?php echo $AdultesInscrits; ?></b>. <br>
-	Nombre total des présents pour l'année <?php echo $year; ?> aux ateliers Jeunes : <b><?php echo $JeunesInscrits["presents"]; ?></b>. <br>
-	Pourcentage total des présents : <?php echo $TotInscrits["presents"];?> présents sur <?php echo $TotInscrits["inscrits"]; ?> inscrits.
+	Nombre total des pr&eacute;sents pour l'ann&eacute;e <?php echo $year; ?> aux ateliers adultes : <b><?php echo $AdultesInscrits; ?></b>. <br>
+	Nombre total des pr&eacute;sents pour l'ann&eacute;e <?php echo $year; ?> aux ateliers Jeunes : <b><?php echo $JeunesInscrits["presents"]; ?></b>. <br>
+	Pourcentage total des pr&eacute;sents : <?php echo $TotInscrits["presents"];?> pr&eacute;sents sur <?php echo $TotInscrits["inscrits"]; ?> inscrits.
 	
 	<div class="statBar">
 		<div class="statTextVille">Inscriptions</div>
@@ -125,7 +125,7 @@ if(!is_dir($dossierimg)){
 
 <!-- Statistiques pour la declaration les ateliers -->
 <div class="box box-primary">
-      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les ateliers pour l'année(<?php echo $year; ?>)</h3></div>
+      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les ateliers pour l'ann&eacute;e(<?php echo $year; ?>)</h3></div>
 	<div class="box-body">
 	<?php 
 	$toutatelier=$TotInscrits["nbateliers"];
@@ -133,8 +133,8 @@ if(!is_dir($dossierimg)){
 	$adulteatelier=$toutatelier;
 	//debug($toutatelier);
 	?>
-	Nombre des ateliers adultes programmés : <b><?php echo $adulteatelier; ?></b></br>
-	Nombre des ateliers jeunes programmés : <b><?php echo $jeuneatelier; ?></b>
+	Nombre des ateliers adultes programm&eacute;s : <b><?php echo $adulteatelier; ?></b></br>
+	Nombre des ateliers jeunes programm&eacute;s : <b><?php echo $jeuneatelier; ?></b>
 	
 	<div class="statBar">
 		<div class="statTextVille">Jeunes</div>
@@ -167,7 +167,7 @@ if(!is_dir($dossierimg)){
 <div class="col-md-6"><!-- col 2 -->
 <!-- TAUX DE PRESENCE  -->
 <div class="box box-primary">
-      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Présence moyenne aux ateliers par mois pour <?php echo $year; ?></h3></div>
+      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Pr&eacute;sence moyenne aux ateliers par mois pour <?php echo $year; ?></h3></div>
 	<div class="box-body">
 		<table class="table table-condensed"> 
 				<thead><tr>
@@ -187,7 +187,7 @@ if(!is_dir($dossierimg)){
 			if ($nbp!=0){
 				$row=getStatTPresentMois($i,$year,$epn,"a");
 				$tauxPresence=number_format($row,2);
-				//graphique du taux de présence annuel
+				//graphique du taux de pr&eacute;sence annuel
 					$dataSet->addPoint(new Point(getMonth($i), $tauxPresence));
 					$chart->setDataSet($dataSet);
 					$chart->setTitle("Taux de presence mensuel aux ateliers (".$year.")");
@@ -239,7 +239,7 @@ if(!is_dir($dossierimg)){
 
 
 <div class="box box-primary">
-      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Statistiques par catégorie</h3></div>
+      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Statistiques par cat&eacute;gorie</h3></div>
 	<div class="box-body">
 <?php
 	//initialisation du graphique1 nombre atelier par categorie sur 1 an
@@ -264,7 +264,7 @@ if(!is_dir($dossierimg)){
 		$chartC->render("img/chart/".$year."/categorieAtelier.png");
 	}
 	
-	//GRAPHIQUE 2 : taux de presence par categorie sur l'année
+	//GRAPHIQUE 2 : taux de presence par categorie sur l'ann&eacute;e
 		$chartC2 = new VerticalBarChart(449, 250);
 		$dataSetC2 = new XYDataSet();
 	if ($nbcategories>0){
@@ -288,10 +288,10 @@ if(!is_dir($dossierimg)){
 <img src="img/chart/<?php echo $year?>/categorieB.png">
 </div></div>
 
-<!-- Classement des ateliesr : les adhérents par classe d'âge-->
+<!-- Classement des ateliesr : les adh&eacute;rents par classe d'âge-->
 <!-- Mettre en evidence la categorie d'âge la plus assidue -->
 <div class="box box-primary">
-      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les participations par classe d'âge</h3></div>
+      <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les participations par classe d'&acirc;ge</h3></div>
 <div class="box-body">
 
 </div>

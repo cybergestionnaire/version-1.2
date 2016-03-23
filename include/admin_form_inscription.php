@@ -94,19 +94,19 @@ $equipementarray = array (
 		7 => "Pas de connexion Internet"
 		);
 		
-		// type d'utilisation défini
+		// type d'utilisation d&eacute;fini
 $utilisationarray = array (
          0 => "Aucun lieu", 
          1 => "A la maison",   
-         2 => "Au bureau ou à l'école",
-         3 => "A la maison et au bureau ou à l'école"
+         2 => "Au bureau ou &agrave; l'&eacute;cole",
+         3 => "A la maison et au bureau ou &agrave; l'&eacute;cole"
 );
 		
-		// type de connaissance défini
+		// type de connaissance d&eacute;fini
 $connaissancearray = array (
-         0 => "Débutant",   
-        1 => "Intermédiaire",
-         2 => "Confirmé"
+         0 => "D&eacute;butant",   
+        1 => "Interm&eacute;diaire",
+         2 => "Confirm&eacute;"
 );
 
 // recupere les villes
@@ -146,7 +146,7 @@ echo $mess ;
 	 <div class="box-body">
 <div class="form-group"><label>Date d'inscription :</label><input type="hidden" name="date_inscription" value="<?php echo $date;?>">
     <p><?php echo $row["date_inscription_user"] ; ?></p></div>
-<div class="form-group"><label>Civilité :</label>
+<div class="form-group"><label>Civilit&eacute; :</label>
     
     <?php
     if (FALSE != isset($id_user))
@@ -258,7 +258,7 @@ echo $mess ;
 <div class="form-group"><label>E-Mail :</label><input type="text" name="mail" value="<?php echo $mail;?>" class="form-control"></div>
 
 <div class="form-group"><label>Tarif de la consultation internet
-	&nbsp;&nbsp;&nbsp;&nbsp;<small class="badge bg-blue" data-toggle="tooltip" title="Par defaut sans tarif, à changer selon vos propres tarifs"><i class="fa fa-info"></i></small></label>
+	&nbsp;&nbsp;&nbsp;&nbsp;<small class="badge bg-blue" data-toggle="tooltip" title="Par defaut sans tarif, &agrave; changer selon vos propres tarifs"><i class="fa fa-info"></i></small></label>
 	
   	<select name="temps" class="form-control" >
 		<?php
@@ -311,7 +311,7 @@ echo $mess ;
 		    ?>
     	</select></div>
 		
-	<div class="form-group"><label>Tarif de l'adhésion</label>
+	<div class="form-group"><label>Tarif de l'adh&eacute;sion</label>
   		<select name="tarif" class="form-control" >
 		<?php
 			foreach ($tarifs AS $key=>$value)
@@ -401,7 +401,7 @@ echo $mess ;
 	    ?>
 	    </select></div>
 
-<div class="form-group"><label>Information complémentaire :</label><textarea name="info" class="form-control" rows="5"><?php echo $info;?></textarea></div>
+<div class="form-group"><label>Information compl&eacute;mentaire :</label><textarea name="info" class="form-control" rows="5"><?php echo $info;?></textarea></div>
 
 <div class="form-group"><label>Login :</label><input type="text" name="login" value="" class="form-control"></div>
 <div class="form-group"><label>Mettre/Changer le mot de passe :</label><input type="text" name="passw" class="form-control">
