@@ -1,7 +1,7 @@
 <?php
 // formulaire de modification de transaction
 
-// récuperation des variables
+// r&eacute;cuperation des variables
 
 $id_user = $_GET["iduser"];
 $b=$_GET["b"];
@@ -34,9 +34,9 @@ case "adh":
 	$url_redirect="index.php?a=21&b=3&typetransac=".$typeTransac."&iduser=".$id_user  ;
 	$annuler="index.php?a=1&b=2&iduser=".$id_user;
 		if (isset($transac)){
-			$titre="Encaisser l'adhésion";
+			$titre="Encaisser l'adh&eacute;sion";
 		}else{
-			$titre="Renouveller ou modifier l'adhésion";
+			$titre="Renouveller ou modifier l'adh&eacute;sion";
 		}
 	
 	$tarif=$row["tarif_user"];
@@ -100,7 +100,7 @@ break;
 	<div class="box-body"><form method="post" action="<?php echo $url_redirect ;?> " role="form" >
 	<?php
 	//tableau des moyens de paiement
-	$paiementmoyen=array(1=>"Espèces", 2=>"Chèque", 3=>"Carte Bleue");
+	$paiementmoyen=array(1=>"Esp&egrave;ces", 2=>"Ch&egrave;que", 3=>"Carte Bleue");
 // Modification d'une impression
 	if ($typeTransac=="p"){
 		
@@ -195,8 +195,8 @@ break;
 		
 		
 		<?php 	if ($externe==1){ ?>
-			<br><div class="form-group"><label>Nom prénom</label>
-			<input type="text" name="nomuser"  placeholder="Veuillez entrer le nom et prénom" class="form-control" value="<?php echo $print["print_userexterne"]; ?>"></div>
+			<br><div class="form-group"><label>Nom pr&eacute;nom</label>
+			<input type="text" name="nomuser"  placeholder="Veuillez entrer le nom et pr&eacute;nom" class="form-control" value="<?php echo $print["print_userexterne"]; ?>"></div>
 		<?php } ?>
 		
 		
@@ -235,7 +235,7 @@ if ($typeTransac=="adh"){
 		
 			 </div></div></div>
 		
-<div class="form-group"><label>renouvellement de l'adhésion au tarif: </label>
+<div class="form-group"><label>renouvellement de l'adh&eacute;sion au tarif: </label>
 		<select name="tarif_adh" class="form-control" >
 		<?php
 			foreach ($tarifadhs AS $key=>$value)

@@ -54,7 +54,7 @@ $row = getAtelier($idatelier,0);
 		  }
 		  }else{
 		  echo "<div class=\"alert alert-warning alert-dismissable\"><i class=\"fa fa-exclamation\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>L'atelier est déjà complet, veuillez attendre qu'une place se libère !</div>" ;
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>L'atelier est d&eacute;j&agrave; complet, veuillez attendre qu'une place se lib&egrave;re !</div>" ;
 			}
 		}
 	  if ($b == 5) // arrivée depuis le formulaire des présences
@@ -90,7 +90,7 @@ $row = getAtelier($idatelier,0);
 		  if (FALSE != ModifStatusAtelier($idatelier,1))
 		  {
 			  echo "<div class=\"alert alert-success alert-dismissable\"><i class=\"fa fa-info\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;EpnConnect libère les postes pour l'atelier.</div>" ;
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;EpnConnect lib&egrave;re les postes pour l'atelier.</div>" ;
 		  }
 	  }
 		
@@ -100,7 +100,7 @@ $row = getAtelier($idatelier,0);
 		  if (FALSE != ModifStatusAtelier($idatelier,2))
 		  {
 			  echo "<div class=\"alert alert-success alert-dismissable\"><i class=\"fa fa-info\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;Atelier cloturé, EpnConnect reprends le contrôle !</div>" ;
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;Atelier cl&ocirc;tur&eacute;, EpnConnect reprends le contr&ocirc;le !</div>" ;
 		  }
 	  }
 	
@@ -143,7 +143,7 @@ $mail_subject=$arraymail[2];
 $mail_body1=$arraymail[3];
 $mail_signature=$arraymail[4];
 
-$mail_body=$mail_body1."\r\n en date du ".getDayfr($row["date_atelier"])." &agrave; ".$row["heure_atelier"]." pour l'atelier ".$rowsujet["label_atelier"]."  anim&eacute; par ".$anim."  &agrave; ".$nomsalle.".\n\r Détail de l'atelier : \r\n".stripslashes($rowsujet["content_atelier"]).". ".$mail_signature." \r\n\r\n".$nom_epn." \r\n".$adresse_epn." \r\n".$tel_epn.".";
+$mail_body=$mail_body1."\r\n en date du ".getDayfr($row["date_atelier"])." &agrave; ".$row["heure_atelier"]." pour l'atelier ".$rowsujet["label_atelier"]."  anim&eacute; par ".$anim."  &agrave; ".$nomsalle.".\n\r D&eacute;tail de l'atelier : \r\n".stripslashes($rowsujet["content_atelier"]).". ".$mail_signature." \r\n\r\n".$nom_epn." \r\n".$adresse_epn." \r\n".$tel_epn.".";
 
 $mailok=1;
 }
@@ -164,12 +164,12 @@ if ($mesno !="")
 	<div class="box-header"><h3 class="box-title">Atelier <?php echo $rowsujet["label_atelier"];?></h3></div>
 	<div class="box-body">
 		<dl class="dl-horizontal">
-		       <dt>Date</dt><dd>Le <?php echo getDayfr($row["date_atelier"]);?> à <?php echo $row["heure_atelier"];?> </dd>
+		       <dt>Date</dt><dd>Le <?php echo getDayfr($row["date_atelier"]);?> &agrave; <?php echo $row["heure_atelier"];?> </dd>
 		       <dt>Anim&eacute; par</dt><dd> <?php echo $anim;?></dd>
-		       <dt>Où</dt><dd> <?php echo $nomsalle ;?> </dd>
+		       <dt>O&ugrave;</dt><dd> <?php echo $nomsalle ;?> </dd>
 		       <dt>Tarif</dt><dd> <?php echo $tarif ;?></dd>
 		       <dt>Places restantes</dt><dd> <?php echo $nbplace ;?> (Total : <?php echo $row["nbplace_atelier"];?> places ouvertes)</dd>
-					<dt>Adhérents en attente </dt><dd><?php echo $enattente ;?></dd>
+					<dt>Adh&eacute;rents en attente </dt><dd><?php echo $enattente ;?></dd>
 		       <dt>Description</dt><dd><?php echo stripslashes($rowsujet["content_atelier"]);?></dd>
 		</dl>
 	</div>
@@ -187,10 +187,10 @@ if ($mesno !="")
 	?>
 	<div class="box-footer">
 
-		<a href="<?php echo $action; ?>"><button class="btn bg-red" type="submit"  <?php echo $class; ?>> <i class="fa fa-unlock"></i>&nbsp;&nbsp;Désactiver EpnConnect</button></a>
-		&nbsp;<a href="index.php?a=13&b=12&idatelier=<?php echo $idatelier;?>"><button class="btn bg-green" type="submit" <?php echo $class2; ?>> <i class="fa fa-lock"></i>&nbsp;&nbsp;Réactiver EpnConnect</button></a></div>
+		<a href="<?php echo $action; ?>"><button class="btn bg-red" type="submit"  <?php echo $class; ?>> <i class="fa fa-unlock"></i>&nbsp;&nbsp;D&eacute;sactiver EpnConnect</button></a>
+		&nbsp;<a href="index.php?a=13&b=12&idatelier=<?php echo $idatelier;?>"><button class="btn bg-green" type="submit" <?php echo $class2; ?>> <i class="fa fa-lock"></i>&nbsp;&nbsp;R&eacute;activer EpnConnect</button></a></div>
 	<?php }?>
-	<div class="box-footer"><a href="index.php?a=11"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la liste des ateliers</button></a></div>
+	<div class="box-footer"><a href="index.php?a=11"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la liste des ateliers</button></a></div>
 </div>
 
 	
@@ -206,7 +206,7 @@ if ($nb>0)
 	//tester la présence de tarifs ateliers
 	
 	if($testTarifAtelier>1){ 
-		$tooltipinfo="Inscriptions en cours / total dépensé  sur total acheté";
+		$tooltipinfo="Inscriptions en cours / total d&eacute;pensé  sur total achet&eacute;";
 		}else{
 		$tooltipinfo="Inscriptions en cours";
 		}
@@ -214,7 +214,7 @@ if ($nb>0)
 	
 	
 
-     	<div class="box box-success"><div class="box-header"><h3 class="box-title">Abonnés inscrits</h3>
+     	<div class="box box-success"><div class="box-header"><h3 class="box-title">Abonn&eacute;s inscrits</h3>
 				<div class="box-tools pull-right" ><div class="btn-group" ><small class="badge bg-blue" data-toggle="tooltip" title="<?php echo $tooltipinfo; ?>"><i class="fa fa-info"></i></small></div></div></div>
 		<div class="box-body">
 			 <table class="table">
@@ -269,9 +269,9 @@ if ($nb>0)
 		
 			
 		?>
-    <tr><td><a href="index.php?a=1&b=2&iduser=<?php echo $row2['id_user'] ;?>"  class="btn btn-default btn-sm" data-toggle="tooltip" title="Fiche adhérent"><i class="fa fa-edit"></i></a>
+    <tr><td><a href="index.php?a=1&b=2&iduser=<?php echo $row2['id_user'] ;?>"  class="btn btn-default btn-sm" data-toggle="tooltip" title="Fiche adh&eacute;rent"><i class="fa fa-edit"></i></a>
 			</td>
-			<td><span class="badge bg-yellow" data-toggle="tooltip" title="Date renouvellement adhésion : <?php echo $row2["dateRen_user"]; ?>">A</span>&nbsp;&nbsp;<?php echo $row2["nom_user"]." ".$row2["prenom_user"] ;?> </td>
+			<td><span class="badge bg-yellow" data-toggle="tooltip" title="Date renouvellement adh&eacute;sion : <?php echo $row2["dateRen_user"]; ?>">A</span>&nbsp;&nbsp;<?php echo $row2["nom_user"]." ".$row2["prenom_user"] ;?> </td>
 			<td><?php echo $affichage ?></td>
 			<td>
 			 <a href="index.php?a=6&iduser=<?php echo $row2['id_user'] ;?>"  class="btn  bg-yellow btn-sm"  data-toggle="tooltip" title="Abonnements"><i class="ion ion-bag"></i></a>
@@ -280,7 +280,7 @@ if ($nb>0)
 			 
 			<?php
 				if ($statut==0 ){ ?>
-			<a href="index.php?a=13&b=3&iduser=<?php echo $row2['id_user'];?>&idatelier=<?php echo $idatelier;?>"  class="btn bg-red btn-sm"  data-toggle="tooltip" title="Désinscrire" ><i class="fa fa-trash-o"></i></a>
+			<a href="index.php?a=13&b=3&iduser=<?php echo $row2['id_user'];?>&idatelier=<?php echo $idatelier;?>"  class="btn bg-red btn-sm"  data-toggle="tooltip" title="D&eacute;sinscrire" ><i class="fa fa-trash-o"></i></a>
 			<?php } ?>
 			 <a href="index.php?a=13&b=6&idatelier=<?php echo $idatelier;?>&iduser=<?php echo $row2['id_user'] ;?>"  class="btn bg-purple btn-sm"  data-toggle="tooltip" title="Mettre en liste d'attente"><i class="fa fa-repeat"></i></a>
 			
@@ -298,7 +298,7 @@ if ($nb>0)
 		echo "<a href=\"index.php?a=16&b=4&act=0&idatelier=".$idatelier."\"><input type=\"submit\" name=\"valider_presence\" value=\"Valider les Presences\" class=\"btn btn-success\"></a>";
 		 } else if($statut==2){
 		
-		echo "<p class=\"text-red\">Cet atelier est passé et cloturé, vous ne pouvez plus inscrire d'adhérent</p>";
+		echo "<p class=\"text-red\">Cet atelier est pass&eacute; et clotur&eacute;, vous ne pouvez plus inscrire d'adh&eacute;rent</p>";
 		 } 
 		 
 		 //Bouton d'envoi de mail de rappel
@@ -324,7 +324,7 @@ if ($nb>0)
 	<div class="box-header"><h3 class="box-title">Inscription</h3>
 		<div class="box-tools"><form method="POST" action="index.php?a=13&b=1&idatelier=<?php echo $idatelier ;?> " role="form">
      		<div class="input-group">
-			<input type="text" name="searchuser" class="form-control input-sm pull-right" style="width: 200px;" placeholder="Nom ou numéro de carte"/>
+			<input type="text" name="searchuser" class="form-control input-sm pull-right" style="width: 200px;" placeholder="Nom ou num&eacute;ro de carte"/>
     		<div class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button> </div></div></form>
            </div>
          </div><!-- /.box-header -->
@@ -424,7 +424,7 @@ if ($nb>0)
     if ($nb>0)
     {                  
      	?> <div class="box box-warning">
-                <div class="box-header"><h3 class="box-title">Abonnés sur la liste d'attente   <small class="badge bg-blue" data-toggle="tooltip" title="Classement par ordre d'arriv&eacute;e, du plus ancien au plus r&eacute;cent"><i class="fa fa-info"></i></small></h3></div>
+                <div class="box-header"><h3 class="box-title">Abonn&eacute;s sur la liste d'attente   <small class="badge bg-blue" data-toggle="tooltip" title="Classement par ordre d'arriv&eacute;e, du plus ancien au plus r&eacute;cent"><i class="fa fa-info"></i></small></h3></div>
 		<div class="box-body"><table class="table">
 		<thead><tr> 
 			<th>&nbsp;</th>
@@ -437,7 +437,7 @@ if ($nb>0)
              $row2 = mysqli_fetch_array($result) ;
             ?>
              <tr><td><a href="index.php?a=13&b=4&iduser=<?php echo $row2['id_user'];?>&idatelier=<?php echo $idatelier;?>"><button type="button" class="btn bg-green btn-sm"  data-toggle="tooltip"  title="Inscrire"><i class="fa fa-arrow-up"></i></button></a>
-				<a href="index.php?a=13&b=3&iduser=<?php echo $row2['id_user'];?>&idatelier=<?php echo $idatelier;?>"><button type="button" class="btn btn-warning btn-sm"  data-toggle="tooltip" title="Désinscrire"><i class="fa fa-trash-o"></i></button></a></td>
+				<a href="index.php?a=13&b=3&iduser=<?php echo $row2['id_user'];?>&idatelier=<?php echo $idatelier;?>"><button type="button" class="btn btn-warning btn-sm"  data-toggle="tooltip" title="D&eacute;sinscrire"><i class="fa fa-trash-o"></i></button></a></td>
                  <td><?php echo $row2["nom_user"]." ".$row2["prenom_user"] ;?></td>
 		<td><a href="lettre_atelier.php?user=<?php echo $row2['id_user'];?>&epn=<?php echo $idepn; ?>" target="_blank"><button type="button" class="btn bg-navy btn-sm"  data-toggle="tooltip" title="Imprimer les inscriptions"><i class="fa fa-envelope"></i></button></a></td></tr>
              <?php
@@ -454,10 +454,10 @@ if ($nb>0)
 
 <section class="col-lg-5 connectedSortable"> 
 
-  <div class="box box-success"><div class="box-header"><h3 class="box-title">Atelier cloturé</h3></div>
+  <div class="box box-success"><div class="box-header"><h3 class="box-title">Atelier clotur&eacute;</h3></div>
 	<div class="box-body">
-		<p>Les présences à cet atelier viennent d'être validée. <br><p class="text-warning">Cliquez sur "réactiver EPNConnect" pour cloturer l'atelier.</p> 
-		Les archives vous permettront de modifier une présence en cas d'erreur !</p>
+		<p>Les pr&eacute;sences &agrave; cet atelier viennent d'&ecirc;tre valid&eacute;e. <br><p class="text-warning">Cliquez sur "r&eacute;activer EPNConnect" pour cloturer l'atelier.</p> 
+		Les archives vous permettront de modifier une pr&eacute;sence en cas d'erreur !</p>
 	</div>
 	</div>
 </section>	

@@ -42,7 +42,7 @@ $avatar=$rowa["anim_avatar"];
   <body class="lockscreen">
     <!-- Automatic element centering -->
     <div class="lockscreen-wrapper">
-      <div class="lockscreen-logo"><b>Cyber</b>Gestionnaire
+      <div class="lockscreen-logo"><?php echo getconfigname(); ?>
       </div>
       <!-- User name -->
       <div class="lockscreen-name"><?php echo $row["prenom_user"]; ?>&nbsp;<?php echo $row["nom_user"]; ?></div>

@@ -36,7 +36,7 @@ $nb  = mysqli_num_rows($result);
     if ($nb > 0)
     {
     	?>
-<div class="box box-primary"><div class="box-header"><h3 class="box-title">Pré-inscriptions</h3></div>
+<div class="box box-primary"><div class="box-header"><h3 class="box-title">Pr&eacute;-inscriptions</h3></div>
       <div class="box-body"><table class="table">
 	<thead><tr><td>Nom</td><td>Pr&eacute;nom</td><td>Nom d'utilisateur</td><td>Poste concern&eacute; ou EPN choisi par internet</td><td>&nbsp;</td></tr></thead>
             <?php

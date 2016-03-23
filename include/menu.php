@@ -41,7 +41,7 @@
 	if (file_exists($filenamephoto)) {
 		$avatar=$filenamephoto;
 	}else{
-		if($resultuser["sexe_user"]=='M'){
+		if($resultuser["sexe_user"]=='H'){
 		$avatar="img/avatar/male.png";
 		}else{
 		$avatar="img/avatar/female.png";
@@ -68,7 +68,7 @@
 	 <?php }
 
 	
-include ("include/calendrier.php");
+//include ("include/calendrier.php");
 
 
 switch($_SESSION['status'])
@@ -77,13 +77,13 @@ switch($_SESSION['status'])
 		$statut ="Actif"; //Utilisateur standart
 		?>
 		<ul class="sidebar-menu">
-      <li class="active treeview"><a href="index.php"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
+      <li class="<?php if ($_GET["m"]=="") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php"><i class="fa fa-home"></i> <span>Tableau de bord</span></a></li>
 		
-			<li><a href="index.php?m=2"><i class="fa fa-edit" ></i><span>Mon compte</span></a></li>
+			<li class="<?php if ($_GET["m"]=="2") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=2"><i class="fa fa-edit" ></i><span>Mon compte</span></a></li>
 			<!--<li><a href="index.php?m=5"><i class="fa fa-bookmark-o" ></i><span>Mes liens favoris</span></a></li>-->
-			<li><a href="index.php?m=20"><i class="fa fa-print" ></i><span>Mes impressions</span></a></li>
-			<li><a href="index.php?m=6"><i class="fa fa-graduation-cap" ></i><span>Mes formations</span></a></li>
-			<li><a href="index.php?m=8"><i class="fa fa-calendar"></i><span>Mes r&eacute;servations</span></a></li>
+			<li class="<?php if ($_GET["m"]=="20") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=20"><i class="fa fa-print" ></i><span>Mes impressions</span></a></li>
+			<li class="<?php if ($_GET["m"]=="6") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=6"><i class="fa fa-graduation-cap" ></i><span>Mes formations</span></a></li>
+			<li class="<?php if ($_GET["m"]=="8") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=8"><i class="fa fa-calendar"></i><span>Mes r&eacute;servations</span></a></li>
 			<!--<li><a href="index.php?m=20"><span>Mes impressions</span></a></li>-->
 		</ul>
 		
@@ -95,6 +95,9 @@ switch($_SESSION['status'])
         ?>
 	<ul class="sidebar-menu">
 		<li class="<?php if ($_GET["a"]=="") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php"><i class="fa fa-home"></i><span>Accueil</span></a></li>
+		
+		<li class="treeview"><a href="index.php?m=3&month="<?php echo date('n'); ?>"&year="<?php echo date('Y'); ?>"&jour="<?php echo date('d') ; ?>"&mois="<?php echo date('n'); ?>"&annee="<?php echo date('Y'); ?>"><i class="fa fa-calendar"></i><span>Réservations</span></a></li>
+		
 		<?php 
 		$consolemode=getConfigConsole($_SESSION["idepn"], "activer_console");
 		if ($consolemode==1){
@@ -184,6 +187,8 @@ switch($_SESSION['status'])
 	<ul class="sidebar-menu">
 	
 		<li class="<?php if ($_GET["a"]=="") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php"><i class="fa fa-home"></i><span>Accueil</span></a></li>
+	
+		<li class="treeview"><a href="index.php?m=3&month=<?php echo date('n'); ?>&year=<?php echo date('Y'); ?>&jour=<?php echo date('d') ; ?>&mois=<?php echo date('n'); ?>&annee=<?php echo date('Y'); ?>"><i class="fa fa-calendar"></i><span>Réservations</span></a></li>
 		<?php 
 		$consolemode=getConfigConsole($_SESSION["idepn"] ,"activer_console");
 		if ($consolemode==1){

@@ -13,7 +13,7 @@ $tarifs=getTarifsbyCat(5);
 //statuts des dates
 $statusarray=array(
 	0=>"Atelier En cours",
-	2=>"Atelier Annulé / Annuler",
+	2=>"Atelier Annul&eacute; / Annuler",
 	3=>"Supprimer"
 );
 
@@ -119,11 +119,11 @@ if(FALSE==$sessionsujet){
 ?>
 <div class="row"><div class="col-md-6">
 	<div class="alert alert-warning alert-dismissable"><i class="fa fa-warning"></i>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;Avant d'établir une programmation, vous devez créer au moins un sujet de session.</div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;Avant d'&eacute;tablir une programmation, vous devez cr&eacute;er au moins un sujet de session.</div>
 	</div>
 	<div class="col-md-6">
 	<div class="alert alert-info alert-dismissable"><i class="fa fa-warning"></i>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;<a href="index.php?a=34">Créer un nouveau sujet</a></div>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>&nbsp;<a href="index.php?a=34">Cr&eacute;er un nouveau sujet</a></div>
 	</div>
 
 </div>
@@ -140,8 +140,8 @@ if(FALSE==$sessionsujet){
  <div class="box box-success">
 <div class="box-header"><h3 class="box-title">Dates de la session</h3></div>
 <div class="box-body">
-<p class="text-blue">Commencez par choisir le nombre de dates de votre session, puis à saisir les dates. Elles seront automatiquement remise en ordre à la validation.
-	En modification, choisir "Supprimer" pour que la date soit retirée de la liste, ne modifiez pas le nombre, il sera automatiquement rafraichit. </p>
+<p class="text-blue">Commencez par choisir le nombre de dates de votre session, puis &agrave; saisir les dates. Elles seront automatiquement remise en ordre &agrave; la validation.
+	En modification, choisir "Supprimer" pour que la date soit retir&eacute;e de la liste, ne modifiez pas le nombre, il sera automatiquement rafraichit. </p>
 <p class="text-blue">NB : L'annulation n'est pas une suppression, l'atelier restera dans les statistiques.</p>
 <form method="post" action="#">
  <div class="form-group has-error">
@@ -165,10 +165,10 @@ if(FALSE==$sessionsujet){
 	</div></div>
 	
 	</form>
-	<div class="form-group"><label>Dates à planifier *  </label><!--<p class="help-block">Cochez pour supprimer une date</p>-->
+	<div class="form-group"><label>Dates &agrave; planifier *  </label><!--<p class="help-block">Cochez pour supprimer une date</p>-->
 	<form method="post" action="<?php echo $post_url; ?>"><input type="hidden" name="nbre_dates" value="<?php echo $nbr_date; ?>" ></div>
 
-<div class="form-group"><label>1.</label><?php if($statutdate1==1){ echo ' <span class="text-muted">'.$date1.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date1" class="hidden"  id="dt1" value="'.$date1.'">'; }else { ?><input name="date1" class='input'  id="dt1" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date1; ?>" >
+<div class="form-group"><label>1.</label><?php if($statutdate1==1){ echo ' <span class="text-muted">'.$date1.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date1" class="hidden"  id="dt1" value="'.$date1.'">'; }else { ?><input name="date1" class='input'  id="dt1" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date1; ?>" >
 	<select name="statutdate1" >
     <?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate1 == $key){
@@ -176,14 +176,14 @@ if(FALSE==$sessionsujet){
             else {
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select><?php } ?></div>
 	
-<?php if ($nbr_date>=2){ ?><div class="form-group"><label>2.</label><?php if($statutdate2==1){ echo ' <span class="text-muted">'.$date2.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date2" class="hidden"  id="dt2" value="'.$date2.'">'; }else { ?><input name="date2" class='input'  id="dt2" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date2; ?>" >
+<?php if ($nbr_date>=2){ ?><div class="form-group"><label>2.</label><?php if($statutdate2==1){ echo ' <span class="text-muted">'.$date2.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date2" class="hidden"  id="dt2" value="'.$date2.'">'; }else { ?><input name="date2" class='input'  id="dt2" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date2; ?>" >
 		<select name="statutdate2" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate2 == $key){
                 echo "<option value=\"".$key."\" selected>".$value."</option>";}
             else {
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select><?php } ?></div><?php } else { echo '' ; } ?>
-<?php if ($nbr_date>=3){ ?><div class="form-group"><label>3.</label><?php if($statutdate3==1){ echo ' <span class="text-muted">'.$date3.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date3" class="hidden"  id="dt3" value="'.$date3.'">'; }else { ?><input  name="date3"  class='input' id="dt3" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date3; ?>">
+<?php if ($nbr_date>=3){ ?><div class="form-group"><label>3.</label><?php if($statutdate3==1){ echo ' <span class="text-muted">'.$date3.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date3" class="hidden"  id="dt3" value="'.$date3.'">'; }else { ?><input  name="date3"  class='input' id="dt3" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date3; ?>">
 <select name="statutdate3" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate3 == $key){
@@ -192,7 +192,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 
-<?php if ($nbr_date>=4){ ?><div class="form-group"><label>4.</label><?php if($statutdate4==1){ echo ' <span class="text-muted">'.$date4.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date4" class="hidden"  id="dt4" value="'.$date4.'">'; }else { ?><input name="date4"  class='input' id="dt4" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date4; ?>">
+<?php if ($nbr_date>=4){ ?><div class="form-group"><label>4.</label><?php if($statutdate4==1){ echo ' <span class="text-muted">'.$date4.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date4" class="hidden"  id="dt4" value="'.$date4.'">'; }else { ?><input name="date4"  class='input' id="dt4" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date4; ?>">
 <select name="statutdate4" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate4 == $key){
@@ -201,7 +201,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 
-<?php if ($nbr_date>=5){ ?><div class="form-group"><label>5.</label><?php if($statutdate5==1){ echo ' <span class="text-muted">'.$date5.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date5" class="hidden"  id="dt5" value="'.$date5.'">'; }else { ?><input  name="date5"  class='input' id="dt5" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date5; ?>">
+<?php if ($nbr_date>=5){ ?><div class="form-group"><label>5.</label><?php if($statutdate5==1){ echo ' <span class="text-muted">'.$date5.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date5" class="hidden"  id="dt5" value="'.$date5.'">'; }else { ?><input  name="date5"  class='input' id="dt5" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date5; ?>">
 	<select name="statutdate5" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate5 == $key){
@@ -210,7 +210,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 
-<?php if ($nbr_date>=6){ ?><div class="form-group"><label>6.</label><?php if($statutdate6==1){ echo ' <span class="text-muted">'.$date6.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date6" class="hidden"  id="dt6" value="'.$date6.'">'; }else { ?><input  name="date6"  class='input' id="dt6" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date6; ?>">
+<?php if ($nbr_date>=6){ ?><div class="form-group"><label>6.</label><?php if($statutdate6==1){ echo ' <span class="text-muted">'.$date6.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date6" class="hidden"  id="dt6" value="'.$date6.'">'; }else { ?><input  name="date6"  class='input' id="dt6" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date6; ?>">
 <select name="statutdate6" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate6 == $key){
@@ -219,7 +219,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 
-<?php if ($nbr_date>=7){ ?><div class="form-group"><label>7.</label><?php if($statutdate7==1){ echo ' <span class="text-muted">'.$date7.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date7" class="hidden"  id="dt7" value="'.$date7.'">'; }else { ?><input  name="date7"  class='input' id="dt7" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date7; ?>">
+<?php if ($nbr_date>=7){ ?><div class="form-group"><label>7.</label><?php if($statutdate7==1){ echo ' <span class="text-muted">'.$date7.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date7" class="hidden"  id="dt7" value="'.$date7.'">'; }else { ?><input  name="date7"  class='input' id="dt7" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date7; ?>">
 <select name="statutdate7" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate7 == $key){
@@ -228,7 +228,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=8){ ?><div class="form-group"><label>8.</label><?php if($statutdate8==1){ echo ' <span class="text-muted">'.$date8.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date8" class="hidden"  id="dt8" value="'.$date8.'">'; }else { ?><input  name="date8"  class='input' id="dt8" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date8; ?>">
+<?php if ($nbr_date>=8){ ?><div class="form-group"><label>8.</label><?php if($statutdate8==1){ echo ' <span class="text-muted">'.$date8.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date8" class="hidden"  id="dt8" value="'.$date8.'">'; }else { ?><input  name="date8"  class='input' id="dt8" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date8; ?>">
 	<select name="statutdate8" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate8 == $key){
@@ -237,7 +237,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>	
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=9){ ?><div class="form-group"><label>9.</label><?php if($statutdate9==1){ echo ' <span class="text-muted">'.$date9.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date9" class="hidden"  id="dt9" value="'.$date9.'">'; }else { ?><input  name="date9"  class='input' id="dt9" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date9; ?>">
+<?php if ($nbr_date>=9){ ?><div class="form-group"><label>9.</label><?php if($statutdate9==1){ echo ' <span class="text-muted">'.$date9.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date9" class="hidden"  id="dt9" value="'.$date9.'">'; }else { ?><input  name="date9"  class='input' id="dt9" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date9; ?>">
 	<select name="statutdate9" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate9 == $key){
@@ -246,7 +246,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=10){ ?><div class="form-group"><label>10.</label><?php if($statutdate10==1){ echo ' <span class="text-muted">'.$date10.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date10" class="hidden"  id="dt10" value="'.$date10.'">'; }else { ?><input name="date10"   class='input' id="dt10" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date10; ?>">
+<?php if ($nbr_date>=10){ ?><div class="form-group"><label>10.</label><?php if($statutdate10==1){ echo ' <span class="text-muted">'.$date10.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date10" class="hidden"  id="dt10" value="'.$date10.'">'; }else { ?><input name="date10"   class='input' id="dt10" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date10; ?>">
 	<select name="statutdate10" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate10 == $key){
@@ -255,7 +255,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=11){ ?><div class="form-group"><label>11.</label><?php if($statutdate11==1){ echo ' <span class="text-muted">'.$date11.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date11" class="hidden"  id="dt11" value="'.$date11.'">'; }else { ?><input name="date11"   class='input' id="dt11" placeholder="Cliquez pour prendre une date" style="width: 230px;"  value="<?php echo $date11; ?>">
+<?php if ($nbr_date>=11){ ?><div class="form-group"><label>11.</label><?php if($statutdate11==1){ echo ' <span class="text-muted">'.$date11.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date11" class="hidden"  id="dt11" value="'.$date11.'">'; }else { ?><input name="date11"   class='input' id="dt11" placeholder="Cliquez pour prendre une date" style="width: 230px;"  value="<?php echo $date11; ?>">
 	<select name="statutdate11" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate11 == $key){
@@ -264,7 +264,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=12){ ?><div class="form-group"><label>12.</label><?php if($statutdate12==1){ echo ' <span class="text-muted">'.$date12.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date12" class="hidden"  id="dt12" value="'.$date12.'">'; }else { ?><input name="date12"   class='input' id="dt12" placeholder="Cliquez pour prendre une date" style="width: 230px;"  value="<?php echo $date12; ?>">
+<?php if ($nbr_date>=12){ ?><div class="form-group"><label>12.</label><?php if($statutdate12==1){ echo ' <span class="text-muted">'.$date12.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date12" class="hidden"  id="dt12" value="'.$date12.'">'; }else { ?><input name="date12"   class='input' id="dt12" placeholder="Cliquez pour prendre une date" style="width: 230px;"  value="<?php echo $date12; ?>">
 	<select name="statutdate12" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate12 == $key){
@@ -273,7 +273,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=13){ ?><div class="form-group"><label>13.</label><?php if($statutdate13==1){ echo ' <span class="text-muted">'.$date13.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date13" class="hidden"  id="dt13" value="'.$date13.'">'; }else { ?><input  name="date13"   class='input' id="dt13" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date13; ?>">
+<?php if ($nbr_date>=13){ ?><div class="form-group"><label>13.</label><?php if($statutdate13==1){ echo ' <span class="text-muted">'.$date13.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date13" class="hidden"  id="dt13" value="'.$date13.'">'; }else { ?><input  name="date13"   class='input' id="dt13" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date13; ?>">
 	<select name="statutdate13" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate13 == $key){
@@ -282,7 +282,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=14){ ?><div class="form-group"><label>14.</label><?php if($statutdate14==1){ echo ' <span class="text-muted">'.$date14.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date14" class="hidden"  id="dt14" value="'.$date14.'">'; }else { ?><input name="date14"   class='input' id="dt14" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date14; ?>">
+<?php if ($nbr_date>=14){ ?><div class="form-group"><label>14.</label><?php if($statutdate14==1){ echo ' <span class="text-muted">'.$date14.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date14" class="hidden"  id="dt14" value="'.$date14.'">'; }else { ?><input name="date14"   class='input' id="dt14" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date14; ?>">
 	<select name="statutdate14" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate14 == $key){
@@ -291,7 +291,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=15){ ?><div class="form-group"><label>15.</label><?php if($statutdate15==1){ echo ' <span class="text-muted">'.$date15.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date15" class="hidden"  id="dt15" value="'.$date15.'">'; }else { ?><input  name="date15"  class='input' id="dt15" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date15; ?>">
+<?php if ($nbr_date>=15){ ?><div class="form-group"><label>15.</label><?php if($statutdate15==1){ echo ' <span class="text-muted">'.$date15.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date15" class="hidden"  id="dt15" value="'.$date15.'">'; }else { ?><input  name="date15"  class='input' id="dt15" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date15; ?>">
 	<select name="statutdate15" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate15 == $key){
@@ -300,7 +300,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=16){ ?><div class="form-group"><label>16.</label><?php if($statutdate16==1){ echo ' <span class="text-muted">'.$date16.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date16" class="hidden"  id="dt16" value="'.$date16.'">'; }else { ?><input  name="date16"  class='input' id="dt16" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date16; ?>">
+<?php if ($nbr_date>=16){ ?><div class="form-group"><label>16.</label><?php if($statutdate16==1){ echo ' <span class="text-muted">'.$date16.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date16" class="hidden"  id="dt16" value="'.$date16.'">'; }else { ?><input  name="date16"  class='input' id="dt16" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date16; ?>">
 	<select name="statutdate16" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate16 == $key){
@@ -309,7 +309,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=17){ ?><div class="form-group"><label>17.</label><?php if($statutdate17==1){ echo ' <span class="text-muted">'.$date17.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date17" class="hidden"  id="dt17" value="'.$date17.'">'; }else { ?><input  name="date17"   class='input' id="dt17" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date17; ?>">
+<?php if ($nbr_date>=17){ ?><div class="form-group"><label>17.</label><?php if($statutdate17==1){ echo ' <span class="text-muted">'.$date17.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date17" class="hidden"  id="dt17" value="'.$date17.'">'; }else { ?><input  name="date17"   class='input' id="dt17" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date17; ?>">
 	<select name="statutdate17" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate17 == $key){
@@ -318,7 +318,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=18){ ?><div class="form-group"><label>18.</label><?php if($statutdate18==1){ echo ' <span class="text-muted">'.$date18.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date18" class="hidden"  id="dt18" value="'.$date18.'">'; }else { ?><input  name="date18"   class='input' id="dt18" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date18; ?>">
+<?php if ($nbr_date>=18){ ?><div class="form-group"><label>18.</label><?php if($statutdate18==1){ echo ' <span class="text-muted">'.$date18.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date18" class="hidden"  id="dt18" value="'.$date18.'">'; }else { ?><input  name="date18"   class='input' id="dt18" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date18; ?>">
 	<select name="statutdate18" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate18 == $key){
@@ -327,7 +327,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?></div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=19){ ?><div class="form-group"><label>19.</label><?php if($statutdate19==1){ echo ' <span class="text-muted">'.$date19.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date19" class="hidden"  id="dt19" value="'.$date19.'">'; }else { ?><input  name="date19"   class='input' id="dt19" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date19; ?>">
+<?php if ($nbr_date>=19){ ?><div class="form-group"><label>19.</label><?php if($statutdate19==1){ echo ' <span class="text-muted">'.$date19.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date19" class="hidden"  id="dt19" value="'.$date19.'">'; }else { ?><input  name="date19"   class='input' id="dt19" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date19; ?>">
 	<select name="statutdate19" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate19 == $key){
@@ -336,7 +336,7 @@ if(FALSE==$sessionsujet){
                 echo "<option value=\"".$key."\">".$value."</option>"; } } ?></select>
 	<?php } ?> </div><?php } else { echo '' ; } ?>
 	
-<?php if ($nbr_date>=20){ ?><div class="form-group"><label>20.</label><?php if($statutdate20==1){ echo ' <span class="text-muted">'.$date20.'  &nbsp;&nbsp;&nbsp;Atelier cloturé </span><input name="date20" class="hidden"  id="dt20" value="'.$date20.'">'; }else { ?><input name="date10"   class='input' id="dt20" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date20; ?>">
+<?php if ($nbr_date>=20){ ?><div class="form-group"><label>20.</label><?php if($statutdate20==1){ echo ' <span class="text-muted">'.$date20.'  &nbsp;&nbsp;&nbsp;Atelier clotur&eacute; </span><input name="date20" class="hidden"  id="dt20" value="'.$date20.'">'; }else { ?><input name="date10"   class='input' id="dt20" placeholder="Cliquez pour prendre une date" style="width: 230px;" value="<?php echo $date20; ?>">
 	<select name="statutdate20" >
 		<?php foreach ($statusarray AS $key=>$value){  
 		if ($statutdate20 == $key){
@@ -429,7 +429,7 @@ echo "<input type=\"hidden\" name=\"iddate".$y."\" value=".$row2['id_datesession
     <div class="form-group"><label>Tarif</label>
 	 <!-- tools box -->
 	    <div class="pull-right box-tools">
-		<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Si un atelier fait partie d'une tarification spéciale, choisissez-là ici, sinon laissez le 'sans tarif' par défaut, le décompte des ateliers se fera en fonction de ce qui a été payé par l'adhérent."><i class="fa fa-info-circle"></i></button>
+		<button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Si un atelier fait partie d'une tarification sp&eacute;ciale, choisissez-l&agrave; ici, sinon laissez le 'sans tarif' par d&eacute;faut, le d&eacute;compte des ateliers se fera en fonction de ce qui a &eacute;t&eacute; pay&eacute; par l'adh&eacute;rent."><i class="fa fa-info-circle"></i></button>
 	    </div><!-- /. tools -->
 	
   		<select name="tarif" class="form-control" >

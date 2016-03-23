@@ -12,9 +12,9 @@ $user=getUser($_SESSION["iduser"]);
 $epnuser=$user["epn_user"];
  //statut de l'atelier
 $stateAtelier = array(
-               1=> "Programmé",
+               1=> "Programm&eacute;",
                2=> "En programmation",
-               3=> "Annulé" );
+               3=> "Annul&eacute;" );
 
 $espaces = getAllepn();
 
@@ -45,7 +45,7 @@ if ($b==6)
        {
 				$nbrdates=$_GET["nbd"];
        $datesarray2=getDatesSession($idsession);
-       //boucler pour insérer le nombre de dates par sessions
+       //boucler pour ins&eacute;rer le nombre de dates par sessions
 				for ($f=0; $f<$nbrdates ; $f++){
 					$row2=mysqli_fetch_array($datesarray2);
 					addUserSession($idsession,$_SESSION["iduser"],0,$row2["id_datesession"]);
@@ -132,6 +132,7 @@ if ($b == 1 OR $b==5 )
 	
 				 }
     ?>
+    
 <div class="row">
 
 
@@ -172,192 +173,19 @@ if ($b == 1 OR $b==5 )
 else
 {
 
-//**** INSCRIPTIONS DE l'adhérent ****//
+
+//**** INSCRIPTIONS DE l'adh&eacute;rent ****//
+/*
 $result = getMyAtelier($_SESSION["iduser"],1,0)  ;
 $nb     = mysqli_num_rows($result);
 
 $ListeSessionEnCours=getMySession($_SESSION["iduser"]);
 $numSession=mysqli_num_rows($ListeSessionEnCours);
 
-
-	
-	?>
-	<div class="row">
-	
-	<div class="col-md-12">
-	<div class="box box-warning"><div class="box-header"><h3 class="box-title">Vos inscriptions actuelles</h3></div>
-		<!-- Custom Tabs -->
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#tab_1" data-toggle="tab">Mes ateliers</a></li>
-                  <li><a href="#tab_2" data-toggle="tab">Mes sessions</a></li>
-                 
-                </ul>
-                <div class="tab-content">
-								
-					<!-- Les ateliers ou l'adherent est inscrit -->
-					
-					<div class="tab-pane active" id="tab_1">
-					<?php if ($nb > 0)
-					{								 
-								?>
-                    <table class="table"><thead>
-								<tr>
-										<th>Date et heure</th><th>Dur&eacute;e</th><th>Nom de l'atelier</th><th>Lieu</th><th>Désincription</th></tr></thead><tbody>
-								<?php
-									for ($i=1 ; $i<=$nb ; $i++)
-									{
-											$row = mysqli_fetch_array($result) ;
-											$result2=getSujetById($row["id_sujet"]);
-											$salle=mysqli_fetch_array(getSalle($row["salle_atelier"]));
-											$lieuatelier=$salle["nom_salle"]." (".$espaces[$salle["id_espace"]].")";
-											$rowsujet=mysqli_fetch_array($result2);
-											echo "<tr>
-													<td>".getDayfr($row["date_atelier"])." (".$row["heure_atelier"].")</td>
-														<td>".getTime($row["duree_atelier"])."</td>
-													<td>".$rowsujet["label_atelier"]."</td>
-													<td>".$lieuatelier."</td>
-													<td><a href=\"index.php?m=6&b=3&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" title=\" se désinscrire\"></i></button></a></td></tr>";
-									}
-									echo 	'</tbody></table>';
-								// ateliers en attente 
-	
-									$resultA = getMyAtelier($_SESSION["iduser"],1,2)  ;
-									$nbattente = mysqli_num_rows($resultA);
-									
-									if ($nbattente > 0){ ?>
-										<hr><p class="text-warning">Vous &ecirc;tes inscrit(e) sur liste d'attente aux ateliers suivants :</p>
-												<table class="table">
-												<thead>
-												<tr class="text-warning">
-												<th>Date et heure</th><th>Dur&eacute;e</th><th>Nom de l'atelier</th><th>Lieu</th><th>Désincription</th></tr></thead><tbody>
-									<?php			
-										for ($i=1 ; $i<=$nbattente ; $i++)
-										{
-												$rowA = mysqli_fetch_array($resultA) ;
-												$result2=getSujetById($rowA["id_sujet"]);
-												$rowsujetA=mysqli_fetch_array($result2);
-												$salle=mysqli_fetch_array(getSalle($row["salle_atelier"]));
-												$lieuatelierA=$salle["nom_salle"]." (".$espaces[$salle["id_espace"]].")";
-												echo "<tr>
-														<td >".dateFr($rowA["date_atelier"])." (".$rowA["heure_atelier"].")</td>
-															<td>".getTime($rowA["duree_atelier"])."</td>
-														<td>".$rowsujetA["label_atelier"]."</td>
-														<td>".$lieuatelierA."</td>
-														<td><a href=\"index.php?m=6&b=3&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" title=\" se désinscrire\"></i></button></a></td></td></tr>";
-										}
-										?>
-									</table>
-									<?php
-										}
-									
-					} else {
-					echo  '<div class="alert alert-info alert-dismissable">
-							<i class="fa fa-info"></i>
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Vous ne participez &agrave; aucun atelier</div>' ;
-					}
-									
-									?>
-								</div><!-- /.tab-pane atelier-->
-								
-								<!-- tab pane les sessions -->
-<div class="tab-pane" id="tab_2">
-<?php	if ($numSession>0){ ?>
-
-<table class="table"><thead><tr><th>Date et heure</th><th>Nom de la session</th><th>Statut</th><th>Lieu</th><th>Désinscription</th></tr></thead><tbody>
-
-<?php
-	//numeros des sessions deja validés
-		for ($j=1 ; $j<=$numSession ; $j++)
-		{
-			$rowLVS = mysqli_fetch_array($ListeSessionEnCours) ;
-			$arraysessionLVS=getSession($rowLVS["id_session"]);
-			$sujetLVS=mysqli_fetch_array(getSujetSessionById($arraysessionLVS["nom_session"]));
-			$salle=mysqli_fetch_array(getSalle($rowLVS["id_salle"]));
-			$lieuSession=$salle["nom_salle"]." (".$espaces[$salle["id_espace"]].")";
-			if($rowLVS["statut_datesession"]==1){
-				$class= "text-muted";
-				if($rowLVS["status_rel_session"]==1){ $presence="Présent"; }else{ $presence="Absent";}
-			}else{
-			$class="";
-			$presence="inscrit(e)";
-			}
-				echo "<tr class=".$class.">
-						<td>".getDatefr($rowLVS["date_session"])."</td>
-				<td>".$sujetLVS["session_titre"]." (".$j.") </td>
-						<td>".$presence."</td>
-						<td>".$lieuSession."</td>
-						<td><a href=\"index.php?m=6&b=7&idsession=".$rowLVS["id_session"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" title=\" se d&eacute;sinscrire\"></i></button></a></td></tr>";
-			
-		}
-	echo 	'</tbody></table>';
-	
-	$resultsessionattente=getMySessionAttente($_SESSION["iduser"]);
-	$nbrsessionattente=mysqli_num_rows($resultsessionattente);
-	
-	if($nbrsessionattente>0){
-	?>
-	<hr><p class="text-warning">Vous &ecirc;tes inscrit(e) sur liste d'attente aux sessions suivantes :</p>
-			<table class="table"><thead><tr class="text-warning"><th>Date et heure</th><th>Dur&eacute;e</th><th>Nom de l'atelier</th><th>Lieu</th><th>Désincription</th></tr></thead><tbody>
-												
-	<?php
-		for ($k=1 ; $k<=$nbrsessionattente ; $k++)
-		{
-			$rowLVSA = mysqli_fetch_array($resultsessionattente) ;
-			$arraysessionLVSA=getSession($rowLVSA["id_session"]);
-			$sujetLVSA=mysqli_fetch_array(getSujetSessionById($arraysessionLVSA["nom_session"]));
-			$salle=mysqli_fetch_array(getSalle($rowLVSA["id_salle"]));
-			$lieuSession=$salle["nom_salle"]." (".$espaces[$salle["id_espace"]].")";
-			if($rowLVSA["statut_datesession"]==1){
-				$class= "text-muted";
-				if($rowLVSA["status_rel_session"]==1){ $presence="Présent"; }else{ $presence="Absent";}
-			}else{
-			$class="";
-			$presence="inscrit(e)";
-			}
-				echo "<tr class=".$class.">
-						<td>".getDatefr($rowLVSA["date_session"])."</td>
-				<td>".$sujetLVSA["session_titre"]." (".$k.") </td>
-						<td>".$presence."</td>
-						<td>".$lieuSession."</td>
-						<td><a href=\"index.php?m=6&b=7&idsession=".$rowLVSA["id_session"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" title=\" se d&eacute;sinscrire\"></i></button></a></td></tr>";
-			
-		}
-		?>
-		</tbody></table>
-	<?php
-	}
-
-}else{
-	
-echo  '<div class="alert alert-info alert-dismissable">
-		<i class="fa fa-info"></i>
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Vous ne participez &agrave; aucune session</div>' ;
-}
-
-?> 
-</div><!-- /.tab-pane -->
-								
-                 
-                </div><!-- /.tab-content -->
-              </div><!-- nav-tabs-custom -->
-	
-	
-	
-   <div class="box-footer">
-            <a href="courriers/lettre_atelier.php?user=<?php echo $_SESSION['iduser'];?>&epn=<?php echo $epnuser; ?>" target="_blank"><button type="submit" name="submit"  class="btn btn-primary"  data-toggle="tooltip" title="Imprimer les ateliers"><i class="fa fa-print"></i>&nbsp;&nbsp;Imprimer les ateliers</button></a>
-			<a href="courriers/lettre_session.php?user=<?php echo  $_SESSION['iduser'] ; ?>&epn=<?php echo $epnuser; ?>" target="_blank"><button type="button" class="btn bg-navy pull-right"  data-toggle="tooltip" title="Imprimer les sessions"><i class="fa fa-print"></i>&nbsp;&nbsp;Imprimer les sessions</button></a>
-			</div>
-   
-	 </div></div>
-	</div>
-  
-  <?php  
-	
-
+*/
 
 //************** Affichage de la liste des ateliers affichage par defaut ****///
-//La liste des atliers
+//La liste des ateliers
 	 $listeAtelier = getMyFutAtelier(date('Y'), date('n'), date('d'));
 		$nba=mysqli_num_rows($listeAtelier);
 // la liste des sessions 
@@ -366,10 +194,35 @@ echo  '<div class="alert alert-info alert-dismissable">
 	
 	
 		?> 
-	<div class="row"><div class="col-md-12">
+	<div class="row">
+	<!-- criteres de choix -->
+	<div class="col-md-3">
+	<div class="box"><div class="box-header"><h3 class="box-title">Crit&egrave;res</h3> </div>
+		<div class="box-body">
+		<form role="form" method="POST" action="#">
+			<div class="form-group"><label>Cat&eacute;gories</label>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Jeunesse</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Syst&egrave;me d'exploitation</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Web</div>
+					 </div>
+			<div class="form-group"><label>Niveau</label>
+					<div class="checkbox"><input type="checkbox" name="cat1" value="cat1">D&eacute;butant</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Autonome</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Admin</div>
+					</div>
+			<div class="form-group"><label>Dates</label>
+					<div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Mois en cours</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">Mois suivant</div>
+					 <div class="checkbox"><input type="checkbox" name="cat1" value="cat1">6 mois</div>
+					</div>
+		</form>
+		</div></div>
+	</div>
+	
+	<div class="col-md-9">
 	<div class="box box-primary">
 	<div class="box-header"><h3 class="box-title">Liste des ateliers propos&eacute;s pour <?php echo date('Y'); ?></h3> 
-		<small class="badge bg-blue" data-toggle="tooltip" title="Cliquez sur un intitul&eacute; pour voir le d&eacute;tail d'un atelier et vous inscrire"><i class="fa fa-info"></i></small>
+		
 		</div>
 	
 	
@@ -387,9 +240,9 @@ echo  '<div class="alert alert-info alert-dismissable">
 					?>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab_3">
-					<table class="table"><thead>
-						  <th>Date</th><th>Heure</th><th>Dur&eacute;e</th><th>Nom de l'atelier</th><th>Niveau</th><th>Lieu</th><th>Places restantes</th>						  
-						  </tr></thead><tbody>
+				
+				<table class="table table-condensed">
+					<tr><th>Date</th><th>Heure</th><th>Dur&eacute;e</th><th>Titre</th><th>Niveau</th><th>Lieu</th><th>Places restantes</th><th>Inscription</th>	</tr>				
 				<?php
 				
 					 for ($x=1 ; $x<=$nba;++$x)
@@ -405,29 +258,41 @@ echo  '<div class="alert alert-info alert-dismissable">
 							if ($nbplace < 0) {
 							$nbplace=0;}
 							$idatelier=$rowateliers["id_atelier"];
+							//Test inscription
+							$testinscription=getTestInscript($_SESSION["iduser"],$idatelier,"a");
+						if ($rowateliers["statut_atelier"]<3){	
+							if($testinscription=="FALSE"){
+								if ($nbplace>0){
+								$boutoninscr="<a href=\"index.php?m=6&b=1&idatelier=".$idatelier."\"><small class=\"badge bg-default\">voir le d&eacute;tail et s'inscrire</small></a>";
+							
+								}
+							}else{
+							$boutoninscr="<small class=\"badge bg-green\">d&eacute;j&agrave; inscrit</small>&nbsp; 
+							<a href=\"index.php?m=6&b=3&idatelier=".$idatelier."\"><button class=\"btn btn-xs btn-danger\" data-toggle=\"tooltip\" title=\"Se d&eacute;sinscrire\"><i class=\"fa fa-trash-o\"></i></button></a>";
+							
+							}
+						}else{
+							$boutoninscr="<small class=\"badge bg-yellow\">Annul&eacute;</small>";
+						
+						}
+						
 							//niveau de l'atlier
 							$plevel = getAllLevel(1) ;	
 							 echo "<tr>
-									<td>".getDayfr($rowateliers["date_atelier"])."</td>
+									<td>".datefr($rowateliers["date_atelier"])."</td>
 									<td>".$rowateliers["heure_atelier"]."</td>
-									<td>".getTime($rowateliers["duree_atelier"])."</td>";
-								if ($nbplace>0){
-									if ($rowateliers["statut_atelier"]<3){
-										echo " <td><a href=\"index.php?m=6&b=1&idatelier=".$rowateliers["id_atelier"]."\" title=\"Cliquez pour voir le détail et vous inscrire\">".$rowsujet["label_atelier"]."</a></td>";
-									}else{
-										echo "<td><a href=\"#\" title=\"Cet atelier a été annulé par l'animateur, veuillez le consulter pour plus de détail\">".$rowsujet["label_atelier"]."</a></td>";
-											}
-									}else{
-										echo "<td>".$rowsujet["label_atelier"]." &nbsp;&nbsp;&nbsp;COMPLET</td>";
-									}
-							 echo "
-									<td>".$plevel[$rowsujet["niveau_atelier"]]."</td>
+									<td>".getTime($rowateliers["duree_atelier"])."</td>
+								<td>".$rowsujet["label_atelier"]."</td>
+								<td>".$plevel[$rowsujet["niveau_atelier"]]."</td>
 									<td>".$lieuA."</td>
-											<td>".$nbplace."</td>
+											<td>"; 
+											if ($nbplace==0){echo '<span class="badge bg-purple">COMPLET</span>'; }	else{echo $nbplace;}
+											echo "</td>
+										<td>".$boutoninscr."</td>
 										</tr>";
 						} 
 						?>
-						</table></tbody>
+						</table>
 						<?php
 				}else {
 							echo '  <div class="alert alert-info alert-dismissable">
@@ -491,7 +356,7 @@ echo  '<div class="alert alert-info alert-dismissable">
 				<?php
 				}else{
 				echo '<div class="alert alert-info alert-dismissable"><i class="fa fa-info"></i>
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Aucune session programmée</div>' ;
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Aucune session programm&eacute;e</div>' ;
 				
 				}
 				?>

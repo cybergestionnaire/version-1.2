@@ -91,18 +91,18 @@ $testTarifAtelier=TestTarifs();
 	<div class="box-header"><h3 class="box-title"><?php echo stripslashes($titresession["session_titre"]);?></h3></div>
    <div class="box-body">
 		<dl class="dl-horizontal">
-           <dt>Dates programmées</dt><dd> <?php echo $datessession;?></dd>
+           <dt>Dates programm&eacute;es</dt><dd> <?php echo $datessession;?></dd>
            <dt>Salle</dt><dd><?php echo $nomsalle; ?></dd>
             <dt>Places restantes</dt><dd> <?php echo $placesrestantes ;?> (Total : <?php echo $nbplace;?>)</dd>
-	<dt>Adhérents en attente</dt><dd> <?php echo $enattente ;?></dd>
+	<dt>Adh&eacute;rents en attente</dt><dd> <?php echo $enattente ;?></dd>
              <dt>Description</dt> <dd><?php echo stripslashes($titresession["session_detail"]);?></dd>
 	     <dt>Tarif</dt> <dd><?php echo $tarif; ?></dd>
-             <dt>Animé par</dt> <dd><?php echo $anim; ?></dd>
+             <dt>Anim&eacute; par</dt> <dd><?php echo $anim; ?></dd>
              
              </dl>
              </div>
 	     <div class="box-footer">
-	<a href="index.php?a=37"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la liste des sessions</button></a></div>
+	<a href="index.php?a=37"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la liste des sessions</button></a></div>
 	     </div>
 <!-- DETAIL DE LA SESSION-->
 
@@ -120,7 +120,7 @@ if ($sessionstatut==0){
 if ($nb>0)
 {     
 	if($testTarifAtelier>1){ 
-		$tooltipinfo="Inscriptions en cours / total dépensé  sur total acheté";
+		$tooltipinfo="Inscriptions en cours / total d&eacute;pens&eacute;  sur total achet&eacute;";
 		}else{
 		$tooltipinfo="Inscriptions en cours ";
 		}
@@ -223,7 +223,7 @@ if ($nb>0)
 	<div class="box-body">
 	 
 			<h4>Inscriptions</h4>
-			<p>Attention, les inscriptions ne sont plus modifiables une fois toutes les dates de la session validées et cloturées. </p>
+			<p>Attention, les inscriptions ne sont plus modifiables une fois toutes les dates de la session valid&eacute;es et clotur&eacute;es. </p>
 		
 	   
 	</div><!-- /.box-body -->
@@ -237,7 +237,7 @@ if ($nb>0)
   <div class="box box-success">
   <div class="box-header"><h3 class="box-title">Inscrire un adh&eacute;rent</h3>
 	<div class="box-tools"><form method="POST" action="index.php?a=30&b=1&idsession=<?php echo $idsession; ?>">
-		<div class="input-group"><input type="text" name="searchuser" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Nom ou numéro de carte"/>
+		<div class="input-group"><input type="text" name="searchuser" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Nom ou num&eacute;ro de carte"/>
     	<div class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button> </div></div></form>
     </div> 
 	</div><!-- /.box-header -->
@@ -262,7 +262,7 @@ if ($nb>0)
           echo "<p>R&eacute;sultats de la recherche: ".$nb."</p>";
           ?>
           <table class="table table-hover">
-			<thead><tr><th></th><th>Nom Pr&eacute;nom</th><th><span data-toggle="tooltip" title="Inscriptions en cours / total dépensé sur total acheté">Inscriptions/Forfait</span></th></tr></thead><tbody>
+			<thead><tr><th></th><th>Nom Pr&eacute;nom</th><th><span data-toggle="tooltip" title="Inscriptions en cours / total d&eacute;pens&eacute; sur total achet&eacute;">Inscriptions/Forfait</span></th></tr></thead><tbody>
                 <?php
         
 			for ($i=1; $i<=$nb; $i++)
@@ -380,12 +380,12 @@ if ($nb>0)
 }else{
 //la session a ete cloturée
 ?>
-	<div class="box box-success"><div class="box-header"><h3 class="box-title">Session cloturée</h3></div>
+	<div class="box box-success"><div class="box-header"><h3 class="box-title">Session clotur&eacute;e</h3></div>
 		<div class="box-body">
-		<p>Toutes les dates de cette session ont été cloturées, vous ne pouvez plus modifier les inscriptions, pour modifier les présences, rendez-vous aux archives !</p>
+		<p>Toutes les dates de cette session ont &eacute;t&eacute; clotur&eacute;es, vous ne pouvez plus modifier les inscriptions, pour modifier les pr&eacute;sences, rendez-vous aux archives !</p>
 		</div>
 		 <div class="box-footer">
-	<a href="index.php?a=36"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Accès aux archives</button></a></div>
+	<a href="index.php?a=36"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Acc&egrave;s aux archives</button></a></div>
 		</div>
 
 <?php 

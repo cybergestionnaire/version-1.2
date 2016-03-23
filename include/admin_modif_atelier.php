@@ -16,7 +16,7 @@ if ($atelier!=FALSE){
 ?>
 
 <article class="module width_half">
-	<header><h3>Sélectionnez un atelier</h3></header>
+	<header><h3>S&eacute;lectionnez un atelier</h3></header>
 	<form method="post" action="index.php?a=35&b=1&sujet=<?php echo $sujet ?>">
 	<div class="module_content">
 		  <fieldset><label>Sujet </label>
@@ -109,6 +109,6 @@ if (strlen($pSujet)>=0)
 
 }
 else{
-	echo "<h4 class=\"alert_warning\">Aucun atelier à modifier</h4>";
+	echo "<h4 class=\"alert_warning\">Aucun atelier &agrave; modifier</h4>";
 }
 ?>

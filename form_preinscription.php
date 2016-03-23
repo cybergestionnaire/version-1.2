@@ -43,7 +43,7 @@ $month = array(
 			 12=> "D&eacute;cembre",
 );
 		
-//debug($_SESSION['sauvegarde']);
+
 // recupere les villes
 $town0 = getAllCityname();
 $town=array_put_to_position($town0, 'Autre commune', 0,'0' );
@@ -170,6 +170,7 @@ echo $mess ;
 	
  <body class="hold-transition register-page">
     <div class="register-box">
+			<div class="register-logo"><?php echo getconfigname(); ?></div>
       <div class="register-logo">Pr&eacute;inscription</div>
 		<p class="login-box-msg">Veuillez remplir toutes les cases marqu&eacute;es d'une &eacute;toile* et envoyer le formulaire.</p>
 <!-- infos utilisateur -->
@@ -293,12 +294,9 @@ echo $mess ;
 			}
 		?>
 		</select></div>
-<?php
-$rowprinscription=getPreinsmode();
-		echo '
-		<div class="g-recaptcha" data-sitekey="'.$rowprinscription["capt_code"].'"></div>
-		';
-?>
+
+<div class="g-recaptcha" data-sitekey="6LcBzxUTAAAAAG1S5-Bl4wPns5aIRHEpB2yC9_vC"></div>
+
 </div>
 </div></div>
  

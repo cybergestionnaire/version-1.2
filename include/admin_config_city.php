@@ -69,11 +69,28 @@ if (isset($_GET["act"])){
 		   break;
 	       }
 	  break; 
+		
+		case 5: // modification du nom du reseau par defaut
+	       $nomreseau = addslashes($_POST["reseau"]);
+	       if (FALSE == modconfig($nomreseau))
+	       {
+					echo getError(0);
+	       }else{
+	       
+				header("Location:index.php?a=41&mesno=4") ;
+				}
+	  break;
+		
 	}
 }
 
 
 // affichage  -----------
+$mesno= $_GET["mesno"];
+if ($mesno !="")
+{
+  echo getError($mesno);
+}
 
 
 
@@ -92,6 +109,17 @@ if (isset($_GET["act"])){
 			
 		</div><!-- /.box-body -->
 </div><!-- /.box -->
+
+
+
+<div class="box box-solid box-primary">
+	<div class="box-header"><h3 class="box-title">Le nom de votre r&eacute;seau</h3></div>
+	<div class="box-body"><form method="post" action="index.php?a=41&act=5">
+		<div class="input-group input-group-sm">
+			<input class="form-control" type="text" name="reseau" value="<?php echo getconfigname(); ?>">
+			 <span class="input-group-btn"><button class="btn btn-success btn-sm"  type="submit" value="modifier"><i class="fa fa-repeat"></i></button></span></div>
+	</div></form>
+	</div>
 
 
 <div class="box box-solid box-warning">

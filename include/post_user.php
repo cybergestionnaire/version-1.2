@@ -124,7 +124,7 @@
 										 {
 												header("Location:".$urlRedirect."&mesno=0");
 												}else{
-												header("Location:".$urlRedirect."&mesno=18");
+												header("Location:./index.php?a=1&b=3&mesno=18");
                       }
 											
 											

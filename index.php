@@ -56,8 +56,13 @@ if (FALSE !=isset($logout))
    
 }
 
-//Authentification
 
+
+
+?>
+
+
+<?php //Autentification
 if (FALSE == isset($_SESSION["login"]))
 {
   include ("login.php") ;
@@ -88,14 +93,12 @@ $couleurArray=array(
 	);
 $couleur=$couleurArray[$epnspec["couleur_espace"]];
 
-
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<title><?php echo $titre; ?> -- <?php echo $epnspec["nom_espace"] ; ?></title>
 	<!--<title>Cyber-Gestionnaire V0.8</title>-->
 	
@@ -148,15 +151,16 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 </head>
 
 
-<body class="skin-<?php echo $couleur; ?>">
+<body class="hold-transition  sidebar-mini skin-<?php echo $couleur; ?>">
 <div class="wrapper">
 
 	 <header class="main-header">
-		<a href="index.php?m=1" class="logo"><img src="img/logo/<?php echo $epnspec["logo_espace"]; ?>" class="logo"></a>
+		
 		
 		<!-- section pour les adminsitrateurs -->
 	<?php if($_SESSION["status"]=="3" OR $_SESSION["status"]=="4"){
 			?>
+			<a href="index.php?m=1" class="logo"><img src="img/logo/<?php echo $epnspec["logo_espace"]; ?>" class="logo"></a>
 		<!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
@@ -170,20 +174,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
        <ul class="nav navbar-nav">
 						<!-- Notifications, preinsciptions en attente -->
 						
-		<!-- flux rss -->
-		
-		<li>
-		<?php
- 			  //On va chercher le fichier php qui contient le code pour mettre à jour le flux RSS
-			  include_once("Atelier_RSS.php");
-			 
-			  //On appelle la fonction de mise à jour du fichier
-			  update_fluxRSS();
-			 
-			?> 
-		<a href="atelier_rss.xml" data-toggle="tooltip" title="Voir le flux RSS" ><i class="fa fa-rss-square"></i></a>
-		 </li>
-				 <?php
+					 <?php
               //retrouve le nombre de preinscriptions en attente
               $newinscritsar=getAllUserInsc();
               $nbinscrits=mysqli_num_rows( $newinscritsar);
@@ -217,85 +208,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
               </li>
               <?php } ?>
               
-							<!-- Messages: style can be found in dropdown.less-->
-							<!--
-              <li class="dropdown messages-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-envelope-o"></i>
-                  <span class="label label-success">4</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">You have 4 messages</li>
-                  <li>
-                   
-                    <ul class="menu">
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Support Team
-                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            AdminLTE Design Team
-                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Developers
-                            <small><i class="fa fa-clock-o"></i> Today</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Sales Department
-                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Reviewers
-                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="footer"><a href="#">See All Messages</a></li>
-                </ul>
-              </li>
-				
-				 -->
+							
 
 				<li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -344,6 +257,12 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 	<!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Navigation</span>
+                  
+                </a>
+                <!-- Sidebar toggle button-->
+		 <span class="navbar-brand"><?php echo getconfigname(); ?></span>
      <div class="navbar-custom-menu">
 			<ul class="nav navbar-nav"><li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>
@@ -431,11 +350,26 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
     <script src='template/plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
     <script src="template/dist/js/app.min.js" type="text/javascript"></script>
-		
+		 <!-- iCheck -->
+		 
+		<?php if($a!=1){ ?>
+    <script src="template/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+   
+      
+			</script>
+	<?php	} ?>
 
 </body>
 
 </html>
-<?php
-}
-?>
+	<?php
+	}
+	?>

@@ -33,20 +33,20 @@ $datea=$row['date_atelier']." ".str_replace("h", ":", $row['heure_atelier']);
 <div class=" col-xs-6">
 <div class="box box-success">
 	<div class="box-header">
-		<h3 class="box-title">Validation des présences à l'Atelier</h3></div>
+		<h3 class="box-title">Validation des pr&eacute;sences &agrave; l'Atelier</h3></div>
 		<div class="box-body">
 		<dl class="dl-horizontal">
 		<dt>Titre</dt><dd> <?php echo $rowsujet["label_atelier"];?></dd>
-               <dt>Date</dt><dd> <?php echo getDayfr($row["date_atelier"]);?> à <?php echo $row["heure_atelier"];?> </dd>
+               <dt>Date</dt><dd> <?php echo getDayfr($row["date_atelier"]);?> &agrave; <?php echo $row["heure_atelier"];?> </dd>
                <dt>Anim&eacute; par</dt><dd> <?php echo $anim;?></dd>
                 <dt>Places restantes</dt><dd> <?php echo $nbplace ;?> (Total : <?php echo $row["nbplace_atelier"];?> places ouvertes)</dd>
-		<dt>Adhérents en attente </dt><dd><?php echo $enattente ;?></dd>
+		<dt>Adh&eacute;rents en attente </dt><dd><?php echo $enattente ;?></dd>
                <dt>Description</dt><dd><?php echo $rowsujet["content_atelier"];?></dd>
                </dl>
     </div>
     <div class="box-footer">
 	<?php if($act==0){ ?>
-	<a href="index.php?a=13&b=1&idatelier=<?php echo $idatelier; ?>"><button class="btn btn-default"> <i class="fa fa-arrow-circle-left"></i> Retour à l'atelier</button></a></div>
+	<a href="index.php?a=13&b=1&idatelier=<?php echo $idatelier; ?>"><button class="btn btn-default"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; l'atelier</button></a></div>
 	<?php }else{ ?>
 	<a href="index.php?a=18"><button class="btn btn-default"> <i class="fa fa-arrow-circle-left"></i> Retour aux archives</button></a></div>
 	<?php } ?>
@@ -60,12 +60,12 @@ $datea=$row['date_atelier']." ".str_replace("h", ":", $row['heure_atelier']);
 if($act==0){
     $result = getAtelierUser($idatelier,0) ; 
     $action="index.php?a=13&b=5&idatelier=".$idatelier." ";
-    $bouton="Valider les présences";
+    $bouton="Valider les pr&eacute;sences";
     
 }else if ($act==1){ //venue depuis les archives pour modification
 	$result=getAtelierArchivUser($idatelier);
 	   $action="index.php?a=16&b=4&act=1&idatelier=".$idatelier." ";
-	   $bouton="Modifier les présences";
+	   $bouton="Modifier les pr&eacute;sences";
 }
     $nb = mysqli_num_rows($result) ;
 	

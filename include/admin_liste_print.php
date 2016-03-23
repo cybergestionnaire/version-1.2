@@ -19,8 +19,8 @@ $categorieTarif=array(
 	);
 
 $statutPrint=array(
-	0 =>"pas payé",
-	1 =>"payé",
+	0 =>"pas pay&eacute;",
+	1 =>"pay&eacute;",
 	);
 
 ?>
@@ -33,7 +33,7 @@ $statutPrint=array(
 	<p>Etat de caisse hebdomadaire&nbsp;&nbsp;<a href="courriers/csv_caisse-hebdo.php?epn=<?php echo $_SESSION['idepn']; ?>&date=<?php echo date('Y-m-d') ?>" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp;CSV</i></a></p>
 	<p>Etat de caisse mensuel<br>
 		<a href="courriers/csv_caisse-mensuel.php?epn=<?php echo $_SESSION['idepn']; ?>&date=<?php echo date('n') ?>" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp;CSV</i></a>&nbsp;&nbsp;&nbsp;&nbsp;mois en cours</p>
-		<p><a href="courriers/csv_caisse-mensuel.php?epn=<?php echo $_SESSION['idepn']; ?>&date=<?php echo (date('n')-1) ?>" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp;CSV</i></a>&nbsp;&nbsp;&nbsp;&nbsp;mois précédent</p>
+		<p><a href="courriers/csv_caisse-mensuel.php?epn=<?php echo $_SESSION['idepn']; ?>&date=<?php echo (date('n')-1) ?>" class="btn btn-primary btn-sm"><i class="fa fa-download"></i>&nbsp;CSV</i></a>&nbsp;&nbsp;&nbsp;&nbsp;mois pr&eacute;c&eacute;dent</p>
 		
 	</div>
 </div>
@@ -48,7 +48,7 @@ $statutPrint=array(
    		{
 	?>
 
-<div class="box box-success box-solid">  <div class="box-header with-border"><h3 class="box-title">Adhérent à solde créditeur :</h3></div>
+<div class="box box-success box-solid">  <div class="box-header with-border"><h3 class="box-title">Adh&eacute;rent &agrave; solde cr&eacute;diteur :</h3></div>
 			<div class="box-body"><table class="table"> 
 			<thead><tr><th>&nbsp;</th><th>Nom</th><th>Pr&eacute;nom</th><th>solde</th></tr>
 			</thead>
@@ -87,7 +87,7 @@ $statutPrint=array(
 
 <!-- SOLDE DEBITEUR -->
 
-<div class="box box-danger box-solid"> <div class="box-header with-border"><h3 class="box-title">Adhérent à solde débiteur :</h3></div>
+<div class="box box-danger box-solid"> <div class="box-header with-border"><h3 class="box-title">Adh&eacute;rent &agrave; solde d&eacute;biteur :</h3></div>
 			<div class="box-body"><table class="table"> 
 			<thead><tr><th></th><th>Date</th><th>Nom</th><th>Pr&eacute;nom</th><th>solde</th></tr>
 			</thead>
@@ -133,7 +133,7 @@ if (strlen($term)>=2)
 			
 			<form method="post" action="index.php?a=21">
 				 <div class="input-group input-group-sm"><a href="index.php?a=21&b=2&act=&caisse=0&iduser=ext" class="btn bg-yellow btn-sm">Impression sur compte externe</a>&nbsp;&nbsp;ou &nbsp;&nbsp;
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div></form>
 				 
@@ -160,7 +160,7 @@ if (strlen($term)>=2)
 			
 			<form method="post" action="index.php?a=21">
 				 <div class="input-group input-group-sm"><a href="index.php?a=21&b=2&act=&caisse=0&iduser=ext" class="btn bg-yellow btn-sm">Impression sur compte externe</a>&nbsp;&nbsp;ou &nbsp;&nbsp;
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div></form>
 				 
@@ -201,13 +201,13 @@ else // si pas de recherche alors affichage classique
 {
   		
 	?>
-		<div class="box box-primary"><div class="box-header"><h3 class="box-title">Les dernières transactions </h3>
+		<div class="box box-primary"><div class="box-header"><h3 class="box-title">Les derni&egrave;res transactions </h3>
 	<div class="box-tools">
 			<div class="input-group">
 			
 			<form method="post" action="index.php?a=21">
 				 <div class="input-group input-group-sm"><a href="index.php?a=21&b=2&act=&caisse=0&iduser=ext" class="btn bg-yellow btn-sm">Impression sur compte externe</a>&nbsp;&nbsp;ou &nbsp;&nbsp;
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div></form>
 				 

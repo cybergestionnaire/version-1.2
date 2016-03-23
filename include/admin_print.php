@@ -7,8 +7,8 @@ $act=$_GET["act"];
 //$month=date('m');
 $idprint=$_GET['idprint'];
 $statutPrint=array(
-	0 =>"pas payé",
-	1 =>"payé",
+	0 =>"pas pay&eacute;",
+	1 =>"pay&eacute;",
 	);
 
 //supprimer la transaction
@@ -54,20 +54,20 @@ if (TRUE==checkPrint($id_user))
 <div class="row"><section class="col-lg-4 connectedSortable">
 	<div class="box box-primary">
 		<div class="box-header"><h3 class="box-title">Compte des impressions de <?php echo $rown['prenom_user'] ?>&nbsp;<?php echo $rown['nom_user'] ?></h3></div>
-		<div class="box-body"><h4><b><?php echo $totalprint ?></b>  &euro; ont été dépensés.</h4>
-			<h4><b><?php echo $credituser; ?></b> &euro; ont été crédités.</h4>
+		<div class="box-body"><h4><b><?php echo $totalprint ?></b>  &euro; ont &eacute;t&eacute; d&eacute;pens&eacute;s.</h4>
+			<h4><b><?php echo $credituser; ?></b> &euro; ont &eacute;t&eacute; cr&eacute;dit&eacute;s.</h4>
 			<br>
 		<?php if( ($credituser-$totalprint)>0){
-			echo '<h4><span class="text-green">Credit restant sur le compte : '.$restant.' &euro; </span></h4>';
+			echo '<h4><span class="text-green">cr&eacute;dit restant sur le compte : '.$restant.' &euro; </span></h4>';
 		}else if( ($credituser-$totalprint)<0){
-			echo '<h4><span class="text-red">Le compte est débiteur de  '.$restant.' &euro; </span></h4>';
+			echo '<h4><span class="text-red">Le compte est d&eacute;biteur de  '.$restant.' &euro; </span></h4>';
 		}else if(($credituser-$totalprint)==0){
 			echo '<h4>Aucun cr&eacute;dit restant sur le compte</h4>';
 		}
 		?>
 			</div>
 		<div class="box-footer"><a href="index.php?a=21&b=2&act=&caisse=0&iduser=<?php echo $id_user;?>"><input type="submit" value="Ajouter une transaction" class="btn btn-primary"></a></div>
-		 <div class="box-footer"><a href="index.php?a=21"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la liste des transactions</button></a></div>
+		 <div class="box-footer"><a href="index.php?a=21"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la liste des transactions</button></a></div>
 		</div>
 </section>
 		
@@ -88,15 +88,15 @@ if (TRUE==checkPrint($id_user))
 	<div class="box box-primary">
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs pull-right">
-				<li class="active"><a href="#tab_1-1" data-toggle="tab">Debit</a></li>
-				<li><a href="#tab_2-2" data-toggle="tab">Credit</a></li>
+				<li class="active"><a href="#tab_1-1" data-toggle="tab">D&eacute;bit</a></li>
+				<li><a href="#tab_2-2" data-toggle="tab">cr&eacute;dit</a></li>
 				<li class="pull-left header">Mouvements archiv&eacute;s (12 derniers mois):</li>
 			</ul>
 		<div class="tab-content">
 		<div class="tab-pane active" id="tab_1-1">
 			<table class="table">
 					<thead><th>Date</th><th>Nbre de pages</th><th>Tarif</th><th>Prix</th>
-					<?php if($externe==1){ echo "<th>Nom Prénom</th>";} ?>
+					<?php if($externe==1){ echo "<th>Nom Pr&eacute;nom</th>";} ?>
 					<th>statut</th><th></th></thead>
 		
 	<?php			   
@@ -120,7 +120,7 @@ if (TRUE==checkPrint($id_user))
 			}
 			
 			if($row['print_statut']==0){ 
-				//modification autorisée tant que la transaction n'est pas encaissée
+				//modification autoris&eacute;e tant que la transaction n'est pas encaissée
 					echo "<td><p class=\"text-red\">".$statut."</p></td> 
 					<td>
 								<a href=\"index.php?a=21&b=3&typetransac=p&idtransac=".$row['id_print']."&iduser=".$id_user."\"><button type=\"button\" class=\"btn btn-info btn-sm\"><i class=\"fa fa-edit\"></i></button></a>
@@ -138,7 +138,7 @@ if (TRUE==checkPrint($id_user))
 		</div><!-- /.tab-pane -->
         <div class="tab-pane" id="tab_2-2">
 		<table class="table">
-					<thead><tr><th>Date</th><th>Credit ajouté</th><th></th></tr></thead>
+					<thead><tr><th>Date</th><th>Cr&eacute;dit ajout&eacute;</th><th></th></tr></thead>
 		<?php
 		
 		if($nbc>0){
@@ -180,7 +180,7 @@ if (TRUE==checkPrint($id_user))
 <div class="box box-primary"><div class="box-header"><h3 class="box-title">Compte des impressions de <?php echo $prenom_p; ?>&nbsp;<?php echo $nom_p; ?></h3></div>
 	<div class="box-body"><p>Entrez une transaction pour initialiser le compte d'impression</p></div>
 	<div class="box-footer"><a href="index.php?a=21&b=2&act=&caisse=0&iduser=<?php echo $id_user; ?>"><input type="submit" value="Ajouter une transaction" class="btn btn-primary"></a></div>
-	<div class="box-footer"><a href="index.php?a=21"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la liste des transactions</button></a></div>
+	<div class="box-footer"><a href="index.php?a=21"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la liste des transactions</button></a></div>
 </div></section></div>
 <?php
 	}		

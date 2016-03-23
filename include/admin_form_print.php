@@ -194,7 +194,7 @@ $paiement=1;
 }
 
 ?>
-	<tr><td>Total dû : </td><td></td><td><?php echo $du; ?>&nbsp;&euro;</td></tr>
+	<tr><td>Total d&ucirc; : </td><td></td><td><?php echo $du; ?>&nbsp;&euro;</td></tr>
 	
 	<tr><td>Moyen de paiement</td><td colspan="2"><select name="moyen_paiement" class="form-control">
 														<?php 
@@ -211,7 +211,7 @@ $paiement=1;
 	
 		if($_GET["ext"]==1){
 		
-			echo '<tr><td>Nom prénom</td><td colspan="2"><input type="text" name="nomuser"  placeholder="Veuillez entrer le nom et prénom" class="form-control"></td></tr>';
+			echo '<tr><td>Nom pr&eacute;nom</td><td colspan="2"><input type="text" name="nomuser"  placeholder="Veuillez entrer le nom et pr&eacute;nom" class="form-control"></td></tr>';
 		}
 		
 ?>

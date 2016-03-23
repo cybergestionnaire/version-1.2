@@ -87,13 +87,13 @@ $interval = date_diff($datetime2, $datetime1);
 //Statut de la transaction
 $forfaitArray=array(
 	0=>"En attente de paiement",
-	1=>"Payé",
-	2=>"Archivé"
+	1=>"Pay&eacute;",
+	2=>"Archiv&eacute;"
 	);
 //statut des forfaits ateliers
 $arraystatutforfait=array(
 	1=>"En cours",
-	2=>"Terminé"
+	2=>"Termin&eacute;"
 	);
 	
 //recuperation des tarifs pour la consultation internet
@@ -110,20 +110,20 @@ $nbrestant=$nbForfait-$nbvalide; //restant apres dépense
 if($nbrestant>=0){
 	$nbHorsForfait= "aucune";
 	}else{
-	$nbHorsForfait= "<span class=\"text-red\">".abs($nbrestant)."&nbsp;&nbsp;</span><span class=\"btn bg-red btn-xs\" data-toggle=\"tooltip\" title=\"Ces ateliers n'ont pas été payés !\"><i class=\"fa fa-warning\"></i></span>";
+	$nbHorsForfait= "<span class=\"text-red\">".abs($nbrestant)."&nbsp;&nbsp;</span><span class=\"btn bg-red btn-xs\" data-toggle=\"tooltip\" title=\"Ces ateliers n'ont pas &eacute;t&eacute; pay&eacute;s !\"><i class=\"fa fa-warning\"></i></span>";
 	}
 
 ?>
 <div class="row"> <!-- division en 3 rows par ligne -->
 
 <!--Adhesion et renouvellement --><div class="col-md-6">
-<div class="box box-solid box-primary"><div class="box-header"><h3 class="box-title">Adhésion</h3></div>
+<div class="box box-solid box-primary"><div class="box-header"><h3 class="box-title">Adh&eacute;sion</h3></div>
 	<div class="box-body">
 		<dl class="dl-horizontal">
-		<dt>Adhérent </dt><dd><?php echo $prenom." ".$nom ;?> </dd>
-		<dt>Date de 1er adhésion</dt><dd> le <span class="text-success"><b><?php echo dateFR($dateinsc) ?></b></span></dd>
+		<dt>Adh&eacute;rent </dt><dd><?php echo $prenom." ".$nom ;?> </dd>
+		<dt>Date de 1er adh&eacute;sion</dt><dd> le <span class="text-success"><b><?php echo dateFR($dateinsc) ?></b></span></dd>
 		<dt>Tarif</dt><dd><span class="text-success"><b><?php echo $prixtarif ; ?></b></span>.</dd>
-		<dt>Renouvellement prévu </dt><dd> le <span class="text-red"><b><?php echo dateFR($daterenouv) ;?></b></span></dd>
+		<dt>Renouvellement pr&eacute;vu </dt><dd> le <span class="text-red"><b><?php echo dateFR($daterenouv) ;?></b></span></dd>
 		</dl>
 		<?php
 		if (mysqli_num_rows($paiementAttente)){
@@ -140,13 +140,13 @@ if($nbrestant>=0){
 		<div class="box-footer">
 		<?php 
 		if (($interval->format('%a'))<10 OR ($daterenouv < date("Y-m-d"))){
-		 echo "<a href=\"index.php?a=21&b=3&typetransac=adh&iduser=".$id_user." \"><input type=\"submit\" value=\"Renouveller l'adhésion\" class=\"btn bg-default\"></a>";
+		 echo "<a href=\"index.php?a=21&b=3&typetransac=adh&iduser=".$id_user." \"><input type=\"submit\" value=\"Renouveller l'adh&eacute;sion\" class=\"btn bg-default\"></a>";
 		 }
 		
 		 ?>
 		
-		<a href="index.php?a=1&b=2&iduser=<?php echo $id_user ; ?>"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la fiche adh&eacute;rent</button></a> 
-		&nbsp;<a href="index.php?a=21&b=3&typetransac=adh&iduser=<?php echo $id_user ; ?>"><button type="submit" value="" class="btn bg-purple">Changer le tarif de l'adhésion</button></a>
+		<a href="index.php?a=1&b=2&iduser=<?php echo $id_user ; ?>"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la fiche adh&eacute;rent</button></a> 
+		&nbsp;<a href="index.php?a=21&b=3&typetransac=adh&iduser=<?php echo $id_user ; ?>"><button type="submit" value="" class="btn bg-purple">Changer le tarif de l'adh&eacute;sion</button></a>
 		
 		</div>	
 </div>
@@ -158,10 +158,10 @@ if($nbrestant>=0){
 <div class="col-md-6"><div class="box box-solid box-success"><div class="box-header"><h3 class="box-title">Forfait atelier</h3></div>
 	<div class="box-body">
 		
-	<p>Inscription en cours et non validées : <b><?php echo $nbASencours ; ?></b>
+	<p>Inscription en cours et non valid&eacute;es : <b><?php echo $nbASencours ; ?></b>
 	<?php if (chechUserAS($row["id_user"])==TRUE){ ?>
 	&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?a=5&b=6&iduser=<?php echo $row["id_user"];?>" class="btn btn-primary btn-xs">Voir les inscriptions</a></p><?php } ?>
-	<p>Inscription validées hors forfait : <b><?php echo $nbHorsForfait ; ?></b></p>
+	<p>Inscription valid&eacute;es hors forfait : <b><?php echo $nbHorsForfait ; ?></b></p>
 	
 	
 	<?php
@@ -173,11 +173,11 @@ if($nbrestant>=0){
 	
 	
 	if ($nbf==0){
-		echo "<p>l'adhérent n'a souscrit à aucun forfait atelier</p>";
+		echo "<p>l'adh&eacute;rent n'a souscrit &agrave; aucun forfait atelier</p>";
 	}else{
 		?>
 	
-	<div class="table"><table class="table"><thead><th>Nom du Tarif</th><th>Date d'achat</th><th>Nbr</th><th>Dépensé</th><th>Statut</th><th></th><th></th></thead>
+	<div class="table"><table class="table"><thead><th>Nom du Tarif</th><th>Date d'achat</th><th>Nbr</th><th>D&eacute;pens&eacute;</th><th>Statut</th><th></th><th></th></thead>
 	<?php
 	
 	
@@ -264,7 +264,7 @@ if(TRUE==$transactemps){
 
 ?>
 	
-	<div class="table"><table class="table"><thead><th>Nom</th><th>Date d'achat</th><th>Validité </th><th>Statut</th><th></th></thead>
+	<div class="table"><table class="table"><thead><th>Nom</th><th>Date d'achat</th><th>Validit&eacute; </th><th>Statut</th><th></th></thead>
 		<tbody>
 		<tr><td><?php echo $tariftemps[ $transactemps["id_tarif"]] ; ?> </td>
 		<td><?php echo $transactemps["date_transac"] ; ?> </td>

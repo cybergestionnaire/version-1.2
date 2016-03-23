@@ -51,10 +51,10 @@ $nbsessionsprog=mysqli_num_rows($result);
  if ($nbsessionsprog > 0)
 {
 	 ?>
-	<div class="box box-success"> <div class="box-header"><h3 class="box-title">Liste des sessions programmées</h3>
+	<div class="box box-success"> <div class="box-header"><h3 class="box-title">Liste des sessions programm&eacute;es</h3>
 	<div class="box-tools pull-right">
 		<a href="index.php?a=31&m=1"><button class="btn btn-default btn-sm"  data-toggle="tooltip" title="planifier"><i class="fa fa-calendar-o"></i></button></a>
-		<a href="index.php?a=34"><button class="btn btn-default btn-sm"  data-toggle="tooltip" title="créer un sujet"><i class="fa  fa-plus"></i></button></a>
+		<a href="index.php?a=34"><button class="btn btn-default btn-sm"  data-toggle="tooltip" title="cr&eacute;er un sujet"><i class="fa  fa-plus"></i></button></a>
 		<a href="index.php?a=35"><button class="btn btn-default btn-sm"  data-toggle="tooltip" title="modifier un sujet"><i class="fa fa-edit"></i></button></a>
 		<a href="index.php?a=36"><button class="btn btn-default btn-sm"  data-toggle="tooltip" title="archives"><i class="fa fa-inbox"></i></button></a>
 		<?php  if($_SESSION["status"]==3){ ?>  
@@ -64,7 +64,7 @@ $nbsessionsprog=mysqli_num_rows($result);
                 <ul class="dropdown-menu" role="menu">
                         <li><a href="index.php?a=37&c=1">Mes sessions</a></li>
                         <li><a href="index.php?a=37&c=2">Sessions de l'epn</a></li>
-                        <li><a href="index.php?a=37&c=3">Sessions du réseau</a></li>
+                        <li><a href="index.php?a=37&c=3">Sessions du r&eacute;seau</a></li>
                        
                       </ul>
                     </div>
@@ -99,7 +99,7 @@ $nbsessionsprog=mysqli_num_rows($result);
 					$lieu=$salle["nom_salle"]." <br>(".$espaces[$salle["id_espace"]].")";
 					
 					if($row["date_session"]<date('Y-m-d')){
-						$statutaffiche=$row["nbre_dates_sessions"]."&nbsp;&nbsp;<small class=\"badge bg-blue\" data-toggle=\"tooltip\" title=\"Des dates de la session n'ont pas encore été validées !\"><i class=\"fa fa-info\"></i></small>";
+						$statutaffiche=$row["nbre_dates_sessions"]."&nbsp;&nbsp;<small class=\"badge bg-blue\" data-toggle=\"tooltip\" title=\"Des dates de la session n'ont pas encore &eacute;t&eacute; valid&eacute;es !\"><i class=\"fa fa-info\"></i></small>";
 						 $class="text-red" ;
 					}else{
 						 $class="" ;
@@ -137,7 +137,7 @@ $nbsessionsprog=mysqli_num_rows($result);
 					 <td><a href=\"index.php?a=31&m=2&idsession=".$row["id_session"]."\"><button type=\"button\" class=\"btn bg-green btn-sm\" data-toggle=\"tooltip\" title=\"modifier\"><i class=\"fa fa-edit\"></i></button></a>";
 					//bouton supprimer ne s'affiche que si la totalité des dates n'a pas été validée.
 					if($testvalidation==0){
-					 echo "&nbsp;<a href=\"index.php?a=37&m=4&idsession=".$row["id_session"]."\"><button type=\"button\" class=\"btn bg-red btn-sm\" data-toggle=\"tooltip\" title=\"supprimer\" value=". $row["id_session"]." OnClick=\"return confirm(' Des adhérents sont inscrits à cette session, voulez-vous vraiment la supprimer ?');\"><i class=\"fa fa-trash-o\"></i></button></a>";
+					 echo "&nbsp;<a href=\"index.php?a=37&m=4&idsession=".$row["id_session"]."\"><button type=\"button\" class=\"btn bg-red btn-sm\" data-toggle=\"tooltip\" title=\"supprimer\" value=". $row["id_session"]." OnClick=\"return confirm(' Des adh&eacute;rents sont inscrits à cette session, voulez-vous vraiment la supprimer ?');\"><i class=\"fa fa-trash-o\"></i></button></a>";
 					}
 					
 					echo"</td> </tr>";
@@ -148,7 +148,7 @@ $nbsessionsprog=mysqli_num_rows($result);
 <?php
 }else{
 				echo '<div class="alert alert-info alert-dismissable"><i class="fa fa-info"></i>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Aucune session programmée</div>' ;
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Aucune session programm&eacute;e</div>' ;
 	//Afficher les boutons pour programmer une session
 ?>
 	<div class="row">
@@ -156,7 +156,7 @@ $nbsessionsprog=mysqli_num_rows($result);
 <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-green"><div class="inner"><h3>&nbsp;</h3><p></p></div>
 		<div class="icon"><i class="ion ion-archive"></i></div>
-                 <a href="index.php?a=36" class="small-box-footer">Accéder aux archives&nbsp;&nbsp;<i class="fa fa-arrow-circle-left"></i></a>
+                 <a href="index.php?a=36" class="small-box-footer">Acc&eacute;der aux archives&nbsp;&nbsp;<i class="fa fa-arrow-circle-left"></i></a>
 	</div><!-- /box -->
 </div><!-- /col -->
 <!-- nouvelle programmation-->

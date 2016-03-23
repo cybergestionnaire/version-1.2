@@ -51,14 +51,14 @@ $sexe     =  $row["sexe_user"];
 
 
 
-// type d'équipement défini
+// type d'&eacute;quipement défini
 $equipementarray = array (
-         0 => "Aucun équipement",   
+         0 => "Aucun &eacute;quipement",   
          1 => "Ordinateur",
          2 => "Tablette",
 	 3 => "Smartphone",
-	 4 => "Télévision connectée",
-	5 => " Internet à la maison (ADSL, satellite ou fibre)",
+	 4 => "T&eacute;l&eacute;vision connect&eacute;e",
+	5 => " Internet &agrave; la maison (ADSL, satellite ou fibre)",
 	6 => " Internet mobile (3G, 4G+)",
 	7 => "Pas de connexion Internet"
 		);
@@ -72,15 +72,15 @@ $equipements=$equipements.$equipementarray[$value]." / ";
 $utilisationarray = array (
          0 => "Aucun Lieu",
          1 => "A la maison",   
-         2 => "Au bureau ou à l'école",
-         3 => "A la maison et au bureau ou à l'école"
+         2 => "Au bureau ou &agrave; l'&eacute;cole",
+         3 => "A la maison et au bureau ou &agrave; l'&eacute;cole"
 );
 		
 		// type de connaissance défini
 $connaissancearray = array (
-         0 => "Débutant",   
-         1 => "Intermédiaire",
-         2 => "Confirmé"
+         0 => "D&eacute;butant",   
+         1 => "Interm&eacute;diaire",
+         2 => "Confirm&eacute;"
 );
 
 // si b=3 desinscription a un atelier
@@ -95,7 +95,7 @@ $nb = mysqli_num_rows($userateliers);
 	//en attente
 $resultA = getMyAtelier($id_user,1,2)  ;
 
-//liste de tous les ateliers et session où l'dherent est inscrit et presence validée cloturé ==2 pour les ateliers, cloturé=1 pour les sessions !
+//liste de tous les ateliers et session où l'dherent est inscrit et presence valid&eacute;e clotur&eacute; ==2 pour les ateliers, cloturé=1 pour les sessions !
 //rappel getUserStatutAS($iduser,$statut,$type,$statutatelier) where $statut== présence, et $type==atelier ou session
 $ListeAtelierPresent=getUserStatutAS($id_user,1,1,2); //ateliers passés
 $ListeSessionPresent=getUserStatutAS($id_user,1,2,1);
@@ -135,9 +135,9 @@ if(!is_dir($dossierimg)){
 ?>
 
 <div class="row"> <section class="col-lg-6 connectedSortable"> 
-<div class="box box-info"><div class="box-header"><h3 class="box-title">Historique de l'adhérent</h3>
+<div class="box box-info"><div class="box-header"><h3 class="box-title">Historique de l'adh&eacute;rent</h3>
 	<div class="box-tools pull-right">
-		<a href="index.php?a=1&b=2&iduser=<?php echo $id_user ; ?>"><button class="btn bg-blue btn-sm"  data-toggle="tooltip" title="Fiche adhérent"><i class="fa fa-edit"></i></button></a>
+		<a href="index.php?a=1&b=2&iduser=<?php echo $id_user ; ?>"><button class="btn bg-blue btn-sm"  data-toggle="tooltip" title="Fiche adh&eacute;rent"><i class="fa fa-edit"></i></button></a>
 		 <a href="index.php?a=6&iduser=<?php echo $id_user; ?>"><button class="btn bg-yellow btn-sm"  data-toggle="tooltip" title="Abonnements"><i class="ion ion-bag"></i></button></a>
 </div></div>
 		<div class="box-body">
@@ -160,13 +160,13 @@ if(!is_dir($dossierimg)){
 		<td><h4><?php echo $nom; ?></h4>
 		<p><b>Rappel des conditions informatiques : </b></p>
 		<p><?php echo $equipements; ?> <br> <?php echo $utilisationarray[$utilisation];?> / <?php echo $connaissancearray[$connaissance];?></p>
-		<p><b>Notes particulières : </b></p>
+		<p><b>Notes particuli&egrave;res : </b></p>
 		<p><?php  if ($infos!="") { echo $infos; } else { echo "pas d'infos ! ";} ?></p>
 		</td></tr></table>
 		
 		</div>
 </div>
-<div class="box box-info"><div class="box-header"><h3 class="box-title">Taux de présence</h3></div>
+<div class="box box-info"><div class="box-header"><h3 class="box-title">Taux de pr&eacute;sence</h3></div>
 		<div class="box-body">
 		<?php
 		///total des inscriptions --> % présence / %absences sur total inscriptions pour les sessions et les ateliers
@@ -213,14 +213,14 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 		    echo "<tr>
 			      <td>".getDayfr($row["date_atelier"])." (".$row["heure_atelier"].")</td>
 				<td>".$rowsujet["label_atelier"]."</td>
-			      <td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"  data-toggle=\"tooltip\" title=\" Désinscrire\"><i class=\"fa fa-trash-o\"></i></button></a></td></tr>";
+			      <td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"  data-toggle=\"tooltip\" title=\" D&eacute;sinscrire\"><i class=\"fa fa-trash-o\"></i></button></a></td></tr>";
 		}
 		?>
 	   </tbody></table>
 	   
 	  <?php 
 	  }else {
-	  echo "<p>Pas d'inscription enregistrée pour le moment</p>";
+	  echo "<p>Pas d'inscription enregistr&eacute;e pour le moment</p>";
 
 		} ?>
 	   
@@ -238,7 +238,7 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 			    echo "<tr>
 				      <td >".getDayfr($rowA["date_atelier"])." (".$rowA["heure_atelier"].")</td>
 				<td>".$rowsujetA["label_atelier"]."</td>
-				<td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" data-toggle=\"tooltip\" title=\" Désinscrire\"></i></button></a></td></tr>";
+				<td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idatelier=".$row["id_atelier"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" data-toggle=\"tooltip\" title=\" D&eacute;sinscrire\"></i></button></a></td></tr>";
 			}
 			echo '</tbody></table></div>';
 		} else {
@@ -270,7 +270,7 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 				$sujetLVS=mysqli_fetch_array(getSujetSessionById($arraysessionLVS["nom_session"]));
 				if($rowLVS["statut_datesession"]==1){
 				$class= "text-muted";
-					if($rowLVS["status_rel_session"]==1){ $presence="Présent"; }else{ $presence="Absent";}
+					if($rowLVS["status_rel_session"]==1){ $presence="Pr&eacute;sent"; }else{ $presence="Absent";}
 				}else{
 				$class="";
 				$presence="";
@@ -291,7 +291,7 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 	   
 	  <?php 
 	  }else {
-	  echo "<p>Pas d'inscription enregistrée pour le moment</p>";
+	  echo "<p>Pas d'inscription enregistr&eacute;e pour le moment</p>";
 
 		} ?>
 	   
@@ -311,7 +311,7 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 			    echo "<tr>
 				      <td >".getDatefr($rowAs["date_session"])."</td>
 				<td>".$attentesujet["session_titre"]."  (".($rowAs["id_datesession"]).") </td>
-				<td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idsession=".$rowAs["id_session"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" data-toggle=\"tooltip\" title=\" Désinscrire\"></i></button></a></td></tr>";
+				<td><a href=\"index.php?a=5&b=6&act=1&iduser=".$id_user."&idsession=".$rowAs["id_session"]."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" data-toggle=\"tooltip\" title=\" D&eacute;sinscrire\"></i></button></a></td></tr>";
 			
 			}
 			echo '</tbody></table></div>';
@@ -324,13 +324,13 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 </section>
 
 <section class="col-lg-6 connectedSortable"> 
-<div class="box box-info"><div class="box-header"><h3 class="box-title">Participations passées (année en cours)</h3>
+<div class="box box-info"><div class="box-header"><h3 class="box-title">Participations pass&eacute;es (ann&eacute;e en cours)</h3>
 	<div class="box-tools pull-right">
-		<a href="courriers/csv_historique.php?user=<?php echo $id_user ; ?>&epn=<?php echo $_SESSION['idepn']; ?>" target="_blank"><button type="button" class="btn bg-green btn-sm"  data-toggle="tooltip" title="Télécharger le XLS"><i class="fa fa-download"></i></button></a>
+		<a href="courriers/csv_historique.php?user=<?php echo $id_user ; ?>&epn=<?php echo $_SESSION['idepn']; ?>" target="_blank"><button type="button" class="btn bg-green btn-sm"  data-toggle="tooltip" title="T&eacute;l&eacute;charger le XLS"><i class="fa fa-download"></i></button></a>
 	</div>
 </div>
 		<div class="box-body">
-		<p class="text-info">Attention les ateliers et la totalité de dates d'une session doivent être validées pour que la participation passée s'affiche !</p>
+		<p class="text-info">Attention les ateliers et la totalit&eacute; de dates d'une session doivent &ecirc;tre valid&eacute;es pour que la participation pass&eacute;e s'affiche !</p>
 <?php if($nbtotalabsent>0){ ?>
 		<h4>Inscrit mais absent (<?php echo $nbtotalabsent; ?>)</h4>
 		<table class="table"><thead><tr><th>Type</th><th>Date et heure</th><th>Nom de l'atelier</th><th></th></tr></thead><tbody>
@@ -369,9 +369,9 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 		
 		?>
 		</tbody></table>
-<?php }else{ echo "<p>Pas d'absence passée enregistrée</p>" ; } ?>
+<?php }else{ echo "<p>Pas d'absence pass&eacute;e enregistr&eacute;e</p>" ; } ?>
 	
-		<h4>Présent (<?php echo $nbtotalpresent; ?>)</h4>
+		<h4>Pr&eacute;sent (<?php echo $nbtotalpresent; ?>)</h4>
 	<?php if($nbtotalpresent>0){ ?>
 		<table class="table"><thead><tr><th>Type</th><th>Date et heure</th><th>Nom de l'atelier</th><th></th></tr></thead><tbody>
 		<?php
@@ -406,7 +406,7 @@ $chartS->render("img/chart/".$year."/txpresences_".$id_user.".png");
 				
 			} ?></tbody></table>
 		
-	<?php } else { echo '<p>Aucune présence validée n\'a été enregistrée.</p>'; } ?>
+	<?php } else { echo '<p>Aucune pr&eacute;sence valid&eacute;e n\'a &eacute;t&eacute; enregistr&eacute;e.</p>'; } ?>
 	
 		</div>
 </div>

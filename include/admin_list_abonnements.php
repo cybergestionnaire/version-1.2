@@ -78,7 +78,7 @@ if (strlen($term)>=2)
 	  <?php echo "R&eacute;sultats de la recherche: ".$nb." ( <a href=\"index.php?a=8\"> Afficher la liste compl&egrave;te</a> )"; ?>
 			</h3></div>
 	<div class="box-body no-padding"><table class="table">
-	<thead><tr><th>Nom</th><th>Pr&eacute;nom</th><th>Nbre total ateliers achetés</th><th>Dépensé</th>
+	<thead><tr><th>Nom</th><th>Pr&eacute;nom</th><th>Nbre total ateliers achet&eacute;s</th><th>D&eacute;pens&eacute;</th>
 		<th>Restant</th><th>Inscriptions en cours</th><th>Hors forfait</th><th></th></tr></thead><tbody> 
 					
              <?php
@@ -153,11 +153,11 @@ $result= getLastTransactions();
     {
 	 ?>
    	
-	<div class="box box-info"><div class="box-header"><h3 class="box-title">Liste des forfaits en cours pour les adhérents inscrits</h3>
+	<div class="box box-info"><div class="box-header"><h3 class="box-title">Liste des forfaits en cours pour les adh&eacute;rents inscrits</h3>
 		<div class="box-tools">
 			<div class="input-group"><form method="post" action="index.php?a=8">
 				 <div class="input-group input-group-sm">
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div>
                  </form></div><!-- /input-group -->
@@ -165,7 +165,7 @@ $result= getLastTransactions();
 			</div>
 		</div>
 	<div class="box-body no-padding"><table class="table">
-		<thead><tr><th>Nom</th><th>Pr&eacute;nom</th><th>Date d'achat</th><th>Ateliers</th><th>Dépense</th>
+		<thead><tr><th>Nom</th><th>Pr&eacute;nom</th><th>Date d'achat</th><th>Ateliers</th><th>D&eacute;pense</th>
 			<th>Restant</th><th>En cours</th><th>Hors forfait</th><th></th></tr></thead><tbody> 
 		</thead> 
 			<tbody> 
@@ -203,7 +203,7 @@ $result= getLastTransactions();
 			if($nbrestant>=0){
 				$nbHorsForfait= "0";
 				}else{
-				$nbHorsForfait= "<span class=\"text-red\">".abs($nbrestant)."&nbsp;&nbsp;</span><span class=\"btn bg-red btn-xs\" data-toggle=\"tooltip\" title=\"Ces ateliers n'ont pas été payés !\"><i class=\"fa fa-warning\"></i></span>";
+				$nbHorsForfait= "<span class=\"text-red\">".abs($nbrestant)."&nbsp;&nbsp;</span><span class=\"btn bg-red btn-xs\" data-toggle=\"tooltip\" title=\"Ces ateliers n'ont pas &eacute;t&eacute; pay&eacute;s !\"><i class=\"fa fa-warning\"></i></span>";
 				}
 			
 			echo "<tr class=\"".$class."\">
@@ -234,7 +234,7 @@ $result= getLastTransactions();
 		
 		else{
 		echo "<div class=\"alert alert-warning alert-dismissable\"><i class=\"fa fa-warning\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Aucun forfait enregistré pour l'instant</div>";
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Aucun forfait enregistr&eacute; pour l'instant</div>";
 		}
     }
 	
@@ -253,7 +253,7 @@ if($nbadh>0){
 ?>
 <!-- colonne 2 : la liste des adhérent inscrits à un atelier -->
 <div class="col-xs-4">
-<div class="box box-info"><div class="box-header"><h3 class="box-title">Export des adhérents inscrits aux ateliers/session en cours</h3></div>
+<div class="box box-info"><div class="box-header"><h3 class="box-title">Export des adh&eacute;rents inscrits aux ateliers/session en cours</h3></div>
 	<div class="box-body">
 	<!--<p>Cochez les adhérents dont vous souhaitez exporter les données mail et téléphone au format csv</p>-->
 	<form role="form" method="POST" action="courriers/csv_exportmail.php?epn=<?php echo $epn; ?>">
@@ -278,7 +278,7 @@ if($nbadh>0){
 		</tbody></table>
 	</div>
 	<div class="box-footer">
-		<input type="submit" class="btn bg-olive" value="Générer la liste des coordonnées">
+		<input type="submit" class="btn bg-olive" value="G&eacute;n&eacute;rer la liste des coordonn&eacute;es">
 	</div>
 	</div>
 	

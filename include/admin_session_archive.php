@@ -29,8 +29,8 @@ if ($mesno !="")
 //parametres
 $statusarray=array(
 	0=>"Atelier En cours",
-	1=>"(Validé)",
-	2=>"(Annulé)"	
+	1=>"(Valid&eacute;)",
+	2=>"(Annul&eacute;)"	
 );	
 // classement par annee-
 if (TRUE == isset($_GET['year']))
@@ -57,7 +57,7 @@ if (TRUE == isset($_GET['year']))
 			echo '<a href="index.php?a=36&year='.$ans['Y'].'" > <button class="btn bg-yellow btn-sm">'.$ans['Y'].' </button></a>'; 
 		 }
 		//annee en cours
-		echo '<a href="index.php?a=36&year='.date('Y').'"> <button class="btn bg-yellow btn-sm"> Année en cours</button></a>';
+		echo '<a href="index.php?a=36&year='.date('Y').'"> <button class="btn bg-yellow btn-sm"> Ann&eacute;e en cours</button></a>';
 		?>
 		</div></div>
 		</div>
@@ -69,7 +69,7 @@ if (TRUE == isset($_GET['year']))
 	
   ?>
 	<table class="table table-condensed">
-	   <thead><tr><th>Date</th><th>Intitule</th><th>Animateur</th><th>Salle</th><th>Inscrits</th><th>Horaires&nbsp;&nbsp;<small class="badge bg-blue"  data-toggle="tooltip" title="Cliquez sur une date pour modifier les présences"><i class="fa fa-info"></i></small></th><th></th></tr></thead><tbody>
+	   <thead><tr><th>Date</th><th>Intitul&eacute;</th><th>Animateur</th><th>Salle</th><th>Inscrits</th><th>Horaires&nbsp;&nbsp;<small class="badge bg-blue"  data-toggle="tooltip" title="Cliquez sur une date pour modifier les pr&eacute;sences"><i class="fa fa-info"></i></small></th><th></th></tr></thead><tbody>
   <?php
 
 	  for ($j=1 ; $j <=$nb ; $j++)
@@ -113,7 +113,7 @@ if (TRUE == isset($_GET['year']))
 	 </tbody></table>
 	 </div>
 	<div class="box-footer">
-	<a href="index.php?a=37"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour à la liste des sessions en cours</button></a></div>
+	<a href="index.php?a=37"><button class="btn btn-default" type="submit"> <i class="fa fa-arrow-circle-left"></i> Retour &agrave; la liste des sessions en cours</button></a></div>
 	
 	</div>	
 	  

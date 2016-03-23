@@ -2372,6 +2372,24 @@ function addResa($idcomp,$iduser,$date,$debut,$duree)
     $sql = "INSERT INTO tab_resa VALUES('',".$idcomp.",".$iduser.",'".$date."',".$debut.",".$duree.",'".date('Y-m-d')."','1')";
     $db=opendb();
    $result = mysqli_query($db,$sql) ;
+	 $id=mysqli_insert_id($db);
+    closedb($db);
+    if ($result ==TRUE)
+    {
+        return $id;
+    }else
+    {
+        return FALSE;
+    }
+}
+
+// ajout de la relation resa / computer / usage 1=resa, 2=atelier
+function insertrelresa($idresa,$usage,$titreatelier)
+{
+	$sql="INSERT INTO `rel_resa_usage`(`id_relresa`, `id_usage`, `id_resa`,`id_titreatelier`) VALUES ('','".$usage."','".$idresa."','".$titreatelier."')";
+	 $db=opendb();
+   $result = mysqli_query($db,$sql) ;
+	
     closedb($db);
     if ($result ==TRUE)
     {
@@ -2380,6 +2398,7 @@ function addResa($idcomp,$iduser,$date,$debut,$duree)
     {
         return FALSE;
     }
+	
 }
 
 // renvoi la largeur en % par unité de temps
@@ -2409,6 +2428,13 @@ function getUserName($id)
   return $row["prenom_user"]." ".$row["nom_user"] ;
 }
 
+// renvoi le nom et le prenom d'un user en abrege
+function getUserNameAbrev($id)
+{
+  $row = getUser($id)  ;
+  return substr($row["prenom_user"],0,1).".".$row["nom_user"] ;
+}
+
 // renvoi l'unite de temps
 function getConfig($field,$default_field,$epn)
 {
@@ -2426,6 +2452,26 @@ function getConfig($field,$default_field,$epn)
       return $row[$default_field];
   }
 }
+
+
+// retourne le nom du reseau
+function getconfigname()
+{
+	$sql="SELECT `nom_espace` FROM `tab_config` LIMIT 1";
+	$db=opendb();
+  $result = mysqli_query($db,$sql);
+  closedb($db);
+	if($result==FALSE){
+	return FALSE;
+	}else{
+	$row= mysqli_fetch_array($result);
+	return $row['nom_espace'] ;
+	}
+	
+	
+}
+
+
 
 function getConfigConsole($epn,$field){
 $sql="SELECT `".$field."` FROM `tab_config` WHERE `id_espace`=".$epn;
@@ -2448,7 +2494,7 @@ function getPlanning($dotd,$h1begin,$h1end,$h2begin,$h2end,$epn,$salle)
   {
       $h1begin = $h2begin ;
   }
-  if ($h2end == 0 AND $h1begin>0)   //si fermé l'apres midi
+  if ($h2end == 0 AND $h1begin>0)   //si ferm&eacute; l'apres midi
   {
       $h2end = $h1end ;
   }
@@ -2517,7 +2563,7 @@ function getPlanning($dotd,$h1begin,$h1end,$h2begin,$h2end,$epn,$salle)
             $nbCritere=' ('.$row['NB'].')' ;
           ///
 	  
-          if (strtotime($dotd)<strtotime(date("Y-m-d"))) // pas de reservation sur les dates passées
+          if (strtotime($dotd)<strtotime(date("Y-m-d"))) // pas de reservation sur les dates pass&eacute;es
           {
           $graf .= "<tr><td class=\"computer\" >".$row["nom_computer"]."</td>
                         <td class=\"horaire\">" ;
@@ -2538,7 +2584,7 @@ function getPlanning($dotd,$h1begin,$h1end,$h2begin,$h2end,$epn,$salle)
                 $graf .= "<tr><td class=\"computer\"><a href=\"index.php?m=7&idepn=".$epn."&idcomp=".$row["id_computer"]."&nomcomp=".$row["nom_computer"]."&date=".$dotd."\">".$row["nom_computer"]."".$nbCritere."</a></td>
                             <td class=\"horaire\">" ;
 		}else{
-		 $graf .= "<tr><td class=\"computer\"><span data-toggle=\"tooltip\" title=\"Une intervention est en cours sur ce poste, pas de réservation possible !\" class=\"text-red\">".$row["nom_computer"]."</span></td>
+		 $graf .= "<tr><td class=\"computer\"><span data-toggle=\"tooltip\" title=\"Une intervention est en cours sur ce poste, pas de r&eacute;servation possible !\" class=\"text-red\">".$row["nom_computer"]."</span></td>
                             <td class=\"horaire\">" ;
 		
 		
@@ -2585,7 +2631,7 @@ function getPlanning($dotd,$h1begin,$h1end,$h2begin,$h2end,$epn,$salle)
                 $altGraf = "(".getTime($row2["debut_resa"])." &agrave; ".getTime(($row2["debut_resa"])+($row2["duree_resa"])).")" ;
             }
             $graf        .= "<div class=\"unitbusy\" style=\"width:".$width."%;left:".$position."%;\">
-                                <a href=\"".$urlGraf."\" alt=\"".$altGraf."\" title=\"".$altGraf."\">".getTime($row2["duree_resa"])."</a>
+                                <a href=\"".$urlGraf."\" alt=\"".$altGraf."\" title=\"".$altGraf."\">".getUserNameAbrev($row2["id_user_resa"])."</a>
                             </div>" ;
             $widthTmp     = ($widthTmp+$width) ;
             $widthTmp2    = $widthTmp/(60/$unit)  ;
@@ -2667,11 +2713,11 @@ function getHoraireTexte($day, $epn)
       if ($row["hor1_begin_horaire"]!=0 AND $row["hor1_end_horaire"]!=0)
          $horaire = getTime($row["hor1_begin_horaire"])." &agrave; ".getTime($row["hor1_end_horaire"]);
       else
-         $horaire = "Fermé le matin ";
+         $horaire = "Ferm&eacute; le matin ";
       if ($row["hor2_begin_horaire"]!=0 AND $row["hor2_end_horaire"]!=0)
          $horaire .= ", ouvert de ".getTime($row["hor2_begin_horaire"])." &agrave; ".getTime($row["hor2_end_horaire"]) ;
       else
-         $horaire .= ", Fermé l'après midi" ;
+         $horaire .= ", Ferm&eacute; l'après midi" ;
 
       if ($row["hor1_begin_horaire"]!="" AND $row["hor1_end_horaire"]==0 AND $row["hor2_begin_horaire"]==0 AND $row["hor2_end_horaire"]!="")
          $horaire =  getTime($row["hor1_begin_horaire"])." &agrave; ".getTime($row["hor2_end_horaire"]) ;
@@ -3694,7 +3740,7 @@ function supInter($id)
 //renvoi le nom du mois a partir du numero de mois
 function getMonthName($monthNum)
 {
-  $monthList = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre" ) ;
+  $monthList = array("","Janvier","F&eacute;vrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","D&eacute;cembre" ) ;
   return  $monthList[$monthNum] ;
 }
 // renvoi le premier jour du mois en chiffre
@@ -3736,8 +3782,8 @@ function getCalendar($year,$month,$epn)
   //Affichage -------------------------------------
 
   //affichage du mois et de l'année
-   $calendar = "<div align=\"center\" class=\"titreCal\"> <h4 ><a href=\"?month=".($month-1)."&year=".$year."\"><i class=\"ion-arrow-left-b\"></i></a>&nbsp;&nbsp;<b>".getMonthName($month)." ".$year."</b>
-	 <a href=\"?month=".($month+1)."&year=".$year."\">&nbsp;&nbsp;<i class=\"ion-arrow-right-b\"></i></a>
+   $calendar = "<div align=\"center\" class=\"titreCal\"> <h4 ><a href=\"?m=3&month=".($month-1)."&year=".$year."\"><i class=\"ion-arrow-left-b\"></i></a>&nbsp;&nbsp;<b>".getMonthName($month)." ".$year."</b>
+	 <a href=\"?m=3&month=".($month+1)."&year=".$year."\">&nbsp;&nbsp;<i class=\"ion-arrow-right-b\"></i></a>
 	 &nbsp;&nbsp;&nbsp;&nbsp;".$boutonresa."</h4></div> ";
 
   $calendar .= "<div class=\"calendar\">" ;
@@ -3996,6 +4042,8 @@ function checkHoraire($h1begin,$h1end,$h2begin,$h2end)
        return TRUE ;
 }
 
+
+// modifie les champs de la config
 function updateConfig($table,$array,$field,$idvalue,$epn)
 {
     $sql ="";
@@ -4011,7 +4059,7 @@ function updateConfig($table,$array,$field,$idvalue,$epn)
         $c = $c+1;
     }
     $sql .=" WHERE `".$field."`='".$idvalue."'" ;
-    $sql .=" AND id_epn='".$epn."' ";
+    $sql .=" AND id_espace='".$epn."' ";
     //echo $sql;
     $db=opendb();
     $result = mysqli_query($db,$sql);
@@ -4026,6 +4074,27 @@ function updateConfig($table,$array,$field,$idvalue,$epn)
     }
 }
 
+// modifie le champ nom_espace correspondant au resau des epn
+function modconfig($nom)
+{
+	$sql="UPDATE `tab_config` SET `nom_espace`='".$nom."' ";
+	
+	$db=opendb();
+    $result = mysqli_query($db,$sql);
+    closedb($db);
+    if (FALSE == $result)
+    {
+        return FALSE ;
+    }
+    else
+    {
+        return TRUE ;
+    }
+	
+	
+}
+
+//desactive ou active le mode console pour epnconnect
 function updateconsolemode($epn,$console){
 	$sql="UPDATE `tab_config` SET `activer_console`='".$console."' WHERE `id_espace`=".$epn;
 	 $db=opendb();
@@ -4135,6 +4204,7 @@ $dayArr = array ("Dimanche","lundi","Mardi","Mercredi","Jeudi","Vendredi","Samed
  
  return $dayArr[$jourfr]." ".$jour." ".getMonthName($mois)." ".$annee ;
 }
+
 function getDatefr($date) //,$format='D j F à 10h'
 {
 $date0=date('Y-n-j-w',strtotime($date));
@@ -4148,7 +4218,7 @@ $heurearr=explode(":",$date1);
 $heure=$heurearr[0].'h'.$heurearr[1];
 $dayArr = array ("Dimanche","lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
  
- return $dayArr[$jourfr]." ".$jour." ".getMonthName($mois)." ".$annee." à ". $heure;
+ return $dayArr[$jourfr]." ".$jour." ".getMonthName($mois)." ".$annee." &agrave; ". $heure;
 }
 
 // getMonth()
@@ -4161,7 +4231,7 @@ function getMonth($nb)
             $mois = "Janvier";
         break;
         case "2":
-            $mois ="Fevrier";
+            $mois ="F&eacute;vrier";
         break;
         case "3":
             $mois ="Mars";
@@ -4179,7 +4249,7 @@ function getMonth($nb)
             $mois ="Juillet";
         break;
         case "8":
-            $mois ="Aout";
+            $mois ="Ao&ucirc;t";
         break;
         case "9":
             $mois ="Septembre";
@@ -4191,7 +4261,7 @@ function getMonth($nb)
             $mois ="Novembre";
         break;
         case "12":
-            $mois ="Decembre";
+            $mois ="D&eacute;cembre";
         break;
     }   
     return $mois;
@@ -4199,7 +4269,7 @@ function getMonth($nb)
 
 //
 // renvoi une date au format FR
-function dateFr($date,$format='d-m-Y')
+function dateFr($date,$format='d/m/Y')
 {
   return date($format,strtotime($date));
 }

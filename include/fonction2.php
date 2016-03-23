@@ -3510,9 +3510,9 @@ $db=opendb();
   }
 }
 
-function copyconfig($idespace,$forfait,$nom){
+function copyconfig($idespace,$forfait){
 $sql="INSERT INTO `tab_config`(`id_config`, `activer_console`, `name_config`, `unit_default_config`, `unit_config`, `maxtime_config`, `maxtime_default_config`, `id_espace`, `inscription_usagers_auto`, `message_inscription`, `activation_forfait`, `nom_espace`,`resarapide`, `duree_resarapide`)
-SELECT '',`activer_console`, `name_config`, `unit_default_config`, `unit_config`, `maxtime_config`, `maxtime_default_config`,'".$idespace."', `inscription_usagers_auto`, `message_inscription`,'".$forfait."','".$nom."',`resarapide`, `duree_resarapide` FROM `tab_config` WHERE `id_espace`=1
+SELECT '',`activer_console`, `name_config`, `unit_default_config`, `unit_config`, `maxtime_config`, `maxtime_default_config`,'".$idespace."', `inscription_usagers_auto`, `message_inscription`,'".$forfait."',`nom_espace`,`resarapide`, `duree_resarapide` FROM `tab_config` WHERE `id_espace`=1
 ";
 
 $db=opendb();

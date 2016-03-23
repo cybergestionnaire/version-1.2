@@ -57,7 +57,7 @@ if ($act !="" AND $act!=3)  // verife si non vide
                  else
                  {
 									copyhoraires($idespace);
-									copyconfig($idespace,'0',$nom);
+									copyconfig($idespace,'0');
 									
 									header("Location: ./index.php?a=43");
                  }
@@ -69,7 +69,7 @@ if ($act !="" AND $act!=3)  // verife si non vide
                  }
                  else
                  {
-										modifconfigespace($id,$nom,2,'','');
+										//modifconfigespace($id,$nom,2,'','');
 										header("Location: ./index.php?a=43");
                  }
             break;
