@@ -129,19 +129,15 @@ function checkUser($log,$pass)
           $_SESSION["status"] = $row["status_user"];
           $_SESSION["iduser"] = $row["id_user"];
 	  //epn de rattachment par default
-		  if ($row["status_user"]==4)
-		  { 
-				$_SESSION["idepn"]=1;
-		  }
-	
-		 if ($row["status_user"]==3)
+		  	
+		 if ($row["status_user"]==3 OR $row["status_user"]==4)
 		 { 
 		 $sqla="SELECT `id_epn` FROM `rel_user_anim` WHERE `id_animateur`='".$row["id_user"]."' ";
 		 $db=opendb();
-		$resulta= mysqli_query($db,$sqla);
-		closedb($db);
-		$epna=mysqli_fetch_array($resulta);
-		$_SESSION["idepn"]=$epna["id_epn"];
+			$resulta= mysqli_query($db,$sqla);
+			closedb($db);
+			$epna=mysqli_fetch_array($resulta);
+			$_SESSION["idepn"]=$epna["id_epn"];
 		
 		 }
 		 if ($row["status_user"]<3)
@@ -477,7 +473,7 @@ function addUser($date,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$ville,$te
 //
 // modUser()
 // modifie un adherent
-function modUser($id,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$ville,$tel,$mail,$login,$pass,$status,$lastvisit,$csp,$equipement,$utilisation,$connaissance, $info,$epn,$newsletter)
+function modUser($id,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$ville,$tel,$mail,$loginn,$pass,$status,$lastvisit,$csp,$equipement,$utilisation,$connaissance, $info,$epn,$newsletter)
 {
   if(TRUE == isset($pass) && FALSE == empty($pass)){
     updatePassword($id, $pass) ;
@@ -495,7 +491,7 @@ function modUser($id,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$ville,$tel,
 	  `ville_user`='".$ville."',
 	  `tel_user`='".$tel."',
 	  `mail_user`='".$mail."',
-	 `login_user`='".$login."',
+		`login_user`='".$loginn."',
 	  `status_user`='".$status."',
 		`lastvisit_user`='".$lastvisit."',
 		`csp_user`='".$csp."',

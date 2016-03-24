@@ -221,26 +221,21 @@ $numSession=mysqli_num_rows($ListeSessionEnCours);
 	
 	<div class="col-md-9">
 	<div class="box box-primary">
-	<div class="box-header"><h3 class="box-title">Liste des ateliers propos&eacute;s pour <?php echo date('Y'); ?></h3> 
-		
-		</div>
-	
-	
-		<div class="box-body">
+	<div class="box-header"><h3 class="box-title">Liste des ateliers propos&eacute;s pour <?php echo date('Y'); ?></h3></div>
+	<div class="box-body">
 		<div class="nav-tabs-custom">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#tab_3" data-toggle="tab">Les ateliers (<?php echo $nba;?>)</a></li>
 					<li><a href="#tab_4" data-toggle="tab">Les sessions (<?php echo $nbsessionsprog; ?>)</a></li>
 					</ul>
-				
-					<?php 
+				<div class="tab-content">
+					
+				<div class="tab-pane active" id="tab_3">
+				<?php 
 					if ($nba > 0)
 				{
 					
 					?>
-				<div class="tab-content">
-					<div class="tab-pane active" id="tab_3">
-				
 				<table class="table table-condensed">
 					<tr><th>Date</th><th>Heure</th><th>Dur&eacute;e</th><th>Titre</th><th>Niveau</th><th>Lieu</th><th>Places restantes</th><th>Inscription</th>	</tr>				
 				<?php
@@ -264,7 +259,8 @@ $numSession=mysqli_num_rows($ListeSessionEnCours);
 							if($testinscription=="FALSE"){
 								if ($nbplace>0){
 								$boutoninscr="<a href=\"index.php?m=6&b=1&idatelier=".$idatelier."\"><small class=\"badge bg-default\">voir le d&eacute;tail et s'inscrire</small></a>";
-							
+								}else{
+								$boutoninscr="";
 								}
 							}else{
 							$boutoninscr="<small class=\"badge bg-green\">d&eacute;j&agrave; inscrit</small>&nbsp; 
@@ -291,6 +287,7 @@ $numSession=mysqli_num_rows($ListeSessionEnCours);
 										<td>".$boutoninscr."</td>
 										</tr>";
 						} 
+						
 						?>
 						</table>
 						<?php
@@ -307,51 +304,68 @@ $numSession=mysqli_num_rows($ListeSessionEnCours);
 				
 				
 				<div class="tab-pane" id="tab_4">
-                   	<?php 
-			
-				if ($nbsessionsprog > 0)
-				{
-					?>
-				<table class="table">
-					 <thead><th>Dates</th><th>Titre</th><th>Lieu</th><th>Places restantes</th></thead><tbody>
+      <?php if ($nbsessionsprog > 0){ ?>
+			<table class="table table-condensed">
+					 <tr><th>Dates</th><th>Titre</th><th>Lieu</th><th>Places restantes</th><th></th></tr>
 					<?php 
 				for ($j=1 ; $j <=$nbsessionsprog ; $j++)
 					{
-					$row = mysqli_fetch_array($futsessionrow) ;
+					$rowsession = mysqli_fetch_array($futsessionrow) ;
 					//elements					
-					$titresession=getTitreSession($row["nom_session"]);
+					$titresession=getTitreSession($rowsession["nom_session"]);
 					//affichage de toutes les dates de la session
-					$datesarray=getDatesSession($row["id_session"]);
-					$salle=mysqli_fetch_array(getSalle($row["id_salle"]));
+					$datesarray=getDatesSession($rowsession["id_session"]);
+					$salle=mysqli_fetch_array(getSalle($rowsession["id_salle"]));
 					$lieuS=$salle["nom_salle"]." (".$espaces[$salle["id_espace"]].")";
-					$nbrdates=$row["nbre_dates_sessions"];
+					$nbrdates=$rowsession["nbre_dates_sessions"];
 					$listedatess='';
+					
 						for ($f=0; $f<$nbrdates ; $f++){
 							$rowdates=mysqli_fetch_array($datesarray);
 							$dd=date_create($rowdates["date_session"]);
 							$listedatess=$listedatess.date_format($dd,"Y/m/d H:i")."</br>";
 						}
-						
-					//nombre de places pour la session
-						$placesoccupee=countPlaceSession($row["id_session"],0);
-						$nbplace=$row["nbplace_session"];
+						//nombre de places pour la session
+						$placesoccupee=countPlaceSession($rowsession["id_session"],0);
+						$nbplace=$rowsession["nbplace_session"];
 						$placesrestantes=$nbplace-$placesoccupee;
-						$urlinscrip="index.php?m=6&b=5&idsession=".$row["id_session"];
+					// les boutons d'action
+						$testinscription=getTestInscript($_SESSION["iduser"],$rowsession["id_session"],"s");
+					
+					
+					if ($rowsession["status_session"]<2){	
+							if($testinscription=="FALSE"){
+								if ($placesrestantes>0){
+								$boutoninscrsession="<a href=\"index.php?m=6&b=5&idsession=".$rowsession["id_session"]."\"><small class=\"badge bg-default\">voir le d&eacute;tail et s'inscrire</small></a>";
+								}else{
+									$boutoninscrsession="";
+								}
+							}else{
+								
+							$boutoninscrsession="<small class=\"badge bg-green\">d&eacute;j&agrave; inscrit</small>&nbsp; 
+							<a href=\"index.php?m=6&b=5&idsession=".$rowsession["id_session"]."\"><button class=\"btn btn-xs btn-danger\" data-toggle=\"tooltip\" title=\"Se d&eacute;sinscrire\"><i class=\"fa fa-trash-o\"></i></button></a>";
+							
+							}
+						}else{
+							$boutoninscrsession="<small class=\"badge bg-yellow\">Annul&eacute;</small>";
 						
+						}
+					
 					//affichage
 					echo '<tr> 
-									<td><small>'.$listedatess.'</small></td>';
-						if($placesrestantes==0){
-							echo '<td><span class="text-muted">'.$titresession["session_titre"].'&nbsp;&nbsp;&nbsp;COMPLET</span></td>';
-							}else{		
-							echo'<td><a href="'.$urlinscrip.'">'.$titresession["session_titre"].'</a></td>';
-							}		
-							echo'<td>'.$lieuS.'</td>						
-									<td>'.$placesrestantes.'</td></tr>';
+									<td><small>'.$listedatess.'</small></td>
+									<td><span class="text-muted">'.$titresession["session_titre"].'</span></td>
+									<td>'.$lieuS.'</td>						
+									<td>';
+									if ($placesrestantes==0){echo '<span class="badge bg-purple">COMPLET</span>'; }	else{echo $placesrestantes;}
+									
+									echo '</td>
+									<td>'.$boutoninscrsession.'</td></tr>';
 					}
+					
 			 ?>
 						
-						</tbody></table>
+						</table>
 				
 				<?php
 				}else{

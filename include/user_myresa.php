@@ -34,15 +34,17 @@ if(FALSE!=isset($_GET['del']) AND FALSE!=is_numeric($_GET['del']))
 }
 ?>
  <div class="row">  
+ <!--
   <div class="col-md-4">
-  <div class="box box-primary">
-                                <div class="box-header"> <h3 class="box-title">Aide</h3></div>
+  <div class="box box-primary"><div class="box-header"> <h3 class="box-title">Aide</h3></div>
 		 <div class="box-body">
-		  <p>Cliquez sur le calendrier à gauche pour r&eacute;server un poste &agrave; la date qui vous convient et suivez la proc&eacute;dure.
+		  <p>Cliquez sur le calendrier &agrave; gauche pour r&eacute;server un poste &agrave; la date qui vous convient et suivez la proc&eacute;dure.
 		  </p>
 		  <p><b>N.B : Vous ne pourrez pas annuler une r&eacute;servation du jour ou une r&eacute;servation pass&eacute;e, en cas de probleme adressez vous &agrave; l'accueil.</b></p>
 		  </div></div>
-</div>
+</div>-->
+
+ <div class="col-md-8">
 <?php
 
 	
@@ -53,16 +55,16 @@ if (TRUE==checkResa($_SESSION['iduser']))
 	if ($result!=FALSE)
 	{
 	?>
-		 <div class="col-md-8">
+		
 		<div class="box box-success"><div class="box-header"> <h3 class="box-title">R&eacute;servations à venir</h3></div>
 		<div class="box-body"><table class="table">
-				<thead><tr> 
+				<tr> 
 				   <th>Date</th>
 				   <th>Heure de debut</th>
 				   <th>Heure de fin</th>
 				   <th>Dur&eacute;e</th>
 				   <th>Machine r&eacute;serv&eacute;e</th>
-				   <th>&nbsp;</th></tr></thead><tbody>
+				   <th>&nbsp;</th></tr>
 		<?php		   
 		while($row = mysqli_fetch_array($result))
 		{
@@ -74,7 +76,7 @@ if (TRUE==checkResa($_SESSION['iduser']))
 				  <td><a href=\"index.php?m=8&del=".$row['id_resa']."&min=".$row['duree_resa']."&date=".$row['dateresa_resa']."\"><button type=\"button\" class=\"btn bg-red sm\"><i class=\"fa fa-trash-o\" title=\" supprimer\"></i></button></td></tr>" ;
 		}
 		?>
-		</tbody></table></div></div>
+		</table></div></div>
 		<?php
 	}
 	
@@ -90,12 +92,12 @@ if (TRUE==checkResa($_SESSION['iduser']))
 		<div class="box box-warning"><div class="box-header"> <h3 class="box-title">R&eacute;servations archiv&eacute;es</h3></div>
 		<div class="box-body"><table class="table">
 		
-				<thead><tr> 
+				<tr> 
 				   <th>Date</th>
 				   <th>Heure de debut</th>
 				   <th>Heure de fin</th>
 				   <th>Dur&eacute;e</th>
-				   <th>Machine r&eacute;serv&eacute;e</th></tr></thead><tbody>
+				   <th>Machine r&eacute;serv&eacute;e</th></tr>
 		
 		<?php		   
 		while($row = mysqli_fetch_array($result))
@@ -108,8 +110,8 @@ if (TRUE==checkResa($_SESSION['iduser']))
 				  <td>".$row['nom_computer']."</td></tr>" ;
 		}
 		?>
-		</tbody></table></div></div>
-			</div>
+		</table></div></div>
+			
 			<?php
 	}
 	
@@ -118,9 +120,11 @@ if (TRUE==checkResa($_SESSION['iduser']))
 else
 {
 	echo "<div class=\"alert alert-info alert-dismissable\"><i class=\"fa fa-info\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;&nbsp;&nbsp;Vous n'avez pas de r&eacute;servations enregistrée</h4></div>" ;
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;&nbsp;&nbsp;Vous n'avez pas de r&eacute;servations enregistrée</div>" ;
 	
 }
 
 ?>
 </div>
+</div>
+

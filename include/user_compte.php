@@ -36,7 +36,7 @@ if($lasteresa==FALSE){$lasteresa="NC";}
 	$tarifreferencetemps= $tarifTemps["nombre_temps_affectation"]*$min;
 if(TRUE==$tarifTemps){
 						
-	//modifier le temps comptabilisé en fonction de la frequence_temps_affectation
+	//modifier le temps comptabilise en fonction de la frequence_temps_affectation
 	if($tarifTemps["frequence_temps_affectation"]==1){ 
 			//par jour
 			$date1=date('Y-m-d');
@@ -84,8 +84,8 @@ echo $mess ;
 		<strong><i class="fa fa-map-marker margin-r-5"></i> Adresse</strong>
             <p class="text-muted"><?php echo $row["adresse_user"] ; ?> <br><?php echo getCity($row["ville_user"]) ; ?></p>
 		<hr>
-		<strong><i class="fa fa-pencil margin-r-5"></i> Données personnelles</strong>
-            <p class="text-muted">né(e) le <?php echo $row["jour_naissance_user"]." ".getMonth($row["mois_naissance_user"])." ".$row["annee_naissance_user"] ; ?></p>
+		<strong><i class="fa fa-pencil margin-r-5"></i> Donn&eacute;es personnelles</strong>
+            <p class="text-muted">n&eacute;(e) le <?php echo $row["jour_naissance_user"]." ".getMonth($row["mois_naissance_user"])." ".$row["annee_naissance_user"] ; ?></p>
 						<p class="text-muted"><i class="fa fa-phone margin-r-5"></i> <?php echo $row["tel_user"] ; ?></p>
 						<p class="text-muted"><i class="fa fa-envelope margin-r-5"></i><?php echo $row["mail_user"] ; ?></p>
 		
@@ -107,7 +107,7 @@ echo $mess ;
 	
 	 <div class="active tab-pane" id="activity">
 		 <dl class="dl-horizontal">
-         <dt>Dernière consultation </dt><dd>le <?php echo getDayfr($lasteresa); ?></dd>
+         <dt>Derni&egrave;re consultation </dt><dd>le <?php echo getDayfr($lasteresa); ?></dd>
 		<dt>Tarif / Temps restant<dt><dd><?php echo	'<span class="badge bg-blue">'.$tarifTemps["nom_forfait"].'</span>&nbsp;&nbsp; '.getTime($restant); ?></dd>
 		<dt>Adh&eacute;sion </dt><dd>A renouveller le <?php echo getDayfr($row["dateRen_user"]); ?></dd>
 		<dt>Au tarif de </dt><dd><?php echo $tarifs[$row["tarif_user"]]; ?></dd>
@@ -124,7 +124,7 @@ echo $mess ;
                   
 	<form method="post" action="index.php?m=2" class="form-horizontal">
 		<div class="form-group">
-        <label for="inputName" class="col-sm-2 control-label">Numéro de carte </label><div class="col-sm-10"><input type="email" class="form-control" id="inputName" value="<?php echo $row["login_user"] ; ?>" disabled/></div>
+        <label for="inputName" class="col-sm-2 control-label">Num&eacute;ro de carte </label><div class="col-sm-10"><input type="email" class="form-control" id="inputName" value="<?php echo $row["login_user"] ; ?>" disabled/></div>
     </div>
 		
 		<div class="form-group">

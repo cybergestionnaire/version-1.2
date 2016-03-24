@@ -64,7 +64,7 @@ if (strlen($term)>=3)
 		 echo getError(6);
 		
 			echo "</div><div class=\"col-xs-6\"><div class=\"alert alert-info alert-dismissable\"><i class=\"fa fa-info\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;&nbsp;&nbsp;<a  href=\"index.php?a=1&b=1\" >Créer un nouvel utilisateur ?</a></div></div>";
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>&nbsp;&nbsp;&nbsp;<a  href=\"index.php?a=1&b=1\" >Cr&eacute;er un nouvel utilisateur ?</a></div></div>";
 			
     }
     else
@@ -73,11 +73,11 @@ if (strlen($term)>=3)
       if ($nb > 0)
       {
       ?>
-    <div class="box box-info"><div class="box-header"><h3 class="box-title"><?php echo "R&eacute;sultats de la recherche: ".$nb." ";?>&nbsp;&nbsp;&nbsp;<small class="badge bg-blue" data-toggle="tooltip" title="Les adhérents inactifs sont grisés"><i class="fa fa-info"></i></small></h3>
+    <div class="box box-info"><div class="box-header"><h3 class="box-title"><?php echo "R&eacute;sultats de la recherche: ".$nb." ";?>&nbsp;&nbsp;&nbsp;<small class="badge bg-blue" data-toggle="tooltip" title="Les adh&eacute;rents inactifs sont gris&eacute;s"><i class="fa fa-info"></i></small></h3>
 					<div class="box-tools">
 			<div class="input-group"><form method="post" action="index.php?a=1">
 				 <div class="input-group input-group-sm">
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div>
                  </form></div><!-- /input-group -->
@@ -120,7 +120,7 @@ $utilise = getTempsCredit($row["id_user"],$date1,$date2);
 				<td>".$age." ans</td>
 				<td>".getTime($utilise['util'])."</td> ";
 			
-          echo "<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"tooltip\" title=\"fiche adhérent\"><i class=\"fa fa-edit\"></i></button></a>
+          echo "<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"tooltip\" title=\"fiche adh&eacute;rent\"><i class=\"fa fa-edit\"></i></button></a>
 							 &nbsp;<a href=\"index.php?a=6&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn bg-yellow btn-sm\"  data-toggle=\"tooltip\" title=\"Abonnements\"><i class=\"ion ion-bag\"></i></button></a>";
 					
 					if(chechUserAS($row["id_user"])==TRUE){
@@ -160,14 +160,14 @@ else // si pas de recherche alors affichage classique
 	 ?>
    	
 	<div class="box box-info">
-		<div class="box-header"><h3 class="box-title">Liste des 25 derniers adhérents inscrits</h3>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="index.php?a=1&b=1"  class="btn btn-default"  data-toggle="tooltip" title="Ajouter un adhérent"><i class="fa fa-plus"></i></a>
-			&nbsp;&nbsp; <a href="index.php?a=1" class="btn btn-default"  data-toggle="tooltip" title="Voir tous les adhérents"><i class="fa fa-users"></i></a>
+		<div class="box-header"><h3 class="box-title">Liste des 25 derniers adh&eacute;rents inscrits</h3>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="index.php?a=1&b=1"  class="btn btn-default"  data-toggle="tooltip" title="Ajouter un adh&eacute;rent"><i class="fa fa-plus"></i></a>
+			&nbsp;&nbsp; <a href="index.php?a=1" class="btn btn-default"  data-toggle="tooltip" title="Voir tous les adh&eacute;rents"><i class="fa fa-users"></i></a>
 			<div class="box-tools">
 			
 			<div class="input-group"><form method="post" action="index.php?a=1">
 				 <div class="input-group input-group-sm">
-				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un prénom">
+				 <input type="text" name="term" class="form-control pull-right" style="width: 200px;" placeholder="Entrez un nom ou un pr&eacute;nom">
 				<span class="input-group-btn"><button type="submit" value="Rechercher"  class="btn btn-flat"><i class="fa fa-search"></i></button></span>
                         </div>
                  </form></div><!-- /input-group -->
@@ -182,8 +182,8 @@ else // si pas de recherche alors affichage classique
 				 <th>Pr&eacute;nom</th>
 				 <th>Nom d'utilisateur</th>
 				 <th>Age</th>
-				 <th>Dernière visite (résa)</th>
-				 <th>Adhésion</th>
+				 <th>Derni&egrave;re visite (r&eacute;sa)</th>
+				 <th>Adh&eacute;sion</th>
 				 <th>Temps Utilis&eacute;</th></thead> 
 			<tbody> 
             <?php
@@ -251,7 +251,7 @@ else // si pas de recherche alors affichage classique
 					
 		echo "<tr class=".$class." >
        
-				<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn bg-purple btn-sm\" data-toggle=\"tooltip\" title=\"Fiche adhérent\"><i class=\"fa fa-edit\"></i></button></a>";
+				<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn bg-purple btn-sm\" data-toggle=\"tooltip\" title=\"Fiche adh&eacute;rent\"><i class=\"fa fa-edit\"></i></button></a>";
 				
 				if($row["status_user"]<3){   
 					echo  "&nbsp;<a href=\"index.php?a=6&iduser=".$row["id_user"]."\"><button type=\"button\" class=\"btn   bg-yellow btn-sm\" data-toggle=\"tooltip\" title=\"Abonnements\"><i class=\"ion ion-bag\"></i></button></a>";
@@ -299,8 +299,8 @@ else // si pas de recherche alors affichage classique
 		}else{
 		//si aucun nouvel inscrit depuis le début de l'année en cours
 		echo "<div class=\"alert alert-warnint alert-dismissable\"><i class=\"fa fa-warning\"></i>
-          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Aucun adhérent n'est nouvellement inscrit dans votre espace</div>";
-      echo '<a href="index.php?a=1" class="btn btn-default"  data-toggle="tooltip" title="Voir tous les adhérents"><i class="fa fa-users"></i>&nbsp;&nbsp;Voir tous les autres adhérents</a>';
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Aucun adh&eacute;rent n'est nouvellement inscrit dans votre espace</div>";
+      echo '<a href="index.php?a=1" class="btn btn-default"  data-toggle="tooltip" title="Voir tous les adh&eacute;rents"><i class="fa fa-users"></i>&nbsp;&nbsp;Voir tous les autres adh&eacute;rents</a>';
 		
 		
 		}

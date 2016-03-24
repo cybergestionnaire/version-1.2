@@ -18,13 +18,13 @@ if (TRUE==checkPrint($_SESSION['iduser']))
 
 <div class="box box-primary">
 		<div class="box-header"><h3 class="box-title">Mes impressions</h3></div>
-		<div class="box-body"><h4><b><?php echo $totalprint ?></b>  &euro; ont été dépensés.</h4>
-			<h4><b><?php echo $credituser; ?></b> &euro; ont été crédités.</h4>
+		<div class="box-body"><h4><b><?php echo $totalprint ?></b>  &euro; ont &eacute;t&eacute; d&eacute;pens&eacute;s.</h4>
+			<h4><b><?php echo $credituser; ?></b> &euro; ont &eacute;t&eacute; cr&eacute;dit&eacute;s.</h4>
 			<br>
 		<?php if( ($credituser-$totalprint)>0){
-			echo '<h4><span class="text-green">Credit restant sur le compte : '.$restant.' &euro; </span></h4>';
+			echo '<h4><span class="text-green">Cr&eacute;dit restant sur le compte : '.$restant.' &euro; </span></h4>';
 		}else if( ($credituser-$totalprint)<0){
-			echo '<h4><span class="text-red">Le compte est débiteur de  '.$restant.' &euro; </span></h4>';
+			echo '<h4><span class="text-red">Le compte est d&eacute;biteur de  '.$restant.' &euro; </span></h4>';
 		}else if(($credituser-$totalprint)==0){
 			echo '<h4>Aucun cr&eacute;dit restant sur le compte</h4>';
 		}
@@ -93,7 +93,7 @@ else
 <!--
 <article class="module_help width_half"><header><h3>Aide</h3></header>
 <div class="module_content">
-	<p>Si vous désirez imprimer depuis internet, demandez conseil à l'animatrice.</p>
+	<p>Si vous d&eacute;sirez imprimer depuis internet, demandez conseil à l'animatrice.</p>
 	<p>Les tarifs : <b>0.15&euro;</b> la page noir et blanc, <b>0.30&euro;</b> la page couleur.</p>
-	<p>Par défaut l'imprimante est paramétrée pour imprimer en noir et blanc. Pour imprimer en couleur, cliquez sur l'imprimante <a href="#">Couleur</a> pour la sélectionner dans le menu déroulant des imprimantes. Lancer ensuite votre impression.</p>
+	<p>Par d&eacute;faut l'imprimante est param&eacute;tr&eacute;e pour imprimer en noir et blanc. Pour imprimer en couleur, cliquez sur l'imprimante <a href="#">Couleur</a> pour la s&eacute;lectionner dans le menu d&eacute;roulant des imprimantes. Lancer ensuite votre impression.</p>
 </div></article>-->

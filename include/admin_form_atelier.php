@@ -61,6 +61,14 @@ $stateAtelier = array(
 	);
 }
 
+$dureesa=array(
+	30=>"30 min",
+	60=>"1h",
+	90=>"1h30",
+	120=>"2h",
+	150=>"2h30",
+	180=>"3h");
+
 //recuperation des tarifs categorieTarif(5)=forfait atelier
 $tarifs=getTarifsbyCat(5);
 
@@ -119,14 +127,20 @@ if(FALSE==$atelier){
 	
 		<div class="col-lg-6"><label>Dur&eacute;e</label>
 		<div class="input-group">
-			<!--<input type="text" name="duree" value="<?php echo $duree;?>" class="form-control" placeholder="en min">-->
-			<select name="duree" class="form-control">
-			<option value="30" selected>30 min</option>
-			<option value="60" >1h</option>
-			<option value="90" >1h30 min</option>
-			<option value="120" >2h</option>
-			<option value="150" >2h30 min</option>
-			<option value="180" >3h</option>
+		<select name="duree" class="form-control">
+			<?php 
+			foreach ($dureesa AS $key=>$value)
+		{
+		    if ($duree == $key)
+		    {
+		        echo "<option value=\"".$key."\" selected>".$value."</option>";
+		    }
+		    else
+		    {
+		        echo "<option value=\"".$key."\">".$value."</option>";
+		    }
+		}
+		?>
     		</select>
 		</div></div>
 	</div>

@@ -4174,6 +4174,7 @@ else
 $db=opendb();
  $result = mysqli_query($db,$sql);
  closedb($db);
+ 
  if(mysqli_num_rows($result) == 0)
   {
       return "FALSE" ;
@@ -4181,7 +4182,8 @@ $db=opendb();
 else
   {
 	 $row=mysqli_fetch_array($result) ;
-      return $row["statut"];
+     return $row["statut"];
+		
   }
  
  }
@@ -5149,6 +5151,28 @@ function getBrowser()
     );
 } 
     
+    
+///fonctions pour le flux rss
+function getAtelierDuMois(){
+	$sql="SELECT *
+FROM `tab_atelier`,tab_atelier_sujet
+WHERE MONTH( `date_atelier` ) = MONTH( NOW( ) )
+AND YEAR( `date_atelier` ) = YEAR( NOW( ) ) 
+AND `tab_atelier`.id_sujet=tab_atelier_sujet.`id_sujet`";
+		$db=opendb();
+ $result = mysqli_query($db,$sql);
+  closedb($db);
+  
+  if (mysqli_num_rows($result)==0)
+  {
+      return FALSE ;
+  }
+  else
+  {
+      return $result;
+  }
+	
+}
 
 ?>
 

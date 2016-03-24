@@ -42,7 +42,7 @@
     $tel      =  trim($_POST["tel"]);
     $mail     = trim($_POST["mail"]);
     $temps    =  $_POST["temps"];
-    $loginn    =  addslashes($_POST["login"]);
+    $loginn    =  trim($_POST["login"]);
     $pass    =  $_POST["passw"];
     $status   =  $_POST["status"];
 	$csp   =  $_POST["csp"]; // ajout de la csp
@@ -146,10 +146,10 @@
                 {
                   if(FALSE== modUser($id,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$ville,$tel,$mail,$loginn,$pass,$status,$lastvisit,$csp,$equipement,$utilisation,$connaissance, $info,$epn,$newsletter) )
                   {
-				header("Location:".$urlRedirect."&mesno=0");
+											header("Location:".$urlRedirect."&mesno=0");
                   }else{
 									 
-					// header("Location:".$urlRedirect."&mesno=42");
+										header("Location:".$urlRedirect."&mesno=42");
 					}
                 }
 		
