@@ -4361,6 +4361,8 @@ function addUserinscript($date,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$p
   $telport = mysqli_real_escape_string($db,$telport);
   $mail = mysqli_real_escape_string($db,$mail);
   $info = mysqli_real_escape_string($db,$info);
+  $loginn = mysqli_real_escape_string($db,$loginn);
+  $passs = mysqli_real_escape_string($db,$passs);
   
   
 $sql="INSERT INTO `tab_inscription_user`(`id_inscription_user`, `date_inscription_user`, `nom_inscription_user`, `prenom_inscription_user`, `sexe_inscription_user`, `jour_naissance_inscription_user`, `mois_naissance_inscription_user`, `annee_naissance_inscription_user`, `adresse_inscription_user`, `quartier_inscription_user`, `code_postal_inscription`, `commune_inscription_autres`, `ville_inscription_user`, `tel_inscription_user`, `tel_port_inscription_user`, `mail_inscription_user`, `temps_inscription_user`, `login_inscription_user`, `pass_inscription_user`, `status_inscription_user`, `lastvisit_inscription_user`, `csp_inscription_user`, `equipement_inscription_user`, `utilisation_inscription_user`, `connaissance_inscription_user`, `info_inscription_user`, `id_inscription_computer`) 
