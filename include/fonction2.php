@@ -2556,9 +2556,9 @@ function getAllUserPrint()
     $sql="SELECT print_user, nom_user, prenom_user, print_date,print_credit, print_tarif, print_statut, print_debit
 		FROM tab_print, tab_user
 		WHERE id_user=print_user
-		AND TO_DAYS(NOW()) - TO_DAYS(print_date) <= 90
+		AND DATE(print_date)=CURDATE()
 		AND print_statut<2
-		order BY print_date DESC LIMIT 30";
+		order BY print_date DESC";
   
   $db=opendb();
  $result = mysqli_query($db,$sql);

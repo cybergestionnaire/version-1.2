@@ -678,7 +678,7 @@ function statCity($ville,$statut)
 //retourne les années contenues dans les ateliers et sessions
 function getYearStatAtelierSessions()
 {
-$sql="SELECT DISTINCT (YEAR( `date_AS` )) AS Y FROM `tab_AS_stat` WHERE YEAR( `date_AS` )<YEAR(NOW())";
+$sql="SELECT DISTINCT (YEAR( `date_AS` )) AS Y FROM `tab_as_stat` WHERE YEAR( `date_AS` )<YEAR(NOW())";
  $db=opendb();
   $result = mysqli_query($db,$sql);
   closedb($db);

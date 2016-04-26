@@ -110,7 +110,14 @@ if (TRUE==checkResa($_SESSION['iduser']))
 				  <td>".$row['nom_computer']."</td></tr>" ;
 		}
 		?>
-		</table></div></div>
+		</table></div>
+		<div class="box-footer">
+		 <a href="index.php?m=3"><button type="submit" class="btn btn-default">Retour aux r&eacute;servations</button></a>
+     <button type="submit" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Enregistrer</button>
+		
+		</div>
+		
+		</div>
 			
 			<?php
 	}

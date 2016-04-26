@@ -83,7 +83,7 @@ switch($_SESSION['status'])
 			<!--<li><a href="index.php?m=5"><i class="fa fa-bookmark-o" ></i><span>Mes liens favoris</span></a></li>-->
 			<li class="<?php if ($_GET["m"]=="20") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=20"><i class="fa fa-print" ></i><span>Mes impressions</span></a></li>
 			<li class="<?php if ($_GET["m"]=="6") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=6"><i class="fa fa-graduation-cap" ></i><span>Mes formations</span></a></li>
-			<li class="<?php if ($_GET["m"]=="8") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=8"><i class="fa fa-calendar"></i><span>Mes r&eacute;servations</span></a></li>
+			<li class="<?php if ($_GET["m"]=="3") { echo "active"; }else{ echo "treeview" ;} ?>"><a href="index.php?m=3"><i class="fa fa-calendar"></i><span>Mes r&eacute;servations</span></a></li>
 			<!--<li><a href="index.php?m=20"><span>Mes impressions</span></a></li>-->
 		</ul>
 		

@@ -159,6 +159,8 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 		
 		<!-- section pour les adminsitrateurs -->
 	<?php if($_SESSION["status"]=="3" OR $_SESSION["status"]=="4"){
+	
+	
 			?>
 			<a href="index.php?m=1" class="logo"><img src="img/logo/<?php echo $epnspec["logo_espace"]; ?>" class="logo"></a>
 		<!-- Header Navbar: style can be found in header.less -->
@@ -212,7 +214,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 
 				<li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="ion ion-person"></i>
                                 <span><?php $row = getUser($_SESSION["iduser"]); ?>
 								<?php echo $row["prenom_user"]; ?>&nbsp;<?php echo $row["nom_user"]; ?><i class="caret"></i></span>
                             </a>
@@ -265,7 +267,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 		 <span class="navbar-brand"><?php echo getconfigname(); ?></span>
      <div class="navbar-custom-menu">
 			<ul class="nav navbar-nav"><li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="ion ion-person"></i>
            <span><?php $row = getUser($_SESSION["iduser"]); ?>
 								<?php echo $row["prenom_user"]; ?>&nbsp;<?php echo $row["nom_user"]; ?><i class="caret"></i></span> </a>
                            

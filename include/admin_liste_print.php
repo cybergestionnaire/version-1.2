@@ -201,7 +201,7 @@ else // si pas de recherche alors affichage classique
 {
   		
 	?>
-		<div class="box box-primary"><div class="box-header"><h3 class="box-title">Les derni&egrave;res transactions </h3>
+		<div class="box box-primary"><div class="box-header"><h3 class="box-title">Les impressions du jour </h3>
 	<div class="box-tools">
 			<div class="input-group">
 			
@@ -256,6 +256,7 @@ else // si pas de recherche alors affichage classique
 			$tarif=mysqli_fetch_array(getPrixFromTarif($row['print_tarif']));
 			$prix=round(($row['print_debit'] * $tarif['donnee_tarif']),2);
 			$statut=$statutPrint[$row['print_statut']];
+			$totalprintday=$totalprintday+$prix;
 					
                         echo "<tr><td><a href=\"index.php?a=21&b=1&iduser=".$row["print_user"]."\"><button type=\"button\" class=\"btn bg-navy sm\" title=\"compte d'impression\"><i class=\"fa fa-print\"></i></button></a></td>
 							<td>".$row["nom_user"]."</td>
@@ -270,6 +271,7 @@ else // si pas de recherche alors affichage classique
 						echo "</tr>";
 						
                     }
+						echo "<tr><td></td><td></td><td></td><td></td><td>".$totalprintday." € (total jour)</td><td></td></tr>";
 			?>
 				
 			

@@ -19,8 +19,7 @@ if (TRUE == isset($_GET['month']) AND TRUE==is_numeric($_GET['month']) AND $_GET
 	   $month = date('m');
 	   $year=date('Y');
 	}
-/// condition d'affichage : 1 session dans la base !
-$atelier=getFutsessions();
+
 // chargement des valeurs pour l'epn par d&eacute;faut
 $epn=$_SESSION['idepn'];
 //si changment d'epn
@@ -29,6 +28,11 @@ $epn=$_SESSION['idepn'];
      $epn=$_POST['pepn'];
 	
   }
+	
+/// condition d'affichage : 1 session dans la base !
+$rowstatsession=statSessionAn($year,$epn);
+$nbsession=mysqli_num_rows($rowstatsession);
+
 
 // Choix de l'epn   -------------------------------------
 $espaces=getAllEPN();
@@ -96,7 +100,10 @@ if(!is_dir($dossierimg)){
  </div><!--/row-->
 
 <?php
-if (mysqli_num_rows($atelier)>0){
+
+if ($nbsession>0){
+
+
 ?>
  <div class="row"><div class="col-md-6">
 
@@ -104,7 +111,7 @@ if (mysqli_num_rows($atelier)>0){
           <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Les sessions pour l'ann&eacute;e <?php echo $year; ?></h3></div>
 	<div class="box-body">
 <?php 
-	$toutsession=mysqli_fetch_array(statSessionAn($year,$epn));
+	$toutsession=mysqli_fetch_array($rowstatsession);
 	
 	//debug($toutatelier);
 	?>
@@ -120,32 +127,6 @@ if (mysqli_num_rows($atelier)>0){
 </div><!-- /.box-body-->
 </div><!-- /.box -->
 
-
-<?php
-//liste des cat&eacute;gories croiser avec l'ann&eacute;e $categorie, $year frequentation depuis ann&eacute;e 0
-//Categories
-$nbcategories=CountCategories();
-//donnes du graphique
-$chartCat = new VerticalBarChart(425, 300);
-$dataSetCat = new XYDataSet();
-$y=$year;
-if ($nbcategories>0){
-	for ($n=1;$n<=$nbcategories;$n++){
-			$categories=mysqli_fetch_array(statSessionCategory($n,$y,$epn));
-			//debug($categories);
-			$particip=round((($categories['presents']/$categories['inscrits'])*100),2)." %";
-			$dataSetCat->addPoint(new Point($categories['label_categorie'], $particip));
-		}
-		
-		//creation du graphique
-		
-		$chartCat->setDataSet($dataSetCat);
-		$chartCat->setTitle("Participation par categories en %");
-		$chartCat->getPlot()->getPalette()->setBarColor(array(new Color(1,105,201)));
-		$chartCat->render("img/chart/".$year."/categorieSession.png");
-}	
-
-?>
 
 
 <!-- Mettre en evidence frequentation participation -->
@@ -187,14 +168,41 @@ $listeSessions=listSession($year,$epn);
 
 
 
+<?php
+//liste des cat&eacute;gories croiser avec l'ann&eacute;e $categorie, $year frequentation depuis ann&eacute;e 0
+//Categories
+$nbcategories=CountCategories();
+//donnes du graphique
+$chartCat = new VerticalBarChart(425, 300);
+$dataSetCat = new XYDataSet();
+$y=$year;
+if ($nbcategories>0){
+	for ($n=1;$n<=$nbcategories;$n++){
+			$categories=mysqli_fetch_array(statSessionCategory($n,$y,$epn));
+			//debug($categories);
+			$particip=round((($categories['presents']/$categories['inscrits'])*100),2)." %";
+			$dataSetCat->addPoint(new Point($categories['label_categorie'], $particip));
+		}
+		
+		//creation du graphique
+		
+		$chartCat->setDataSet($dataSetCat);
+		$chartCat->setTitle("Participation par categories en %");
+		$chartCat->getPlot()->getPalette()->setBarColor(array(new Color(1,105,201)));
+		$chartCat->render("img/chart/".$year."/epn".$epn."_categorieSession.png");
+}	
+
+?>
+
 <div class="col-md-6"><!-- col 2 -->
 <!-- nombre de sessions programm&eacute;es par cat&eacute;gorie, fr&eacute;quentation -->
 <div class="box box-primary">
-          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Classement des sessions par cat&eacute;gories</h3></div>
+          <div class="box-header"><i class="fa fa-bar-chart-o"></i><h3 class="box-title">Classement des sessions par cat&eacute;gories (<?php echo $year; ?>)</h3></div>
 <div class="box-body">
-<img src="img/chart/<?php echo $year?>/categorieSession.png">
+<img src="img/chart/<?php echo $year ; ?>/epn<?php echo $epn; ?>_categorieSession.png">
 </div><!-- /.box-body-->
 </div><!-- /.box -->
+
 
 <!-- detail d'une session participation -->
 <?php
@@ -250,6 +258,7 @@ $statutarray=array(
 </div></div><!-- col /row -->
 
 <!-- Classement des session par classe d'âge-->
+
 <?php
 }
 else {  echo geterror(37) ;
