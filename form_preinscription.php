@@ -96,7 +96,6 @@ if(isset($_SESSION['sauvegarde']))
     $mois     =  $_POST["mois"];
     $annee    =  $_POST["annee"];
     $adresse  =  stripslashes($_POST["adresse"]);
-     
     $ville    =  $_POST["ville"];
     
     $tel      =  $_POST["tel"];
@@ -120,7 +119,7 @@ if(isset($_SESSION['sauvegarde']))
     $mois     = "";
     $annee    =  "";
     $adresse  = "";
-    $csp="1";
+    $csp      = "14"; //non renseignee
     $ville    = 0;
     $tel      = "";
     $telport="";
@@ -184,8 +183,8 @@ echo $mess ;
 <div class="form-group"><label>Civilit&eacute; *:</label>
     
    
-    	<div class="radio icheck"><input type="radio" name="sexe" value="H">&nbsp;Monsieur
-    	<input type="radio" name="sexe" value="F">&nbsp;Madame</div>
+    	<div class="radio icheck"><input type="radio" name="sexe" value="H" <?php if ($sexe == "H") { echo "checked";} ?>>&nbsp;Monsieur
+    	<input type="radio" name="sexe" value="F" <?php if ($sexe == "F") { echo "checked";} ?>>&nbsp;Madame</div>
   
     </div>
 <div class="form-group"><label>Nom *:</label>
@@ -228,7 +227,6 @@ echo $mess ;
     </select>
 		<select name="annee">
         <?php
-				$annee=date('Y');
         for ($a=1910 ; $a<date('Y') ; $a++)
         {
             if ($a == $annee)
@@ -245,7 +243,7 @@ echo $mess ;
    </div>
 
 <div class="form-group"><label>Adresse *:</label>
-    <textarea name="adresse" class="form-control" value="<?php echo $adresse; ?>"></textarea></div>
+    <textarea name="adresse" class="form-control"><?php echo $adresse; ?></textarea></div>
 		
 <div class="form-group"><label>Ville *:</label>
 		<select name="ville" class="form-control" >
@@ -371,7 +369,7 @@ $rowprinscription=getPreinsmode();
         }
     ?>
     </div>
-<div class="form-group"><label>Information compl&eacute;mentaire ou message &agrave; l'animateur:</label><textarea name="info" class="form-control" rows="5" value="<?php echo $info; ?>"></textarea></div>
+<div class="form-group"><label>Information compl&eacute;mentaire ou message &agrave; l'animateur:</label><textarea name="info" class="form-control" rows="5"><?php echo $info; ?></textarea></div>
 
 
 
