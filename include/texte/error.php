@@ -161,5 +161,7 @@ $mes_47= "<div class=\"alert alert-success alert-dismissable\"><i class=\"fa fa-
 // form_preinscription
 $mes_48= "<div class=\"alert alert-warning alert-dismissable\"><i class=\"fa fa-warning\"></i>
           <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button><b>Attention</b> Le format du mail n'est pas valide</div>" ;
+$mes_49= "<div class=\"alert alert-warning alert-dismissable\"><i class=\"fa fa-warning\"></i>
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button><b>Attention</b> La date saisie n'est pas valide</div>" ;
       
 ?>
