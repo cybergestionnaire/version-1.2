@@ -33,7 +33,7 @@ if(isset($_POST["submit"])){
     $jour     =  $_POST["jour"];
     $mois     =  $_POST["mois"];
     $annee    =  $_POST["annee"];
-    $adresse  =  addslashes($_POST["adresse"]);
+    $adresse  =  $_POST["adresse"];
      
     $ville    =  $_POST["ville"];
     $tel      =  $_POST["tel"];
@@ -54,12 +54,12 @@ if(isset($_POST["submit"])){
 			
 		}
 	
-		if(isset($_POST["commune"])){ $commune     =  addslashes($_POST["commune"]);}else{$commune = "vide";}
+		if(isset($_POST["commune"])){ $commune     =  $_POST["commune"];}else{$commune = "vide";}
 		if(isset($_POST["codepostal"])){ $codepostal     =  trim($_POST["codepostal"]);}else{$codepostal = "vide";}
 			if(isset($_POST["pays"])){ $pays     =  trim($_POST["pays"]);}else{$pays = "vide";}
    if(isset($_POST["utilisation"])){ $utilisation     =  $_POST["utilisation"];}else{$utilisation     = 0;}
    if(isset($_POST["connaissance"])){ $connaissance     =  $_POST["connaissance"];}else{$connaissance     = 0;}
-   if(isset($_POST["info"])){  $info     =  addslashes($_POST["info"]);}else{$info     = "";}
+   if(isset($_POST["info"])){  $info     =  $_POST["info"];}else{$info     = "";}
     
     
     

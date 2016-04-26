@@ -113,12 +113,13 @@ function checkUser($log,$pass)
 {
   if ($log !="" AND $pass !="")
   {
+      $db=opendb();
+      $log = mysqli_real_escape_string($db, $log);
       $sql = "SELECT `id_user`,`login_user` , `status_user`
            FROM `tab_user`
            WHERE `login_user` = '".$log."'
            AND `pass_user` = '".passwd($pass)."'
            LIMIT 0,1 ";
-      $db=opendb();
       $result= mysqli_query($db,$sql);
       closedb($db);
       if (mysqli_num_rows($result) == 1)
