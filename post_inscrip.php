@@ -89,8 +89,10 @@ if(isset($_POST["submit"])){
       }
       else
       {
-	
-	 
+            if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                $mess = getError(48); //format mail invalide
+            }
+            else {
 				  if (FALSE == addUserinscript($date,$nom,$prenom,$sexe,$jour,$mois,$annee,$adresse,$pays,$codepostal,$commune,$ville,$tel,$telport,$mail,$temps,$loginn,$passs,$status,$csp,$equipement,$utilisation,$connaissance, $info,$epn))
                   {
             			$mess = getError(0);
@@ -103,6 +105,6 @@ if(isset($_POST["submit"])){
 	
 			
 			}
-			
+      }
 }
 ?>

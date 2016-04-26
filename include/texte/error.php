@@ -156,5 +156,10 @@ $mes_46= "<div class=\"alert alert-success alert-dismissable\"><i class=\"fa fa-
 	  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Session supprimée</div>" ;	
 //suppression d'une session par la liste
 $mes_47= "<div class=\"alert alert-success alert-dismissable\"><i class=\"fa fa-check-square\"></i>
-	  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Adhérent archivé pour statistique</div>" ;	  
+	  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Adhérent archivé pour statistique</div>" ;
+
+// form_preinscription
+$mes_48= "<div class=\"alert alert-warning alert-dismissable\"><i class=\"fa fa-warning\"></i>
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button><b>Attention</b> Le format du mail n'est pas valide</div>" ;
+      
 ?>
