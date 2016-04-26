@@ -27,16 +27,16 @@
 
  if($maj==0){
  $urlredirect="index.php";
- $bouton="Retour à l'accueil";
+ $bouton="Retour &agrave; l'accueil";
  }else{
  $urlredirect="index.php?a=61";
- $bouton="Faire la mise à jour" ;
+ $bouton="Faire la mise &agrave; jour" ;
  }
  
 ?>
 <div class="row"><div class="col-md-6">
  <div class="box box-danger"><div class="box-header"> 
-	<i class="fa fa-warning"></i><h3 class="box-title">Sauvegarde de votre base de données</h3></div>
+	<i class="fa fa-warning"></i><h3 class="box-title">Sauvegarde de votre base de donn&eacute;es</h3></div>
 	<div class="box-body">
 	
 	<?php
@@ -50,12 +50,12 @@ $bdd=backupbdd();
 		
 
 if ($bdd==TRUE){
-	echo '<p>* La base de données a été sauvegardée sur votre serveur. </p><br>
-				<p>Pour récupérer le fichier généré, ouvrez le dossier /sql de l\'application</p>
+	echo '<p>* La base de donn&eacute;es a &eacute;t&eacute; sauvegard&eacute;e sur votre serveur. </p><br>
+				<p>Pour r&eacute;cup&eacute;rer le fichier g&eacute;n&eacute;r&eacute;, ouvrez le dossier /sql de l\'application</p>
 				';
 }else{
-		echo 'Impossible de faire la sauvegarde, veuillez vérifier que votre base est accessible et ouverte en écriture !';
-		$error.="mise à jour impossible, base sql inaccessible" ;
+		echo 'Impossible de faire la sauvegarde, veuillez v&eacute;rifier que votre base est accessible et ouverte en &eacute;criture !';
+		$error.="mise &agrave; jour impossible, base sql inaccessible" ;
 	}
 
 if($error!=""){		gFilelog($error,"savebdd_".date('Y-m-d').".txt");	}
