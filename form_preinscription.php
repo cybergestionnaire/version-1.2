@@ -119,6 +119,7 @@ if(isset($_SESSION['sauvegarde']))
     $mois     = "";
     $annee    =  "";
     $adresse  = "";
+    $csp      = "14"; //non renseignee
     $ville    = 0;
     $tel      = "";
     $telport="";
