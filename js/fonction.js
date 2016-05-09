@@ -120,6 +120,10 @@ function readData(sData)
 
 var timer=setInterval("request(readData)", 5000); // répète toutes les 5s
 
+window.onload = function(e) {
+    request(readData);
+};
+
 //action (affectation, libération, etc...) de la console page admin_console.php
 function ActionConsole() 
 {

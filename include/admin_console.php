@@ -40,31 +40,33 @@
     <form method="post" action="index.php?a=45">
         <tr class="list_salle">
             <td align="right" colspan="4">Salle : <select name="numsalle">
-            <option> --- </option>
-	    <?php
-		$resultsalle=getAllSalle();
-		$nbsalle=mysqli_num_rows($resultsalle);
-	    for($i=1; $i<=$nbsalle; $i++)
-		{
-		$rowsalle = mysqli_fetch_array($resultsalle);
-			
-		    echo "<option value=\"".$rowsalle["id_salle"]."\">".$rowsalle["nom_salle"]."</option>";
-	    }
-	    ?>
+        <?php
+        if (isset($_POST['numsalle'])) {
+            $premiereSalleAnim = $_POST['numsalle'];
+        } else {
+            // recuperation de la premiere salle geree par l'animateur
+            $premiereSalleAnim = 1 ; // valeur par defaut pour l'initialisation. Posera probleme s'il n'y a pas de salle avec l'id = 1
+            $resultSallesAnim = getSallesbyAnim($_SESSION["iduser"]);
+            if (count($resultSallesAnim) > 0) {
+                $premiereSalleAnim = $resultSallesAnim[0];
+            }
+        }        
+        
+        // creation de la liste des salles
+        $resultsalle=getAllSalle();
+        $nbsalle=mysqli_num_rows($resultsalle);
+        for($i=1; $i<=$nbsalle; $i++)
+        {
+            $rowsalle = mysqli_fetch_array($resultsalle);
+            if ( $rowsalle["id_salle"] == $premiereSalleAnim ) {
+                echo "<option value=\"".$rowsalle["id_salle"]."\" selected >".$rowsalle["nom_salle"]."</option>";
+            } else {
+                echo "<option value=\"".$rowsalle["id_salle"]."\">".$rowsalle["nom_salle"]."</option>";
+            }
+        }
+        ?>
     </select><input type="submit" value="Ok" onclick="request(readData);"></td></tr>
     </form></table>
-<?php 
-	if (FALSE!=isset($_POST['numsalle']) AND FALSE!=is_numeric($_POST['numsalle']))
-    {
-		/*echo '<script type="text/javascript">window.alert("'.$_SESSION['numsalle'].'");</script>';*/
-        //$_SESSION['numsalle']=$_POST['numsalle'] ;
-		
-		//si une salle est demandé
-		if($_POST['numsalle']!=0)
-		{
-			echo "<input type=\"hidden\" id=\"numconsole\" value=\"".$_POST['numsalle']."\"/>";
-			echo "<div id=\"consoleafficher\" align=\"center\"><img src=\"img/ajax-loader.gif\"></div>";
-			echo "<div id=\"actionconsoleafficher\" align=\"center\"></div>";
-    	}
-	}
-?>
+    <input type="hidden" id="numconsole" value="<?php echo $premiereSalleAnim ?>">
+    <div id="consoleafficher" align="center"><img src="img/ajax-loader.gif"></div>
+    <div id="actionconsoleafficher" align="center"></div>";

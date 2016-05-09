@@ -23,7 +23,7 @@
 
  include/console.php V0.1
 */
-header("Content-Type: text/html; charset=iso-8859-1");
+header("Content-Type: text/html; charset=UTF-8");
 //header("Content-Type: text/plain");
 
     include ("../connect_db.php");
@@ -73,11 +73,13 @@ header("Content-Type: text/html; charset=iso-8859-1");
 			$rowsalle=mysqli_fetch_array($resultsalle) ;
 			$nbpost = mysqli_num_rows($resultpost);
 			//$nbpost  = $resultpost->num_rows;
-							
+?>
+<div class="box box-solid box-warning">
+	<div class="box-header"><h3 class="box-title"><?php echo $rowsalle['nom_salle'] ?></h3></div>
+	<div class="box-body no-padding">
+    <table class="table">
+<?php
 			echo "<form name=\"formactionconsole\">
-				<table width=\"100%\">
-				<tr class=\"list_title\">
-				<td colspan=\"4\" align=\"center\" bgcolor=\"#00D2D2\">".$rowsalle['nom_salle']."</td></tr>
 				<tr class=\"list_title\">
 				<td width=\"100\">Nom Poste</td><td width=\"100\">&Eacute;tat</td><td width=\"100\">Affectation</td><td width=\"100\">Options</td></tr>";
 				if ($nbpost > 0)
@@ -479,6 +481,10 @@ header("Content-Type: text/html; charset=iso-8859-1");
 								}
 							}
 							echo "</table><br /></form>";
+?>
+</table>
+</div>
+<?php
 						}
 						else
 						{

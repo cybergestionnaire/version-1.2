@@ -466,7 +466,7 @@ if ($_SESSION["status"]==4)
 	 case 45:
          $titre="Console";
          $aide="Gerer vos postes";
-        include ("include/console.php");
+        //include ("include/console.php");
          $inc="admin_console.php";
     break;
 	 case 46:
