@@ -104,7 +104,7 @@ function request(callback) {
 		}
 	};
 	var numsalle = encodeURIComponent(document.getElementById('numconsole').value);
-	
+
 	if(numsalle!=0)
 	{
 		xhr.open("POST","include/console.php",true);
@@ -119,6 +119,10 @@ function readData(sData)
 }
 
 var timer=setInterval("request(readData)", 5000); // répète toutes les 5s
+
+window.onload = function(e) {
+    request(readData);
+};
 
 //action (affectation, libération, etc...) de la console page admin_console.php
 function ActionConsole() 
@@ -154,4 +158,35 @@ function ActionConsole()
    //alert(action);
 	xhr.open("GET","include/actionconsole.php?" + action,true);
 	xhr.send(null);
+}
+
+function ActionConsole2(callback, action) {
+    //alert("callback = " + callback + ", action = " + action);
+    
+    var xhr;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xhr=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xhr.onreadystatechange = function() 
+    {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+            //alert(xhr.responseText);
+            callback(xhr.responseText);
+        }
+    };
+
+    //alert(action);
+    xhr.open("GET","include/actionconsole.php?" + action,true);
+    xhr.send(null);
+}
+function affichageAction(sData) {
+    //alert("sData = " + sData);
+    document.getElementById("actionconsoleafficher").innerHTML=sData;
+    request(readData);
 }
