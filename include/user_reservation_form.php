@@ -36,10 +36,21 @@ $epn=$_GET["idepn"];
       $step1 = 'step';
       $step2 = 'step';
       $step3 = 'step';
+      if (isset($_GET["debut"]) and !isset($step)) { // cas de l'affectation depuis la console
+          $_SESSION['resa']['idcomp']    = $_GET['idcomp']; 
+          $_SESSION['resa']['nomcomp']   = $_GET['nomcomp'] ;
+          $_SESSION['resa']['materiel']  = getMateriel($_GET['idcomp']);
+          $_SESSION['resa']['date']      = $_GET["date"];
+          $_SESSION['debut']             = $_GET["debut"];
+          $step = 2;
+      }
+      
       
       //  affichage des etapes
       $row    = getHoraire( date("N",strtotime($_SESSION['resa']['date'])),$epn ) ;
-     
+      
+      
+      
       switch($step)
       {
           

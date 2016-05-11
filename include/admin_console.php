@@ -1,10 +1,3 @@
-<style type="text/css">
-#consoleafficher
-{
-	height:500pt;
-	width:700pt;
-} 
-</style> 
 <?php
 /*
      This file is part of Cybermin.
@@ -24,6 +17,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
  2006 Namont Nicolas
+ 2016 Tariel Christophe
  
 
  include/admin_console.php V0.1
@@ -36,8 +30,8 @@
 	//}
 
 ?>
-<table width="100%">
-    <form method="post" action="index.php?a=45">
+<form method="post" action="index.php?a=45">
+    <table width="100%">
         <tr class="list_salle">
             <td align="right" colspan="4">Salle : <select name="numsalle">
         <?php
@@ -47,11 +41,12 @@
             // recuperation de la premiere salle geree par l'animateur
             $premiereSalleAnim = 1 ; // valeur par defaut pour l'initialisation. Posera probleme s'il n'y a pas de salle avec l'id = 1
             $resultSallesAnim = getSallesbyAnim($_SESSION["iduser"]);
-            if (count($resultSallesAnim) > 0) {
-                $premiereSalleAnim = $resultSallesAnim[0];
+            
+            $sallesAnim = explode(";", $resultSallesAnim[0]);
+            if (count($sallesAnim) > 0) {
+                $premiereSalleAnim = $sallesAnim[0];
             }
         }        
-        
         // creation de la liste des salles
         $resultsalle=getAllSalle();
         $nbsalle=mysqli_num_rows($resultsalle);
@@ -66,7 +61,8 @@
         }
         ?>
     </select><input type="submit" value="Ok" onclick="request(readData);"></td></tr>
-    </form></table>
+    </table>
+</form>
     <input type="hidden" id="numconsole" value="<?php echo $premiereSalleAnim ?>">
     <div id="consoleafficher" align="center"><img src="img/ajax-loader.gif"></div>
-    <div id="actionconsoleafficher" align="center"></div>";
+    <div id="actionconsoleafficher" align="center"></div>

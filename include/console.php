@@ -19,479 +19,201 @@
  2006 Namont Nicolas
  
  2014 SAINT MARTIN Brice
- 
+ 2016 Tariel Christophe
 
  include/console.php V0.1
 */
 header("Content-Type: text/html; charset=UTF-8");
 //header("Content-Type: text/plain");
 
+    date_default_timezone_set('Europe/Paris');
     include ("../connect_db.php");
     
     /*if ($port=="" OR FALSE==is_numeric($port))
-	{
+    {
         $port="3306" ;
-	}*/
-	
+    }*/
+    
     
     /*creation de la liaison avec la base de donnees*/
     $db = mysqli_connect($host,$userdb,$passdb,$database ) ;
-	/* Vérification de la connexion */
-	if (mysqli_connect_errno()) 
-	{
-    	return false;
+    /* VÃ©rification de la connexion */
+    if (mysqli_connect_errno()) 
+    {
+        return false;
     }
-	else
-	{
-		$salle=$_POST['id_salle'];
-					
-		//$resultpost = getConsole($salle);
-		//récupération de la liste d'ordinateur dans la salle demandé
-		$sql="SELECT `nom_computer`, `id_computer`, `adresse_ip_computer`,`date_lastetat_computer`, `lastetat_computer`, `usage_computer` FROM tab_computer WHERE id_salle=".$salle." ORDER BY nom_computer;";
-  	$resultpost = mysqli_query($db, $sql);
-		//$resultpost = $db->query($sql);
-		
-		//récupération des informations d'occupation de poste dans la salle demandé			
-		$sql="SELECT `nom_computer`, `id_computer`, `nom_user`, `prenom_user`, `status_user`, `date_resa`, `debut_resa` FROM `tab_user`, `tab_computer`, `tab_resa` WHERE `tab_resa`.`id_user_resa`=`tab_user`.`id_user` AND `tab_resa`.`id_computer_resa`=`tab_computer`.`id_computer` AND `tab_computer`.`id_salle`='".$salle."' AND `tab_resa`.`status_resa`='0' ORDER BY `nom_computer`;";
-  	$result = mysqli_query($db, $sql);
-		//$result = $db->query($sql); 
-		
-		//récupération des informations de la salle			
-		$sql="SELECT `id_salle`, `nom_salle`, `id_espace`, `comment_salle` FROM tab_salle WHERE id_salle=".$salle.";";
-  	$resultsalle = mysqli_query($db, $sql);
-		//$resultsalle = $db->query($sql);
-					
-  		mysqli_close ($db) ;
-					
-		if (FALSE == $result || FALSE == $resultpost || FALSE == $resultsalle)
-		{
-						//echo getError(1);
-			echo "<div class=\"error\">Impossible de r&eacute;cup&eacute;rer les informations sur l'occupation des postes</div>";
-		}
-		else  // affichage du resultat
-		{
-			$rowsalle=mysqli_fetch_array($resultsalle) ;
-			$nbpost = mysqli_num_rows($resultpost);
-			//$nbpost  = $resultpost->num_rows;
+    else
+    {
+        $salle=$_POST['id_salle'];
+                    
+        //$resultPostes = getConsole($salle);
+        //rÃ©cupÃ©ration de la liste d'ordinateur dans la salle demandÃ©
+        $sql="SELECT `nom_computer`, `id_computer`, `adresse_ip_computer`,`date_lastetat_computer`, `lastetat_computer`, `usage_computer` FROM tab_computer WHERE id_salle=".$salle." ORDER BY nom_computer;";
+        $resultPostes = mysqli_query($db, $sql);
+        //$resultPostes = $db->query($sql);
+        
+        //rÃ©cupÃ©ration des informations d'occupation de poste dans la salle demandÃ©         
+        $sql="SELECT `nom_computer`, `id_computer`, `nom_user`, `prenom_user`, `status_user`, `date_resa`, `debut_resa` FROM `tab_user`, `tab_computer`, `tab_resa` WHERE `tab_resa`.`id_user_resa`=`tab_user`.`id_user` AND `tab_resa`.`id_computer_resa`=`tab_computer`.`id_computer` AND `tab_computer`.`id_salle`='".$salle."' AND `tab_resa`.`status_resa`='0' ORDER BY `nom_computer`;";
+        $resultInfos = mysqli_query($db, $sql);
+        //$resultInfos = $db->query($sql); 
+        
+        //rÃ©cupÃ©ration des informations de la salle         
+        $sql="SELECT `id_salle`, `nom_salle`, `id_espace`, `comment_salle` FROM tab_salle WHERE id_salle=".$salle.";";
+        $resultSalles = mysqli_query($db, $sql);
+        //$resultSalles = $db->query($sql);
+                    
+        mysqli_close ($db) ;
+                    
+        if (FALSE == $resultInfos || FALSE == $resultPostes || FALSE == $resultSalles)
+        {
+                        //echo getError(1);
+            echo "<div class=\"error\">Impossible de r&eacute;cup&eacute;rer les informations sur l'occupation des postes</div>";
+        }
+        else  // affichage du resultat
+        {
+            $rowSalles=mysqli_fetch_array($resultSalles) ;
+            $nbPostes = mysqli_num_rows($resultPostes);
+            //$nbPostes  = $resultPostes->num_rows;
 ?>
 <div class="box box-solid box-warning">
-	<div class="box-header"><h3 class="box-title"><?php echo $rowsalle['nom_salle'] ?></h3></div>
-	<div class="box-body no-padding">
+    <div class="box-header"><h3 class="box-title"><?php echo $rowSalles['nom_salle'] ?></h3></div>
+    <div class="box-body no-padding">
+    <form name="formactionconsole">
     <table class="table">
+        <tr class="list_title"><td>Nom Poste</td><td>&Eacute;tat</td><td>Affectation</td><td>Options</td></tr>
 <?php
-			echo "<form name=\"formactionconsole\">
-				<tr class=\"list_title\">
-				<td width=\"100\">Nom Poste</td><td width=\"100\">&Eacute;tat</td><td width=\"100\">Affectation</td><td width=\"100\">Options</td></tr>";
-				if ($nbpost > 0)
-				{
-					$row = mysqli_fetch_array($result) ;
-					for ($i=1; $i<=$nbpost; $i++)
-					{
-						$rowpost = mysqli_fetch_array($resultpost) ;
-						if($rowpost["id_computer"] == $row["id_computer"])
-						{
-							//poste occupé
-							$dateresa = $row["date_resa"];
-							$heureresa = $row["debut_resa"];
-							$datereel = date("Y-m-d");
-							$heure = date("H");
-							$minute= date("i");
-							$heurereel = $heure*60+$minute;
-							$j=0;
-									
-							$nbSecondes= 60*60*24;
-				
-							$debut_ts = strtotime($dateresa);
-							$fin_ts = strtotime($datereel);
-							$diff = $fin_ts - $debut_ts;
-							$diffjour=round($diff / $nbSecondes);
-									
-							//jour meme
-							if($diffjour==0)
-							{
-								$minutepasser=$heurereel-$heureresa;
-								if($minutepasser ==0)
-								{
-									$heures = 0;
-									$minutes= 0;
-									$sec =1;
-								}
-								else if($minutepasser < 60)
-								{
-									$heures = 0;
-									$minutes= $minutepasser;
-									$sec =0;
-								}
-										else if($minutepasser >= 60)
-										{
-											$heures  = floor(($minutepasser)/60);
-											$minutes = $minutepasser-($heures*60);
-											$sec =0;
-										}
-										// creation de la variable time //
-										if ($minutes == 0)
-										{
-											if($sec==1)
-											{
-												$time = "<1mm" ;
-											}
-											else
-											{
-												$time = $heures."h" ;
-											}
-										}
-										else
-										{
-											if ($heures == 0)
-											{
-												$time = $minutes."mn" ;
-											}
-											else
-											{
-												if($minutes<10)
-												{
-													$minutes2='0'.$minutes;
-												}
-												else
-												{
-													$minutes2=$minutes;
-												}
-												$time = $heures."h".$minutes2;
-											}
-										}
-									}
-									//jour suivant
-									else if($diffjour==1)
-									{
-										if($heurereel<$heureresa)	//inferieur a 24h
-										{									
-											$minutepassed=1439-$heureresa;		//24h-heure resa
-											$minutepasser=$minutepassed+$heurereel;
-											if($minutepasser < 60)
-											{
-												$heures = 0;
-												$minutes= $minutepasser;
-											}
-											else
-											{
-												$heures  = floor(($minutepasser)/60);
-												$minutes = $minutepasser-($heures*60);
-											}
-											// creation de la variable time //
-											if ($minutes == 0)
-											{
-												$time = $heures."h" ;
-											}
-											else
-											{
-												if ($heures == 0)
-												{
-													$time = $minutes."mn" ;
-												}
-												else
-												{
-													if($minutes<10)
-													{
-														$minutes2='0'.$minutes;
-													}
-													else
-													{
-														$minutes2=$minutes;
-													}
-													$time = $heures."h".$minutes2;
-												}
-											}
-										}
-										else if($heurereel>=$heureresa)//supérieur à 24h
-										{
-											$heurepasser=24;	//24h
-										
-											$minutepasser=$heurereel-$heureresa;
-											if($minutepasser < 60)
-											{
-												$heures = 0;
-												$minutes= $minutepasser;
-											}
-											else
-											{
-												$heures  = floor(($minutepasser)/60);
-												$minutes = $minutepasser-($heures*60);
-											}
-											$tempsheurepasser=$heurepasser+$heures;
-											// creation de la variable time //
-											if ($minutes == 0)
-											{
-												$time = $tempsheurepasser."h" ;
-											}
-											else
-											{
-												if ($tempsheurepasser == 0)
-												{
-													$time = $minutes."mn" ;
-												}
-												else
-												{
-													if($minutes<10)
-													{
-														$minutes2='0'.$minutes;
-													}
-													else
-													{
-														$minutes2=$minutes;
-													}
-													$time = $tempsheurepasser."h".$minutes2;
-												}
-											}
-										}
-									}
-									//jour supérieur à 1
-									else if($diffjour>1)
-									{
-										if($heurereel<=$heureresa)	//si inferieur à x jour complet
-										{
-											$diffjour--;
-											$heurepasser=$diffjour*24;
-										
-											$minutepassed=1439-$heureresa;
-											$minutepasser=$minutepassed+$heurereel;
-											if($minutepasser < 60)
-											{
-												$heures = 0;
-												$minutes= $minutepasser;
-											}
-											else
-											{
-												$heures  = floor(($minutepasser)/60);
-												$minutes = $minutepasser-($heures*60);
-											}
-											$tempsheurepasser=$heurepasser+$heures;
-											// creation de la variable time //
-											if ($minutes == 0)
-											{
-												$time = $tempsheurepasser."h" ;
-											}
-											else
-											{
-												if ($tempsheurepasser == 0)
-												{
-													$time = $minutes."mn" ;
-												}
-												else
-												{
-													if($minutes<10)
-													{
-														$minutes2='0'.$minutes;
-													}
-													else
-													{
-														$minutes2=$minutes;
-													}
-													$time = $tempsheurepasser."h".$minutes2;
-												}
-											}
-										}
-										else if($heurereel>=$heureresa)	//si superieur a x jours complet
-										{
-											//$jourpasser=$datereel-$dateresanum;//48
-											$heurepasser=$diffjour*24;
-											//$heurepasser=24;
-										
-											$minutepasser=$heurereel-$heureresa;
-											if($minutepasser < 60)
-											{
-												$heures = 0;
-												$minutes= $minutepasser;
-											}
-											else
-											{
-												$heures  = floor(($minutepasser)/60);
-												$minutes = $minutepasser-($heures*60);
-											}
-											$tempsheurepasser=$heurepasser+$heures;
-											// creation de la variable time //
-											if ($minutes == 0)
-											{
-												$time = $tempsheurepasser."h" ;
-											}
-											else
-											{
-												if ($tempsheurepasser == 0)
-												{
-													$time = $minutes."mn" ;
-												}
-												else
-												{
-													if($minutes<10)
-													{
-														$minutes2='0'.$minutes;
-													}
-													else
-													{
-														$minutes2=$minutes;
-													}
-													$time = $tempsheurepasser."h".$minutes2;
-												}
-											}
-										}
-									}
-									if($row["status_user"]==1)
-									{
-										echo"<tr class=\"list_console_occup\">
-											<td>".$row["nom_computer"]."</td>
-											<td>Occup&eacute;</td>
-											<td>".$row["nom_user"]." ".$row["prenom_user"]." (".$time.")</td>
-											<td align=\"center\"><select name=\"option_console\" onchange=\"ActionConsole();\">
-											<option value=\"0\">-----</option>
-											<option value=\"action=2&id_poste=".$rowpost["id_computer"]."\">Liberation</option>
-											</select>
-											</td></tr>";
-									}
-									else if($row["status_user"]==3)
-									{
-										echo"<tr class=\"list_console_occup\">
-											<td>".$row["nom_computer"]."</td>
-											<td>Occup&eacute;</td>
-											<td>".$row["nom_user"]." ".$row["prenom_user"]." (Animateur)</td>
-											<td align=\"center\"></td></tr>";
-									}
-									else if($row["status_user"]==4)
-									{
-										echo"<tr class=\"list_console_occup\">
-											<td>".$row["nom_computer"]."</td>
-											<td>Occup&eacute;</td>
-											<td>".$row["nom_user"]." ".$row["prenom_user"]." (Administrateur)</td>
-											<td align=\"center\"></td></tr>";
-									}
-									$row = mysqli_fetch_array($result) ;	
-								}
-								else if($rowpost["id_computer"] != $row["id_computer"])
-								{	
-									//poste libre
-									$datelastetat = $rowpost["date_lastetat_computer"];
-									$heurelastetat = $rowpost["lastetat_computer"];
-									$datereel = date("Y-m-d");
-									$heure = date("H");
-									$minute= date("i");
-									$seconde= date("s");
-									$heurereel = $heure*3600;
-									$minutereel= $minute*60;
-									$tempsreel= $heurereel+$minutereel+$seconde;
-									$j=0;
-									
-									$nbSecondes= 60*60*24;
-				
-									$debut_ts = strtotime($datelastetat);
-									$fin_ts = strtotime($datereel);
-									$diff = $fin_ts - $debut_ts;
-									$diffjour=round($diff / $nbSecondes);
-									
-									//jour meme
-									if($diffjour==0)
-									{
-										$tempsdiff=$tempsreel-$heurelastetat;
-										if($tempsdiff >= 15)	//ordinateur éteint ou logciel non lancé (teste avec marge de 15 secondes).
-										{
-											if($rowpost["usage_computer"]==1)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>&Eacute;teint</td>
-													<td>-</td>
-													<td align=\"center\"><select name=\"option_console\" onchange=\"affect_user_computer();\">
-													<option value=\"0\">-----</option>
-													<option value=\"id_poste=".$rowpost["id_computer"]."\">Affectation</option>
-													</select>
-													</td></tr>";
-											}
-											else if($rowpost["usage_computer"]==2)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>&Eacute;teint</td>
-													<td>-</td>
-													<td align=\"center\"></td>
-													</tr>";
-											}
-											/*echo "<tr class=\"list\">
-												<td>".$rowpost["nom_computer"]."</td>
-												<td>&Eacute;teint</td>
-												<td>-</td>
-												<td align=\"center\"><select name=\"option_console\">
-												<option value=\"0\">-----</option>
-												</select>
-												</td></tr>";*/
-										}
-										else	//ordinateur allumé et logiciel lancé
-										{
-											if($rowpost["usage_computer"]==1)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>Libre</td>
-													<td>-</td>
-													<td align=\"center\"><select name=\"option_console\" onchange=\"affect_user_computer();\">
-													<option value=\"0\">-----</option>
-													<option value=\"id_poste=".$rowpost["id_computer"]."\">Affectation</option>
-													</select>
-													</td></tr>";
-											}
-											else if($rowpost["usage_computer"]==2)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>Libre</td>
-													<td>-</td>
-													<td align=\"center\"></td>
-													</tr>";
-											}
-										}
-									}
-									else 	//ordinateur éteint ou logiciel non lancé
-									{
-											if($rowpost["usage_computer"]==1)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>&Eacute;teint</td>
-													<td>-</td>
-													<td align=\"center\"><select name=\"option_console\" onchange=\"affect_user_computer();\">
-													<option value=\"0\">-----</option>
-													<option value=\"id_poste=".$rowpost["id_computer"]."\">Affectation</option>
-													</select>
-													</td></tr>";
-											}
-											else if($rowpost["usage_computer"]==2)
-											{
-												echo "<tr class=\"list\">
-													<td>".$rowpost["nom_computer"]."</td>
-													<td>&Eacute;teint</td>
-													<td>-</td>
-													<td align=\"center\"></td>
-													</tr>";
-											}
-										/*echo "<tr class=\"list\">
-											<td>".$rowpost["nom_computer"]."</td>
-											<td>&Eacute;teint</td>
-											<td>-</td>
-											<td align=\"center\"><select name=\"option_console\">
-											<option value=\"0\">-----</option>
-											</select>
-											</td></tr>";*/
-									}
-								}
-							}
-							echo "</table><br /></form>";
+            if ($nbPostes > 0) // il y a des postes dans la salle demandee
+            {
+                $rowInfos = mysqli_fetch_array($resultInfos) ;
+                for ($i=1; $i<=$nbPostes; $i++)
+                {
+                    $rowPostes = mysqli_fetch_array($resultPostes) ;
+                    if($rowPostes["id_computer"] == $rowInfos["id_computer"])  //si un poste a des infos de reservation, alors il est occupe
+                    {
+                        //poste occupÃ©
+
+                        
+                        $heureresa = $rowInfos["debut_resa"];
+                        $heure = floor($heureresa / 60);
+                        $minute = $heureresa - $heure * 60;
+                        if ($minute < 10) {
+                            $temp = $rowInfos["date_resa"]." ".$heure.":0".$minute;
+                        } else {
+                            $temp = $rowInfos["date_resa"]." ".$heure.":".$minute;
+                        }                                
+                        $dateresa = date_create_from_format("Y-m-d H:i",$temp);
+                        $diff = time() - date_timestamp_get($dateresa); // difference en secondes
+                        
+                        if ($diff < 60) {
+                            $time = "<1mm" ;
+                        }
+                        else if ($diff < 3600) {
+                            $minutes = floor($diff / 60);
+                            $time = $minutes."mn" ;
+                        }
+                        else {
+                            $heures = floor($diff / 3600);
+                            $minutes = floor(($diff - $heures * 3600) / 60);
+                            if ($minutes < 10) {
+                                $time = $heures."h0".$minutes ;
+                            } else {
+                                $time = $heures."h".$minutes ;
+                            }                                
+                        }
 ?>
-</table>
+        <tr class="list_console_occup">
+            <td><?php echo $rowInfos["nom_computer"] ?></td>
+            <td>Occup&eacute;</td>
+            <td><?php echo $rowInfos["nom_user"] ?> <?php echo $rowInfos["prenom_user"] ?> 
+<?php
+                        if($rowInfos["status_user"]==1) {
+                            echo "(".$time.")"; 
+                        }
+                        else if($rowInfos["status_user"]==3) {
+                            echo "(Animateur)";
+                        }
+                        else if($rowInfos["status_user"]==4)
+                        {
+                            echo "(Administrateur)";                                  
+                        }
+?>
+            </td>
+            <td>
+            <?php if($rowInfos["status_user"]==1) { ?>
+                <a class="btn btn-danger" href="#" onClick="ActionConsole2(affichageAction,'action=2&id_poste=<?php echo $rowPostes["id_computer"] ?>')">Lib&eacute;ration</a>
+            <?php } ?>
+            </td>
+        </tr>
+<?php                  
+                        $rowInfos = mysqli_fetch_array($resultInfos) ;    
+                    }
+                    else
+                    {   
+                        //poste libre
+                        $heurelastetat = $rowPostes["lastetat_computer"]; // en secondes depuis 0:00:00
+                        $heure = floor($heurelastetat / 3600);
+                        $minute = floor(($heurelastetat - $heure * 3600) / 60 );
+                        if ($minute < 10) {
+                            $temp = $rowPostes["date_lastetat_computer"]." ".$heure.":0".$minute;
+                        } else {
+                            $temp = $rowPostes["date_lastetat_computer"]." ".$heure.":".$minute;
+                        }
+                        $datelastetat = date_create_from_format("Y-m-d H:i",$temp);
+                        $diff = time() - date_timestamp_get($datelastetat); // difference en secondes
+                        if ($diff < 60) {
+                            $time = "<1mm" ;
+                        }
+                        else if ($diff < 3600) {
+                            $minutes = floor($diff / 60);
+                            $time = $minutes."mn" ;
+                        }
+                        else {
+                            $heures = floor($diff / 3600);
+                            $minutes = floor(($diff - $heures * 3600) / 60);
+                            if ($minutes < 10) {
+                                $time = $heures."h0".$minutes ;
+                            } else {
+                                $time = $heures."h".$minutes ;
+                            }                                
+                        }
+?>
+        <tr class="list">
+            <td><?php echo $rowPostes["nom_computer"] ?></td>
+            <td><?php if ($diff < 15) { ?>Libre<?php } else { ?>&Eacute;teint (depuis  <?php echo $time ?> ) <?php } ?></td>
+            <td>-</td>
+            <td>
+<?php 
+                if (($rowPostes["usage_computer"]==1) && ($diff < 15)) { 
+
+                    $id_poste = $rowPostes["id_computer"];
+                    $db = mysqli_connect($host,$userdb,$passdb,$database ) ;
+                    $sql = "SELECT tab_computer.nom_computer, tab_salle.id_espace FROM tab_computer, tab_salle WHERE tab_salle.id_salle = tab_computer.id_salle and tab_computer.id_computer = $id_poste";
+                    
+                    $result = mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result) ;
+
+                    $epn = $row["id_espace"] ;
+                    $nomcomp = $row["nom_computer"];
+                    $dateresa = date("Y-m-d");
+                    $debutresa = date("G")*60 + intval(date("i"));    
+                    mysqli_close ($db) ;
+?>
+                <a class="btn btn-success" href="index.php?m=7&idepn=<?php echo $epn ?>&idcomp=<?php echo $id_poste ?>&nomcomp=<?php echo $nomcomp ?>&date=<?php echo $dateresa ?>&debut=<?php echo $debutresa ?>">Affectation</button>
+            <?php } ?>
+            </td>
+        </tr>
+<?php
+                    }
+                }
+?>
+</table></form>
 </div>
 <?php
-						}
-						else
-						{
-							echo "</table></form>
-							<table width=\"100%\">
-							<tr class=\"list\" align=\"center\"><td>Aucun poste n'est pr&eacute;sent dans cette salle</td> </tr></table>";
-						}
-					}
-	}
+            } else {
+?>
+<table width="100%"><tr class="list" align="center"><td>Aucun poste n'est pr&eacute;sent dans cette salle</td> </tr></table>
+<?php
+           }
+        }
+    }
 ?>
