@@ -36,10 +36,21 @@ $epn=$_GET["idepn"];
       $step1 = 'step';
       $step2 = 'step';
       $step3 = 'step';
+      if (isset($_GET["debut"]) and !isset($step)) { // cas de l'affectation depuis la console
+          $_SESSION['resa']['idcomp']    = $_GET['idcomp']; 
+          $_SESSION['resa']['nomcomp']   = $_GET['nomcomp'] ;
+          $_SESSION['resa']['materiel']  = getMateriel($_GET['idcomp']);
+          $_SESSION['resa']['date']      = $_GET["date"];
+          $_SESSION['debut']             = $_GET["debut"];
+          $step = 2;
+      }
+      
       
       //  affichage des etapes
       $row    = getHoraire( date("N",strtotime($_SESSION['resa']['date'])),$epn ) ;
-     
+      
+      
+      
       switch($step)
       {
           
@@ -125,7 +136,7 @@ $epn=$_GET["idepn"];
               {
                     $searchuser = $_POST['adh'] ;
                     $step .= '
-					<p class="lead">Entrez un adh&eacute;rent (nom ou numéro de carte):</p> 
+					<p class="lead">Entrez un adh&eacute;rent (nom ou num&eacute;ro de carte):</p> 
 					<div class="input-group input-group-sm">  <input type="text" name="adh" class="form-control">
 					<span class="input-group-btn"><button type="submit" value="Rechercher" name="adh_submit" class="btn btn-default btn-flat"><i class="fa fa-search"></i></button></span>
 					</div>
@@ -160,7 +171,7 @@ $epn=$_GET["idepn"];
 							if($row['status_user']==2){
 								$class="text-muted" ;
 									if ($dateadhesion<$aujourdhui){	
-										$info='<small class="badge bg-blue" data-toggle="tooltip" title="adhesion à renouveller"><i class="fa fa-info"></i></small> ';
+										$info='<small class="badge bg-blue" data-toggle="tooltip" title="adh&eacute;sion &agrave; renouveller"><i class="fa fa-info"></i></small> ';
 									} else{ 
 										$info='<small class="badge bg-blue" data-toggle="tooltip" title="compte inactif"><i class="fa fa-info"></i></small>';
 									}
@@ -175,7 +186,7 @@ $epn=$_GET["idepn"];
 								<td><input type=\"hidden\" value=\"".$row["id_user"]."\" name=\"choose\"/>
 									<button type=\"submit\" class=\"btn btn-success sm\" value=\"S&eacute;lectionner\" name=\"choose_adh\"/> <i class=\"fa fa-check\"></i></button></td>
                               
-								<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\" data-toggle=\"tooltip\" title=\"Fiche adhérent\"><span class=".$class.">".$row["nom_user"]." ".$row["prenom_user"]."</span></a></td>
+								<td><a href=\"index.php?a=1&b=2&iduser=".$row["id_user"]."\" data-toggle=\"tooltip\" title=\"Fiche adh&eacute;rent\"><span class=".$class.">".$row["nom_user"]." ".$row["prenom_user"]."</span></a></td>
                                 <td><span class=".$class.">".$row["login_user"]."</span></td>
 								<td>".getTime($temps['total']-$temps['util'])."</td>
 								<td>".$info."</td>
@@ -208,7 +219,7 @@ votre animateur afin qu'il vous confirme la possibilit&eacute; de r&eacute;serve
 
 <div class="row"><section class="col-lg-7 connectedSortable"> 
 
-<div class="box"><div class="box-header"><h3 class="box-title">Réservation</h3></div>
+<div class="box"><div class="box-header"><h3 class="box-title">R&eacute;servation</h3></div>
 <div class="box-body">
 
 <a class="<?php echo $step1 ;?>"><button class="btn btn-default">Etape 1 / 3</button></a>

@@ -58,11 +58,7 @@ if (FALSE !=isset($logout))
 
 
 
-
-?>
-
-
-<?php //Autentification
+ //Autentification
 if (FALSE == isset($_SESSION["login"]))
 {
   include ("login.php") ;
@@ -159,7 +155,6 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
 		
 		<!-- section pour les adminsitrateurs -->
 	<?php if($_SESSION["status"]=="3" OR $_SESSION["status"]=="4"){
-	
 	
 			?>
 			<a href="index.php?m=1" class="logo"><img src="img/logo/<?php echo $epnspec["logo_espace"]; ?>" class="logo"></a>
@@ -264,7 +259,7 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
                   
                 </a>
                 <!-- Sidebar toggle button-->
-		 <span class="navbar-brand"><?php echo getconfigname(); ?></span>
+		 <span class="navbar-brand"><?php echo getnomreseau(); ?></span>
      <div class="navbar-custom-menu">
 			<ul class="nav navbar-nav"><li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="ion ion-person"></i>
@@ -354,7 +349,10 @@ $couleur=$couleurArray[$epnspec["couleur_espace"]];
     <script src="template/dist/js/app.min.js" type="text/javascript"></script>
 		 <!-- iCheck -->
 		 
-		<?php if($a!=1){ ?>
+		<?php if($a==1 OR $a==43){ 
+			nothing;
+		}else{
+		?>
     <script src="template/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <script>
       $(function () {

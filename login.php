@@ -21,7 +21,7 @@
   login.php V0.1
 */
 
-
+$rowprinscription=getPreinsmode();
 
 ?>
 <html>
@@ -39,7 +39,18 @@
 
 <body class="login-page">
 	<div class="login-box">
-	<div class="login-logo"><?php echo getconfigname(); ?></div><!-- /.login-logo -->
+	<div class="login-logo"><?php 
+	//debug(mysqli_num_rows(getReseau()));
+	if (mysqli_num_rows(getReseau())==0){
+		echo "Connexion au CyberGestionnaire";
+	}else{
+		$rowreseau=mysqli_fetch_array(getReseau());
+		$logoreseau="img/logo/".$rowsreseau['res_logo'];
+		echo "<img src=".$logoreseau.">";
+		
+			echo $rowreseau['res_nom']; 
+			
+			}?></div><!-- /.login-logo -->
 	
 	<div class="login-box-body">
 		
@@ -59,19 +70,21 @@
 			</div>
 		
 		 <div class="form-group has-feedback"><input type="password" tabindex="2"   name="pass" placeholder="Password" class="form-control"  required>
-			  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			  <span class="fa fa-lock form-control-feedback"></span>
 		</div>
 		 
 		 <div class="row"> <div class="col-xs-8">&nbsp;</div>                                                            
              <div class="col-xs-4"><button type="submit"  class="btn btn-primary btn-block btn-flat" name="submit" value="Entrer">Entr&eacute;e</button>  
             </div></div>
 			
+		<?php 
+		if($rowprinscription["capt_activation"]=='Y'){ ?>
 			 <div class="text-center">
 				<p>&nbsp;</p>
 			  <p>- Pas encore inscrit ? -</p>
 				<p><a href="form_preinscription.php" class="text-center">Demandez une pr&eacute;inscription !</a></p>
 				</div>
-			
+			<?php } ?>
 		  </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 		</form>
