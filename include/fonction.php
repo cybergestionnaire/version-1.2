@@ -119,6 +119,7 @@ function checkUser($log,$pass)
            AND `pass_user` = '".passwd($pass)."'
           ";
       $db=opendb();
+        $log = mysqli_real_escape_string($db, $log);
       $result= mysqli_query($db,$sql);
       closedb($db);
       if (mysqli_num_rows($result) == 1)
