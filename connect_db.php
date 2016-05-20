@@ -18,14 +18,14 @@
 
  2006-2008-2008 Namont Nicolas
 */
-    //    Acces a la base de données
+    //    Acces a la base de donnÃ©es
 
 
 $host = "localhost" ;
 $port = "3306"; 
-$database = "test" ;
-$userdb = "root" ;
-$passdb = "php1506" ;
+$database = "" ;
+$userdb = "" ;
+$passdb = "" ;
 
 
 ?>
