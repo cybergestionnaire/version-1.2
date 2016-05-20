@@ -30,14 +30,14 @@
   {
     //recuperation et traitement des variables
     $date     =  $_POST["inscription"];
-    $nom      =  addslashes($_POST["nom"]);
-    $prenom   =addslashes(  $_POST["prenom"]);
+    $nom      = htmlentities($_POST["nom"], ENT_QUOTES) ;
+    $prenom   =htmlentities($_POST["prenom"], ENT_QUOTES) ;
     $sexe     =  $_POST["sexe"];
    // debug($sexe);
     $jour     =  $_POST["jour"];
     $mois     =  $_POST["mois"];
     $annee    =  $_POST["annee"];
-    $adresse  =  addslashes($_POST["adresse"]);
+    $adresse  =  htmlentities($_POST["adresse"], ENT_QUOTES) ;
     $ville    =  $_POST["ville"];
     $tel      =  trim($_POST["tel"]);
     $mail     = trim($_POST["mail"]);
@@ -49,7 +49,7 @@
 	
 	$utilisation=$_POST["utilisation"];
 	 $connaissance=$_POST["connaissance"];
-	 $info  =addslashes($_POST["info"]);
+	 $info  = htmlentities($_POST["info"], ENT_QUOTES) ;
 	 $tarif=$_POST["tarif"];
 	 
 	 $equipementarr=array();

@@ -113,11 +113,11 @@ function checkUser($log,$pass)
 {
   if ($log !="" AND $pass !="")
   {
-      $sql = "SELECT `id_user`,`login_user` , `status_user`
+      $sql = "SELECT `id_user`,`login_user` , `status_user`,`epn_user`
            FROM `tab_user`
            WHERE `login_user` = '".$log."'
            AND `pass_user` = '".passwd($pass)."'
-           LIMIT 0,1 ";
+          ";
       $db=opendb();
       $result= mysqli_query($db,$sql);
       closedb($db);
@@ -128,8 +128,10 @@ function checkUser($log,$pass)
           $_SESSION["login"] = $row["login_user"];
           $_SESSION["status"] = $row["status_user"];
           $_SESSION["iduser"] = $row["id_user"];
-	  //epn de rattachment par default
-		  	
+					$_SESSION["idepn"]=$row["epn_user"];
+	 
+		//epn de rattachment par default
+		/*
 		 if ($row["status_user"]==3 OR $row["status_user"]==4)
 		 { 
 		 $sqla="SELECT `id_epn` FROM `rel_user_anim` WHERE `id_animateur`='".$row["id_user"]."' ";
@@ -140,19 +142,9 @@ function checkUser($log,$pass)
 			$_SESSION["idepn"]=$epna["id_epn"];
 		
 		 }
-		 if ($row["status_user"]<3)
-		 { 
-		 $sqla="SELECT `epn_user` FROM `tab_user` WHERE `id_user`='".$row["id_user"]."' ";
-		 $db=opendb();
-		$resulta= mysqli_query($db,$sqla);
-		closedb($db);
-		$epna=mysqli_fetch_array($resulta);
-		$_SESSION["idepn"]=$epna["epn_user"];
-		
-		 }
-		
-		  		  
-          $sql = "UPDATE tab_user SET lastvisit_user='".date("Y-m-d")."' WHERE `id_user`=".$_SESSION['iduser'] ;
+		 	*/
+		  //enregistrement de la visite		  
+      $sql = "UPDATE tab_user SET lastvisit_user='".date("Y-m-d")."' WHERE `id_user`=".$_SESSION['iduser'] ;
             $db=opendb();
           $result = mysqli_query($db, $sql);
           closedb($db);
@@ -2450,22 +2442,6 @@ function getConfig($field,$default_field,$epn)
 }
 
 
-// retourne le nom du reseau
-function getconfigname()
-{
-	$sql="SELECT `nom_espace` FROM `tab_config` LIMIT 1";
-	$db=opendb();
-  $result = mysqli_query($db,$sql);
-  closedb($db);
-	if($result==FALSE){
-	return FALSE;
-	}else{
-	$row= mysqli_fetch_array($result);
-	return $row['nom_espace'] ;
-	}
-	
-	
-}
 
 
 

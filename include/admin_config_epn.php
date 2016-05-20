@@ -34,7 +34,7 @@ if ($mesno !="")
 <!-- DIV accès direct aux autres paramètres-->
  <div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&eacute;trages</h3>
 		</div>
 		<div class="box-body">
 		
@@ -50,10 +50,36 @@ if ($mesno !="")
 
 
 <div class="row">
- <!-- Left col --><section class="col-lg-9 connectedSortable">
-  
+ <section class="col-lg-3 connectedSortable"> 
+ <?php 
+
+ if (getReseau()==FALSE){ 
+ echo '<div class="box box-default">
+                <div class="box-header with-border"><div class="box-body">
+								<div class="alert alert-danger alert-dismissable"><i class="fa fa-ban"></i>
+           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>Attention!</b> 
+					 La mise &agrave; jour a &eacute;chou&eacute;, veuillez recommencer la proc&eacute;dure !</div></div></div></div>';
+ }else{
+		$rowreseau=getReseau();
+		?>
+ <div class="box box-solid box-primary">
+	<div class="box-header"><h3 class="box-title">Votre r&eacute;seau</h3></div>
+	<div class="box-body"><form method="post" action="index.php?a=43&b=4">
+		<div class="input-group input-group-sm">
+			<input class="form-control" type="text" name="reseau" value="<?php echo $rowreseau['res_nom']; ?>">
+			 <span class="input-group-btn"><button class="btn btn-success btn-sm"  type="submit" value="modifier" data-toggle="tooltip" title="Modifier les param&egrave;tres de votre r&eacute;seau"><i class="fa fa-edit"></i></button></span></div>
+	</div></form>
+	</div>
+<?php 	} ?>	
+	
+</section>
+
+<section class="col-lg-9 connectedSortable">  
 <!-- liste des espaces existants-->
-<div class="box box-solid box-warning"><div class="box-header"><h3 class="box-title">Liste des espaces</h3></div>
+<div class="box box-solid box-warning"><div class="box-header"><h3 class="box-title">Liste des espaces</h3>
+			<div class="box-tools pull-right">
+				<a href="index.php?a=43&b=1"><button class="btn bg-green btn-sm"  data-toggle="tooltip" title="Ajouter"><i class="fa fa-plus"></i></button></a>
+			</div></div>
 	 <div class="box-body no-padding"> <table class="table">
 			<thead> <tr> 
    				<th>Nom de l'espace</th> 
@@ -104,13 +130,6 @@ if ($mesno !="")
 
     </section><!-- /.Left col -->
 
- <section class="col-lg-3 connectedSortable"> 
-<!-- bouton nouvel espace-->
-<div class="small-box bg-light-blue">
-                <div class="inner"><h3>&nbsp;</h3><p>Nouvel EPN</p></div>
-		<div class="icon"><i class="ion ion-home"></i></div>
-	<a href="index.php?a=43&b=1" class="small-box-footer">Ajouter <i class="fa fa-arrow-circle-right"></i></a>
-</div>
-</section>
+
 
 </div>

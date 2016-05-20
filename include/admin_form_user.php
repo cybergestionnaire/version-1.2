@@ -498,10 +498,10 @@ if ($b==2){ ?>
 		</select></div>
 		
 	<div class="input-group"><span class="input-group-addon" tabindex="6"><i class="fa fa-phone"></i></span>
-		<input type="text" name="tel" value="<?php echo $tel;?>" class="form-control" placeholder="04 78 34 27 31, 06 83 57 43 00"/></div><br>
+		<input type="tel" name="tel" value="<?php echo $tel;?>" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" class="form-control" placeholder="01549875631" maxlength="10"/></div><br>
 		
 	<div class="input-group"><span class="input-group-addon" tabindex="7"><i class="fa fa-envelope"></i></span>
-		<input type="text" name="mail" value="<?php echo $mail;?>" class="form-control"></div>
+		<input type="email" name="mail" value="<?php echo $mail;?>" class="form-control"></div>
 	 </td></tr></table>
 	 
 	</div>

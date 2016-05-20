@@ -29,10 +29,10 @@ if ($mesno !="")
   echo getError($mesno);
 }
 ?>
-<!-- DIV accès direct aux autres paramètres-->
+<!-- DIV acc&egrave;s direct aux autres param&egrave;tres-->
  <div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Paramétrages</h3>
+			<h3 class="box-title">Param&eacute;trages</h3>
 		</div>
 		<div class="box-body">
 			
@@ -49,11 +49,15 @@ if ($mesno !="")
 <section class="col-lg-9 connectedSortable">
 
 <!-- liste des salles existants-->
-<div class="box box-solid box-warning"><div class="box-header"><h3 class="box-title">Liste des Salles</h3></div>
+<div class="box box-solid box-warning"><div class="box-header"><h3 class="box-title">Liste des Salles</h3>
+<div class="box-tools pull-right">
+				<a href="index.php?a=44&b=1"><button class="btn bg-gray btn-sm"  data-toggle="tooltip" title="Ajouter"><i class="fa fa-plus"></i></button></a>
+			</div></div>
+
 	<div class="box-body no-padding"> <table class="table">
 			<thead> <tr> 
 			<th>Nom</th>
-			<th>EPN lié</th>
+			<th>EPN li&eacute;</th>
 			<th>Nombre de postes</th>
 			<th>Commentaires</th>
 			<th>&nbsp;</th>
@@ -81,14 +85,14 @@ if ($mesno !="")
 					//debug($resultespace);
     				if (FALSE == $resultespace)
     				{
-        				$salleesp="Non défini";
+        				$salleesp="Non d&eacute;fini";
     				}
     				else
     				{
 						$resultpost = getConsole($row["id_salle"]);
     					if (FALSE == $resultpost)
     					{
-        					$nbpost="Non défini";
+        					$nbpost="Non d&eacute;fini";
     					}
     					else
     					{
@@ -97,7 +101,7 @@ if ($mesno !="")
 						$rowespace = mysqli_fetch_array($resultespace);
     					if ($row["id_espace"]==0)
     					{
-        					$salleesp="Non défini";
+        					$salleesp="Non d&eacute;fini";
     					}
     					else
     					{
@@ -133,7 +137,7 @@ if ($mesno !="")
 <!-- AIDE -->
 <div class="box">
      <div class="box-header"><h3 class="box-title">Conseil</h3></div>
-	<div class="box-body"><p>Pour le matériel hors salle de consultation et salle d'atelier et accessible au public, pensez à créer une salle "matériel public" ou "salle consommables"...</p></div>
+	<div class="box-body"><p>Pour le mat&eacute;riel hors salle de consultation et salle d'atelier et accessible au public, pensez &agrave; cr&eacute;er une salle "mat&eacute;riel public" ou "salle consommables"...</p></div>
 	
 </div>
 </section>

@@ -5,8 +5,8 @@
 $act      =  $_GET["act"];
 $id       =  $_GET["idbreve"];
 
-$titr      = addslashes($_POST["titr"]) ;
-$comment   =addslashes( $_POST["comment"]) ;
+$titr      = htmlentities($_POST["titr"], ENT_QUOTES) ;
+$comment   =htmlentities($_POST["comment"], ENT_QUOTES) ;
 $datenews=$_POST["datenews"];
 $datepublish=$_POST["datepublish"];
 $epn=$_POST["idepn"];

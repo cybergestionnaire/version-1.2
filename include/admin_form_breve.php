@@ -28,6 +28,7 @@ if (FALSE == isset($id))
 {  // creation
         $post_url = "index.php?a=4&b=1&act=1";
         $label_bouton = "Cr&eacute;er une br&egrave;ve" ;
+				$datenews=date("Y-m-d H:i");
 }
 else
 { // modification

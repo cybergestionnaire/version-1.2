@@ -3156,6 +3156,66 @@ $result = mysqli_query($db,$sql);
 
 ////***** FONCTIONS SUR LA GESTION MULTIESPACE ***/////
 
+///RESEAU ***///
+// retourne le nom du reseau
+function getnomreseau()
+{
+	$sql="SELECT `res_nom` FROM `tab_reseau` LIMIT 1";
+	$db=opendb();
+  $result = mysqli_query($db,$sql);
+  closedb($db);
+	if($result==FALSE){
+		return FALSE;
+	}else{
+		$row= mysqli_fetch_array($result);
+		return $row['res_nom'] ;
+	}
+	
+	
+}
+
+//retourne les parametres du reseau
+function getReseau()
+{
+	$sql="SELECT * FROM `tab_reseau`";
+	$db=opendb();
+	 $result = mysqli_query($db,$sql);
+  closedb($db);
+	if(mysqli_num_rows($result)==0){
+		return FALSE;
+	}else{
+		return mysqli_fetch_array($result) ;
+	}
+	
+}
+
+function modreseau($nom,$adresse,$ville,$tel,$mail,$logo,$courrier,$activation)
+{
+	
+	$sql="UPDATE `tab_reseau` SET 
+	`res_nom`='".$nom."',
+	`res_adresse`='".$adresse."',
+	`res_ville`='".$ville."',
+	`res_tel`='".$tel."',
+	`res_mail`='".$mail."',
+	`res_logo`='".$logo."',
+	`res_courrier`='".$courrier."',
+	`res_activation`='".$activation."'
+	";
+	$db=opendb();
+	 $result = mysqli_query($db,$sql);
+  closedb($db);
+	 if (FALSE == $result)
+  {
+      return FALSE;
+  }
+  else
+  {
+      return TRUE;
+  }
+	
+}
+
 //
 // getConsole()
 // recupere les postes par salle
@@ -3532,14 +3592,14 @@ $db=opendb();
 //
 // modEspace()
 // modifie un espace dans la table espace
-function modEspace($id,$nom, $adresse, $city,$tel, $fax, $logoespace,$couleur,$mail)
+function modEspace($id, $nom,$adresse,$ville,$tel,$fax,$logoespace,$couleur,$mail)
 {
     $sql="UPDATE `tab_espace`
     SET `nom_espace` ='".$nom."',
-        `id_city` ='".$city."',
+        `id_city` ='".$ville."',
         `adresse` ='".$adresse."',
-				`tel_espace`= '".$tel."',
-				`fax_espace`= '".$fax."',
+		`tel_espace`= '".$tel."',
+		`fax_espace`= '".$fax."',
 	`logo_espace`='".$logoespace."',
 	`couleur_espace`='".$couleur."',
 	`mail_espace`='".$mail."'
@@ -4014,17 +4074,24 @@ $sql="SELECT `nom_user`, `prenom_user`, `mail_user`, `epn_user` FROM `tab_user` 
 //enregistrer les paramètres d'un animateur
 function paramAnim($idanim,$epn_r,$salle_r,$avatar){
 $sql="INSERT INTO `rel_user_anim`(`id_useranim`, `id_animateur`, `id_epn`, `id_salle`, `anim_avatar`) VALUES ('','".$idanim."', '".$epn_r."', '".$salle_r."', '".$avatar."')";
+
+//mettre l'epn dans la tab user aussi
+$sql2="UPDATE tab_user SET epn_user='".$epn_r."' WHERE id_user='".$idanim."' ";
+
   $db=opendb();
  $result = mysqli_query($db,$sql);
-   closedb($db);
-  if($result == FALSE)
+
+ if($result == FALSE)
   {
       return FALSE ;
   }
   else
   {
-      return TRUE ;
+      $result2 = mysqli_query($db,$sql2);
+			return TRUE ;
   }
+	
+	  closedb($db);
 
 }
 
@@ -4077,8 +4144,11 @@ SET `id_epn`='".$epn_r."',
 `id_salle`='".$salles."',
 `anim_avatar`='".$avatar_r."' 
 WHERE id_animateur='".$idanim."' ";
+$sql2="UPDATE tab_user SET epn_user='".$epn_r."' WHERE id_user='".$idanim."' ";
+
 $db=opendb();
  $result = mysqli_query($db,$sql);
+ $result2 = mysqli_query($db,$sql2);
    closedb($db);
   if($result == FALSE)
   {

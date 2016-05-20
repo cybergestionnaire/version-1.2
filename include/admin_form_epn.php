@@ -27,6 +27,7 @@
   $id_espace = $_GET["idespace"];
 $b=$_GET["b"];
 
+
     if (FALSE == isset($id_espace))
     {   // Parametre du formulaire pour la CREATION
         $post_url = "index.php?a=43&b=1&act=1";
@@ -60,7 +61,7 @@ $town = getAllCityname();
 $filesLogoarray=array();
 $filedir="./img/logo/";
 $filesLogoarray = array_diff(scandir($filedir), array('..', '.')); //lister les logos dans le dossier
-$filesLogoarray = array_values($filesLogoarray); //réindexer le tableau après avoir enlever lignes vides
+$filesLogoarray = array_values($filesLogoarray); //r&eacute;indexer le tableau après avoir enlever lignes vides
 $nblogo=count($filesLogoarray);
 
 //tableau des couleurs
@@ -78,14 +79,14 @@ $couleurArray=array(
 
 //Affichage -----
 echo $mess ;
-?>
 
-<div class="col-md-6">
+?>
+<div class="row">
+<div class="col-md-6"><form method="post" action="<?php echo $post_url; ?>" role="form">
 <div class="box box-primary">
 	<div class="box-header"><h3 class="box-title">Cr&eacute;er et modifier un nouvel espace</h3></div>
+	
 		<div class="box-body">
-			
-<form method="post" action="<?php echo $post_url; ?>" role="form">
 	<div class="form-group">
 		<label >Nom de l'EPN *: </label>
    		<input type="text" name="nom" value="<?php echo $nom;?>" class="form-control"></div>
@@ -167,6 +168,7 @@ echo $mess ;
 				}
 			echo "<img src=".$filedir.$filesLogoarray[$l].">&nbsp;<input type=\"radio\" name=\"elogo\" value=".$filesLogoarray[$l]."  ".$check.">";
 			
+			
 			}
 	 		
 	
@@ -178,10 +180,10 @@ echo $mess ;
     </div>
      <div class="box-footer"><button type="submit" class="btn btn-primary" value="<?php echo $label_bouton;?>" name="submit"><?php echo $label_bouton;?></button></div>
 
-</form>
+
 </div></div>
 
-
-
+</div>
+</form>
 
 
